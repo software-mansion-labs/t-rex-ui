@@ -1,15 +1,15 @@
-import clsx from 'clsx'
-import { ThemeClassNames } from '@docusaurus/theme-common'
-import { isActiveSidebarItem } from '@docusaurus/theme-common/internal'
-import Link from '@docusaurus/Link'
-import isInternalUrl from '@docusaurus/isInternalUrl'
-import IconExternalLink from '../../Icon/ExternalLink'
-import styles from './styles.module.css'
-import type { DocSidebarItemProps } from '..'
-import type { PropSidebarItemLink } from '@docusaurus/plugin-content-docs'
+import clsx from 'clsx';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import { isActiveSidebarItem } from '@docusaurus/theme-common/internal';
+import Link from '@docusaurus/Link';
+import isInternalUrl from '@docusaurus/isInternalUrl';
+import IconExternalLink from '../../Icon/ExternalLink';
+import styles from './styles.module.css';
+import type { DocSidebarItemProps } from '..';
+import type { PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 
 interface DocSidebarItemLinkProps extends DocSidebarItemProps {
-  item: PropSidebarItemLink
+  item: PropSidebarItemLink;
 }
 
 export default function DocSidebarItemLink({
@@ -20,9 +20,9 @@ export default function DocSidebarItemLink({
   index,
   ...props
 }: DocSidebarItemLinkProps) {
-  const { href, label, className, autoAddBaseUrl } = item
-  const isActive = isActiveSidebarItem(item, activePath)
-  const isInternalLink = isInternalUrl(href)
+  const { href, label, className, autoAddBaseUrl } = item;
+  const isActive = isActiveSidebarItem(item, activePath);
+  const isInternalLink = isInternalUrl(href);
   return (
     <li
       className={clsx(
@@ -31,8 +31,7 @@ export default function DocSidebarItemLink({
         'menu__list-item',
         className
       )}
-      key={label}
-    >
+      key={label}>
       <Link
         className={clsx(
           'menu__link',
@@ -47,11 +46,10 @@ export default function DocSidebarItemLink({
         {...(isInternalLink && {
           onClick: onItemClick ? () => onItemClick(item) : undefined,
         })}
-        {...props}
-      >
+        {...props}>
         {label}
         {!isInternalLink && <IconExternalLink />}
       </Link>
     </li>
-  )
+  );
 }

@@ -1,39 +1,39 @@
-import Link from '@docusaurus/Link'
-import useBaseUrl from '@docusaurus/useBaseUrl'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import { useThemeConfig, type NavbarLogo } from '@docusaurus/theme-common'
-import { ThemedImage } from '../ThemedImage'
-import type { LogoWrapperProps } from '../Logo'
-import usePageType from '../../hooks/usePageType'
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useThemeConfig, type NavbarLogo } from '@docusaurus/theme-common';
+import { ThemedImage } from '../ThemedImage';
+import type { LogoWrapperProps } from '../Logo';
+import usePageType from '../../hooks/usePageType';
 
 interface LogoProps extends LogoWrapperProps {
   titleImages?: {
-    light: string
-    dark: string
-  }
+    light: string;
+    dark: string;
+  };
   heroImages?: {
-    logo: string
-    title?: string
-  }
+    logo: string;
+    title?: string;
+  };
 }
 
 const getWrappedImage = (image: JSX.Element, className?: string) => {
-  return className ? <div className={className}>{image}</div> : image
-}
+  return className ? <div className={className}>{image}</div> : image;
+};
 
 const LogoThemedImage = ({
   logo,
   alt,
   imageClassName,
 }: {
-  logo: NavbarLogo
-  alt: string
-  imageClassName?: string
+  logo: NavbarLogo;
+  alt: string;
+  imageClassName?: string;
 }) => {
   const sources = {
     light: useBaseUrl(logo.src),
     dark: useBaseUrl(logo.srcDark || logo.src),
-  }
+  };
   const themedImage = (
     <ThemedImage
       className={logo.className}
@@ -43,41 +43,41 @@ const LogoThemedImage = ({
       alt={alt}
       style={logo.style}
     />
-  )
+  );
 
   // Is this extra div really necessary?
   // introduced in https://github.com/facebook/docusaurus/pull/5666
-  return getWrappedImage(themedImage, imageClassName)
-}
+  return getWrappedImage(themedImage, imageClassName);
+};
 
 const LogoStyling = (props: LogoProps): JSX.Element => {
   const {
     siteConfig: { title },
-  } = useDocusaurusContext()
+  } = useDocusaurusContext();
   const {
     navbar: { title: navbarTitle, logo },
-  } = useThemeConfig()
-  const { isLanding } = usePageType()
+  } = useThemeConfig();
+  const { isLanding } = usePageType();
   const {
     titleImages,
     heroImages,
     imageClassName,
     titleClassName,
     ...propsRest
-  } = props
-  const logoLink = useBaseUrl(logo?.href || '/')
+  } = props;
+  const logoLink = useBaseUrl(logo?.href || '/');
 
   // If visible title is shown, fallback alt text should be
   // an empty string to mark the logo as decorative.
-  const fallbackAlt = navbarTitle ? '' : title
+  const fallbackAlt = navbarTitle ? '' : title;
 
   // Use logo alt text if provided (including empty string),
   // and provide a sensible fallback otherwise.
-  const alt = logo?.alt ?? fallbackAlt
+  const alt = logo?.alt ?? fallbackAlt;
 
   const HeroLogo: NavbarLogo = {
     src: heroImages?.logo ?? '',
-  }
+  };
 
   const titleImage = {
     docs: <ThemedImage sources={titleImages} />,
@@ -89,14 +89,13 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
         }}
       />
     ),
-  }
+  };
 
   return (
     <Link
       to={logoLink}
       {...propsRest}
-      {...(logo?.target && { target: logo.target })}
-    >
+      {...(logo?.target && { target: logo.target })}>
       {logo && !isLanding ? (
         <>
           <LogoThemedImage
@@ -116,7 +115,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
         ? getWrappedImage(titleImage.docs, titleClassName)
         : getWrappedImage(titleImage.hero, titleClassName)}
     </Link>
-  )
-}
+  );
+};
 
-export default LogoStyling
+export default LogoStyling;

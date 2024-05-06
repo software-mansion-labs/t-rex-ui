@@ -1,25 +1,25 @@
-import { useWindowSize } from '@docusaurus/theme-common'
-import DocSidebarDesktop from './Desktop'
-import DocSidebarMobile from './Mobile'
-import styles from './styles.module.css'
-import type { PropSidebarItem } from '@docusaurus/plugin-content-docs'
+import { useWindowSize } from '@docusaurus/theme-common';
+import DocSidebarDesktop from './Desktop';
+import DocSidebarMobile from './Mobile';
+import styles from './styles.module.css';
+import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
 
 export interface DocSidebarProps {
-  path: string
-  sidebar: PropSidebarItem[]
-  onCollapse: () => void
-  isHidden: boolean
-  heroImages?: { logo: string; title: string }
-  titleImages?: { light: string; dark: string }
+  path: string;
+  sidebar: PropSidebarItem[];
+  onCollapse: () => void;
+  isHidden: boolean;
+  heroImages?: { logo: string; title: string };
+  titleImages?: { light: string; dark: string };
 }
 
 export function DocSidebar(props: DocSidebarProps) {
-  const windowSize = useWindowSize()
+  const windowSize = useWindowSize();
   // Desktop sidebar visible on hydration: need SSR rendering
   const shouldRenderSidebarDesktop =
-    windowSize === 'desktop' || windowSize === 'ssr'
+    windowSize === 'desktop' || windowSize === 'ssr';
   // Mobile sidebar not visible on hydration: can avoid SSR rendering
-  const shouldRenderSidebarMobile = windowSize === 'mobile'
+  const shouldRenderSidebarMobile = windowSize === 'mobile';
   return (
     <div className={styles.fix}>
       {shouldRenderSidebarDesktop && (
@@ -31,5 +31,5 @@ export function DocSidebar(props: DocSidebarProps) {
       )}
       {shouldRenderSidebarMobile && <DocSidebarMobile {...props} />}
     </div>
-  )
+  );
 }

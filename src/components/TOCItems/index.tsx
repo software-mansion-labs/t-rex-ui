@@ -1,20 +1,20 @@
-import { useMemo } from 'react'
-import { useThemeConfig } from '@docusaurus/theme-common'
+import { useMemo } from 'react';
+import { useThemeConfig } from '@docusaurus/theme-common';
 import {
   useTOCHighlight,
   useFilteredAndTreeifiedTOC,
-} from '@docusaurus/theme-common/internal'
-import { TOCItemTree } from './Tree'
-import { type TOCProp } from './Tree'
-import type { TOCItem } from '@docusaurus/mdx-loader'
+} from '@docusaurus/theme-common/internal';
+import { TOCItemTree } from './Tree';
+import { type TOCProp } from './Tree';
+import type { TOCItem } from '@docusaurus/mdx-loader';
 
 interface TOCItemsProps {
-  toc: TOCItem[]
-  minHeadingLevel?: number
-  maxHeadingLevel?: number
-  className?: string
-  linkClassName?: string | null
-  linkActiveClassName?: string
+  toc: TOCItem[];
+  minHeadingLevel?: number;
+  maxHeadingLevel?: number;
+  className?: string;
+  linkClassName?: string | null;
+  linkActiveClassName?: string;
 }
 
 export function TOCItems({
@@ -26,16 +26,16 @@ export function TOCItems({
   maxHeadingLevel: maxHeadingLevelOption,
   ...props
 }: TOCItemsProps) {
-  const themeConfig = useThemeConfig()
+  const themeConfig = useThemeConfig();
   const minHeadingLevel =
-    minHeadingLevelOption ?? themeConfig.tableOfContents.minHeadingLevel
+    minHeadingLevelOption ?? themeConfig.tableOfContents.minHeadingLevel;
   const maxHeadingLevel =
-    maxHeadingLevelOption ?? themeConfig.tableOfContents.maxHeadingLevel
+    maxHeadingLevelOption ?? themeConfig.tableOfContents.maxHeadingLevel;
   const tocTree = useFilteredAndTreeifiedTOC({
     toc,
     minHeadingLevel,
     maxHeadingLevel,
-  })
+  });
   const tocHighlightConfig = useMemo(() => {
     if (linkClassName && linkActiveClassName) {
       return {
@@ -43,11 +43,11 @@ export function TOCItems({
         linkActiveClassName,
         minHeadingLevel,
         maxHeadingLevel,
-      }
+      };
     }
-    return undefined
-  }, [linkClassName, linkActiveClassName, minHeadingLevel, maxHeadingLevel])
-  useTOCHighlight(tocHighlightConfig)
+    return undefined;
+  }, [linkClassName, linkActiveClassName, minHeadingLevel, maxHeadingLevel]);
+  useTOCHighlight(tocHighlightConfig);
   return (
     <TOCItemTree
       toc={tocTree as unknown as TOCProp[]}
@@ -55,5 +55,5 @@ export function TOCItems({
       linkClassName={linkClassName}
       {...props}
     />
-  )
+  );
 }

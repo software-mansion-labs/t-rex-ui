@@ -1,11 +1,11 @@
-import clsx from 'clsx'
-import { ThemeClassNames } from '@docusaurus/theme-common'
-import styles from './styles.module.css'
-import type { DocSidebarItemProps } from '..'
-import type { PropSidebarItemHtml } from '@docusaurus/plugin-content-docs'
+import clsx from 'clsx';
+import { ThemeClassNames } from '@docusaurus/theme-common';
+import styles from './styles.module.css';
+import type { DocSidebarItemProps } from '..';
+import type { PropSidebarItemHtml } from '@docusaurus/plugin-content-docs';
 
 interface DocSidebarItemHtmlProps extends DocSidebarItemProps {
-  item: PropSidebarItemHtml
+  item: PropSidebarItemHtml;
 }
 
 export default function DocSidebarItemHtml({
@@ -13,7 +13,7 @@ export default function DocSidebarItemHtml({
   level,
   index,
 }: DocSidebarItemHtmlProps) {
-  const { value, defaultStyle, className } = item
+  const { value, defaultStyle, className } = item;
   return (
     <li
       className={clsx(
@@ -26,5 +26,5 @@ export default function DocSidebarItemHtml({
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: value }}
     />
-  )
+  );
 }

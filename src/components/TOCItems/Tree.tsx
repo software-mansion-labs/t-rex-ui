@@ -1,18 +1,18 @@
-import React from 'react'
-import styles from './styles.module.css'
-import clsx from 'clsx'
-import type { TOCItem } from '@docusaurus/mdx-loader'
+import React from 'react';
+import styles from './styles.module.css';
+import clsx from 'clsx';
+import type { TOCItem } from '@docusaurus/mdx-loader';
 // Recursive component rendering the toc tree
 
 export interface TOCProp extends TOCItem {
-  children?: TOCItem[]
+  children?: TOCItem[];
 }
 
 interface TOCItemTreeProps {
-  toc?: TOCProp[]
-  className: string
-  linkClassName: string | null
-  isChild?: boolean
+  toc?: TOCProp[];
+  className: string;
+  linkClassName: string | null;
+  isChild?: boolean;
 }
 const TOCItemTree = React.memo(function TOCItemTree({
   toc,
@@ -21,7 +21,7 @@ const TOCItemTree = React.memo(function TOCItemTree({
   isChild,
 }: TOCItemTreeProps) {
   if (!toc!.length) {
-    return null
+    return null;
   }
   return (
     <ul className={clsx(styles.tocItems, isChild ? undefined : className)}>
@@ -46,7 +46,7 @@ const TOCItemTree = React.memo(function TOCItemTree({
         </li>
       ))}
     </ul>
-  )
-})
+  );
+});
 // Memo only the tree root is enough
-export { TOCItemTree }
+export { TOCItemTree };

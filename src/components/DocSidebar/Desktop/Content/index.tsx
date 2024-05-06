@@ -1,40 +1,40 @@
-import { useState } from 'react'
-import clsx from 'clsx'
-import { ThemeClassNames } from '@docusaurus/theme-common'
+import { useState } from 'react';
+import clsx from 'clsx';
+import { ThemeClassNames } from '@docusaurus/theme-common';
 import {
   useAnnouncementBar,
   useScrollPosition,
-} from '@docusaurus/theme-common/internal'
-import { translate } from '@docusaurus/Translate'
-import { DocSidebarItems } from '../../../DocSidebarItems'
-import type { PropSidebarItem } from '@docusaurus/plugin-content-docs'
+} from '@docusaurus/theme-common/internal';
+import { translate } from '@docusaurus/Translate';
+import { DocSidebarItems } from '../../../DocSidebarItems';
+import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
 
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 export interface DocSidebarDesktopContentProps {
-  className?: string
-  path: string
-  sidebar: PropSidebarItem[]
+  className?: string;
+  path: string;
+  sidebar: PropSidebarItem[];
 }
 function useShowAnnouncementBar() {
-  const { isActive } = useAnnouncementBar()
-  const [showAnnouncementBar, setShowAnnouncementBar] = useState(isActive)
+  const { isActive } = useAnnouncementBar();
+  const [showAnnouncementBar, setShowAnnouncementBar] = useState(isActive);
   useScrollPosition(
     ({ scrollY }) => {
       if (isActive) {
-        setShowAnnouncementBar(scrollY === 0)
+        setShowAnnouncementBar(scrollY === 0);
       }
     },
     [isActive]
-  )
-  return isActive && showAnnouncementBar
+  );
+  return isActive && showAnnouncementBar;
 }
 export default function DocSidebarDesktopContent({
   path,
   sidebar,
   className,
 }: DocSidebarDesktopContentProps) {
-  const showAnnouncementBar = useShowAnnouncementBar()
+  const showAnnouncementBar = useShowAnnouncementBar();
   return (
     <nav
       aria-label={translate({
@@ -47,11 +47,10 @@ export default function DocSidebarDesktopContent({
         styles.menu,
         showAnnouncementBar && styles.menuWithAnnouncementBar,
         className
-      )}
-    >
+      )}>
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>
     </nav>
-  )
+  );
 }

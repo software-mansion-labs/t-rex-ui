@@ -1,7 +1,7 @@
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 interface Props {
-  type: 'new' | 'experimental'
+  type: 'new' | 'experimental';
 }
 
 export default function SidebarLabel({ type }: Props) {
@@ -9,9 +9,8 @@ export default function SidebarLabel({ type }: Props) {
     <div
       className={`${styles.badge} ${
         type === 'new' ? styles.new : styles.experimental
-      }`}
-    >
+      }`}>
       {type}
     </div>
-  )
+  );
 }

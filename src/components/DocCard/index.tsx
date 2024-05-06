@@ -1,50 +1,49 @@
-import clsx from 'clsx'
-import Link from '@docusaurus/Link'
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import {
   findFirstCategoryLink,
   useDocById,
-} from '@docusaurus/theme-common/internal'
-import { translate } from '@docusaurus/Translate'
+} from '@docusaurus/theme-common/internal';
+import { translate } from '@docusaurus/Translate';
 import type {
   PropSidebarItem,
   PropSidebarItemCategory,
   PropSidebarItemLink,
-} from '@docusaurus/plugin-content-docs'
+} from '@docusaurus/plugin-content-docs';
 
-import { ThemedImage } from '../ThemedImage'
-import styles from './styles.module.css'
-import Card from '../../assets/card-icon.svg'
-import CardDark from '../../assets/card-icon-dark.svg'
+import { ThemedImage } from '../ThemedImage';
+import styles from './styles.module.css';
+import Card from '../../assets/card-icon.svg';
+import CardDark from '../../assets/card-icon-dark.svg';
 
 function CardContainer({
   href,
   children,
 }: {
-  href: string
-  children: React.ReactNode
+  href: string;
+  children: React.ReactNode;
 }) {
   return (
     <Link
       href={href}
-      className={clsx('card padding--lg', styles.cardContainer)}
-    >
+      className={clsx('card padding--lg', styles.cardContainer)}>
       {children}
     </Link>
-  )
+  );
 }
 function CardLayout({
   href,
   title,
   description,
 }: {
-  href: string
-  title: string
-  description: string
+  href: string;
+  title: string;
+  description: string;
 }) {
   const cardIcons = {
     light: Card as unknown as string,
     dark: CardDark as unknown as string,
-  }
+  };
 
   return (
     <CardContainer href={href}>
@@ -58,21 +57,20 @@ function CardLayout({
         {description && (
           <p
             className={clsx('text--truncate', styles.cardDescription)}
-            title={description}
-          >
+            title={description}>
             {description}
           </p>
         )}
       </div>
     </CardContainer>
-  )
+  );
 }
 
 function CardCategory({ item }: { item: PropSidebarItemCategory }) {
-  const href = findFirstCategoryLink(item)
+  const href = findFirstCategoryLink(item);
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {
-    return null
+    return null;
   }
   return (
     <CardLayout
@@ -91,25 +89,25 @@ function CardCategory({ item }: { item: PropSidebarItemCategory }) {
         )
       }
     />
-  )
+  );
 }
 function CardLink({ item }: { item: PropSidebarItemLink }) {
-  const doc = useDocById(item.docId ?? undefined)
+  const doc = useDocById(item.docId ?? undefined);
   return (
     <CardLayout
       href={item.href}
       title={item.label}
       description={item.description ?? doc!.description}
     />
-  )
+  );
 }
 export function DocCard({ item }: { item: PropSidebarItem }) {
   switch (item.type) {
     case 'link':
-      return <CardLink item={item} />
+      return <CardLink item={item} />;
     case 'category':
-      return <CardCategory item={item} />
+      return <CardCategory item={item} />;
     default:
-      throw new Error(`unknown item type ${JSON.stringify(item)}`)
+      throw new Error(`unknown item type ${JSON.stringify(item)}`);
   }
 }

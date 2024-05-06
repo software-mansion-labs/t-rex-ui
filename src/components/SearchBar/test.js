@@ -1,22 +1,21 @@
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment'
-import usePageType from '@site/src/hooks/usePageType'
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import usePageType from '@site/src/hooks/usePageType';
 
 function NavbarBackdrop(props) {
   return (
     <div
-      role='presentation'
+      role="presentation"
       {...props}
       className={clsx('navbar-sidebar__backdrop', props.className)}
     />
-  )
+  );
 }
 
 const LandingBackground = ({ isAnnouncementBarActive = false }) => {
   return (
     <div
       className={styles.heroBackground}
-      data-announcement-bar={isAnnouncementBarActive}
-    >
+      data-announcement-bar={isAnnouncementBarActive}>
       <Clouds />
       <Stars />
 
@@ -32,5 +31,5 @@ const LandingBackground = ({ isAnnouncementBarActive = false }) => {
         )
       }
     </div>
-  )
-}
+  );
+};

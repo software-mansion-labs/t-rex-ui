@@ -1,17 +1,17 @@
-import { PageMetadata } from '@docusaurus/theme-common'
-import { useDoc } from '@docusaurus/theme-common/internal'
+import { PageMetadata } from '@docusaurus/theme-common';
+import { useDoc } from '@docusaurus/theme-common/internal';
 
 export function DocItemMetadata() {
-  const { metadata, frontMatter } = useDoc()
+  const { metadata, frontMatter } = useDoc();
 
   if (!metadata.title) {
-    return null
+    return null;
   }
 
   const ogImageName = metadata.title
     .replace(/ /g, '-')
     .replace('/', '-')
-    .toLowerCase()
+    .toLowerCase();
 
   return (
     <PageMetadata
@@ -24,5 +24,5 @@ export function DocItemMetadata() {
           : ogImageName
       }.png`}
     />
-  )
+  );
 }
