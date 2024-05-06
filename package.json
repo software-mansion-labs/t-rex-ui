@@ -10,6 +10,7 @@
   "peerDependencies": {
     "@emotion/react": "*",
     "@emotion/styled": "*",
+    "@mui/material": ">=5.0.0",
     "react": "*",
     "react-dom": "*"
   },
@@ -23,7 +24,6 @@
   "devDependencies": {
     "@docusaurus/tsconfig": "^3.2.1",
     "@docusaurus/types": "^2.4.3",
-    "@mui/material": "^5.15.15",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/node": "^20.12.7",
