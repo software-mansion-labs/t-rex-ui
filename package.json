@@ -10,10 +10,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --p ./tsconfig-build.json && vite build",
-    "prepublishOnly": "npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write --list-different src"
+    "format": "prettier --write --list-different src",
+    "prepare": "yarn build",
+    "release": "release-it"
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.3",
