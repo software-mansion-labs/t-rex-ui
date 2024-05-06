@@ -54,6 +54,7 @@
     "react": "*",
     "react-dom": "*"
   },
+  "license": "MIT",
   "sideEffects": [
     "**/*.css"
   ],
