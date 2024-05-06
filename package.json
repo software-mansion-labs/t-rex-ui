@@ -1,6 +1,5 @@
 {
   "name": "@swmansion/t-rex-ui",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "main": "dist/main.js",
@@ -39,6 +38,7 @@
     "glob": "^10.3.12",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "release-it": "^17.2.1",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.3",
     "vite-plugin-lib-inject-css": "^2.0.1"
@@ -49,10 +49,13 @@
   "dependencies": {
     "@docusaurus/core": "^2.4.3",
     "@docusaurus/module-type-aliases": "^2.4.3",
+    "@docusaurus/plugin-content-docs": "^2.4.3",
     "@docusaurus/theme-classic": "^2.4.3",
     "@docusaurus/theme-common": "^2.4.3",
-    "@docusaurus/plugin-content-docs": "^2.4.3",
     "clsx": "^2.1.0",
     "typescript": "^5.4.5"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
