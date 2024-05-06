@@ -43,9 +43,9 @@ export default defineConfig({
       ],
       input: Object.fromEntries(
         glob
-          .sync('lib/**/*.{ts,tsx}')
+          .sync('src/**/*.{ts,tsx}')
           .map((file) => [
-            relative('lib', file.slice(0, file.length - extname(file).length)),
+            relative('src', file.slice(0, file.length - extname(file).length)),
             fileURLToPath(new URL(file, import.meta.url)),
           ])
       ),
@@ -54,9 +54,8 @@ export default defineConfig({
         entryFileNames: '[name].js',
       },
     },
-    // copyPublicDir: false,
     lib: {
-      entry: resolve(__dirname, 'lib/main.ts'),
+      entry: resolve(__dirname, 'src/main.ts'),
       formats: ['es'],
     },
   },
