@@ -11,10 +11,10 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css'
 export default defineConfig({
   plugins: [react(), libInjectCss(), dts({ include: ['lib'] })],
   assetsInclude: [
-    'lib/assets/*.css',
-    'lib/assets/*.svg',
-    'lib/assets/**',
-    'lib/assets/**/*.css',
+    'src/assets/*.css',
+    'src/assets/*.svg',
+    'src/assets/**',
+    'src/assets/**/*.css',
   ],
   build: {
     rollupOptions: {

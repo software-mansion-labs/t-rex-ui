@@ -1,5 +1,6 @@
 export { Admonition } from './components/Admonition';
 export { PaginatorNavLink } from './components/PaginatorNavLink';
+export { Navbar } from './components/Navbar';
 
 // export { LogoWrapper } from './components/Logo'
 export { ColorModeToggle } from './components/ColorModeToggle';
