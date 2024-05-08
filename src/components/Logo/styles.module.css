@@ -7,7 +7,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 218px;
+  /* width: 218px; */
 }
 
 .navbar__logo img {
@@ -42,11 +42,20 @@
 
 .navbar__title {
   margin-left: 1em;
-  height: var(--swm-logo-height);
+  height: 36px;
+}
+
+.navbar__title img {
+  height: 36px;
 }
 
 @media (max-width: 996px) {
   .navbar__title {
     display: none;
   }
+}
+
+.logoWrapper a {
+  display: flex;
+  flex-direction: row;
 }

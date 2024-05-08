@@ -1,7 +1,6 @@
 import LogoStyling from './LogoStyling';
 import clsx from 'clsx';
 // import useBaseUrl from '@docusaurus/useBaseUrl'
-import usePageType from '../../hooks/usePageType';
 import styles from './styles.module.css';
 
 export interface LogoWrapperProps {
@@ -21,17 +20,13 @@ export function LogoWrapper({
 }: LogoWrapperProps) {
   // TODO:
   // instead of passing heroImages to DocSidebarDesktop pass them directly to Logo from project
-  const { isLanding } = usePageType();
 
   return (
     <div className={styles.logoWrapper}>
       <LogoStyling
         titleImages={titleImages}
         heroImages={heroImages}
-        className={clsx(
-          className,
-          isLanding ? styles.navbar__logo_landing : styles.navbar__logo
-        )}
+        imageClassName={clsx(className, styles.navbar__logo)}
         titleClassName={clsx(titleClassName, styles.navbar__title)}
       />
     </div>

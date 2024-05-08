@@ -21,12 +21,15 @@
     "@docusaurus/module-type-aliases": "^2.4.3",
     "@docusaurus/plugin-content-docs": "^2.4.3",
     "@docusaurus/theme-classic": "^2.4.3",
-    "@docusaurus/theme-common": "^2.4.3"
+    "@docusaurus/theme-common": "^2.4.3",
+    "@docusaurus/theme-search-algolia": "^3.3.2",
+    "algoliasearch": "^4.23.3",
+    "algoliasearch-helper": "^3.19.0"
   },
   "devDependencies": {
-    "@mui/material": "^5.15.16",
     "@docusaurus/tsconfig": "^3.2.1",
     "@docusaurus/types": "^2.4.3",
+    "@mui/material": "^5.15.16",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/node": "^20.12.7",

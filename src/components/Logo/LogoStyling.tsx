@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig, type NavbarLogo } from '@docusaurus/theme-common';
 import { ThemedImage } from '../ThemedImage';
 import type { LogoWrapperProps } from '../Logo';
+import styles from './styles.module.css';
 import usePageType from '../../hooks/usePageType';
 
 interface LogoProps extends LogoWrapperProps {
@@ -94,6 +95,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   return (
     <Link
       to={logoLink}
+      className={styles.link}
       {...propsRest}
       {...(logo?.target && { target: logo.target })}>
       {logo && !isLanding ? (
