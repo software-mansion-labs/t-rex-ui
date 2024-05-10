@@ -48,7 +48,7 @@ nav {
 }
 
 .navbarItemsLanding [class*='dropdown--right'] a {
-  color: var(--swm-off-white);
+  color: var(--swm-dropdown-versions-item);
 }
 
 .navbarItemsLanding [class*='dropdown__menu'] a,

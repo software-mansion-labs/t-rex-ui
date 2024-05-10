@@ -82,14 +82,6 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
 
   const titleImage = {
     docs: <ThemedImage sources={titleImages} />,
-    hero: (
-      <ThemedImage
-        sources={{
-          light: heroImages?.title ?? '',
-          dark: heroImages?.title ?? '',
-        }}
-      />
-    ),
   };
 
   return (
@@ -113,9 +105,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
           imageClassName={imageClassName}
         />
       )}
-      {titleImages && !isLanding
-        ? getWrappedImage(titleImage.docs, titleClassName)
-        : getWrappedImage(titleImage.hero, titleClassName)}
+      {titleImages && getWrappedImage(titleImage.docs, titleClassName)}
     </Link>
   );
 };
