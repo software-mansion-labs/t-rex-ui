@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
 import NavbarSearch from '../Navbar/Search';
-import SearchBar from '../SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 
 const AlgoliaSearchBar = () => {
   return (

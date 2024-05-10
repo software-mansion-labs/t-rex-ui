@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import useIsBrowser from '@docusaurus/useIsBrowser';
+// import useIsBrowser from '@docusaurus/useIsBrowser';
 import { translate } from '@docusaurus/Translate';
 import IconLightMode from '../Icon/LightMode';
 import IconDarkMode from '../Icon/DarkMode';
@@ -26,7 +26,7 @@ const ColorModeToggle = React.memo(function ColorModeToggle({
   lightToggleIconStyles,
   darkToggleIconStyles,
 }: ColorModeToggleProps) {
-  const isBrowser = useIsBrowser();
+  // const isBrowser = useIsBrowser();
   /* Color scheme switcher from MUI framework. */
   const { setMode } = useColorScheme();
   const { isLanding } = usePageType();
@@ -64,13 +64,13 @@ const ColorModeToggle = React.memo(function ColorModeToggle({
         className={clsx(
           'clean-btn',
           styles.toggleButton,
-          !isBrowser && styles.toggleButtonDisabled,
+          // !isBrowser && styles.toggleButtonDisabled,
           isLanding && styles.toggleButtonLanding,
           buttonClassName
         )}
         type="button"
         onClick={() => changeTheme(value === 'dark' ? 'light' : 'dark')}
-        disabled={!isBrowser}
+        // disabled={!isBrowser}
         title={title}
         aria-label={title}
         aria-live="polite">
