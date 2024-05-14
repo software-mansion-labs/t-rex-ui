@@ -24,10 +24,6 @@
   }
 }
 
-[class*='navbar-sidebar'] {
-  background-color: var(--swm-off-background);
-}
-
 .sidebarGithubIcon {
   width: 26px;
   height: 26px;

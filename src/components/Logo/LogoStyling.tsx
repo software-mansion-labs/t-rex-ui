@@ -18,7 +18,7 @@ interface LogoProps extends LogoWrapperProps {
   };
 }
 
-const getWrappedImage = (image: JSX.Element, className?: string) => {
+const getWrappedImage = (image?: JSX.Element, className?: string) => {
   return className ? <div className={className}>{image}</div> : image;
 };
 
@@ -81,7 +81,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   };
 
   const titleImage = {
-    docs: <ThemedImage sources={titleImages} />,
+    docs: titleImages && <ThemedImage sources={titleImages} />,
   };
 
   return (
