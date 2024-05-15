@@ -103,7 +103,7 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
           imageClassName={imageClassName}
         />
       )}
-      {titleImages && (!isLanding || !heroImages?.title)
+      {titleImages && !isLanding 
         ? getWrappedImage(titleImage.docs,titleClassName)
         : getWrappedImage(titleImage.hero,titleClassName)}
     </Link>
