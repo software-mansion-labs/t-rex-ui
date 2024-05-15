@@ -1,7 +1,3 @@
-:root {
-  --swm-logo-height: 36px;
-}
-
 .navbar__logo {
   display: flex;
   flex-direction: row;
@@ -18,6 +14,7 @@
   justify-content: flex-start;
 }
 
+/* TODO: Show logo? */
 /* Hide logo on mobile sidebar */
 [class*='navbar-sidebar'] [class*='navbar__logo'] {
   /* justify-content: flex-start; */
@@ -58,4 +55,35 @@
 .logoWrapper a {
   display: flex;
   flex-direction: row;
+}
+
+[class*='sidebarLogo'] {
+  min-height: 0 !important;
+  margin: 0 !important;
+}
+
+[class*='sidebar'] [class*='logoWrapper'] a {
+  align-items: center;
+}
+
+@media (min-width: 996px) {
+  [class*='logoWrapper'] a {
+    padding-left: 1.5rem;
+  }
+  [class*='colorModeToggle'] {
+    margin: 0 1.5em !important;
+  }
+}
+@media (max-width: 996px) {
+  [class*='colorModeToggle'] {
+    margin: 0 0 !important;
+  }
+}
+
+[class*='navbar__logo'] img {
+  margin-right: 0.5rem;
+}
+
+[class*='logoWrapper'] {
+  justify-content: flex-start !important;
 }

@@ -25,10 +25,9 @@ nav {
     justify-content: center;
     width: 300px;
   }
-}
-
-.colorModeToggle {
-  margin: 0 1.5em;
+  .colorModeToggle {
+    margin: 0 1.5em;
+  }
 }
 
 /* In other pages than documentation, Docusaurus disables margin-right for the last element on the right side.

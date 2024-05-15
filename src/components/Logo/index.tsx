@@ -2,11 +2,10 @@ import LogoStyling from './LogoStyling';
 import clsx from 'clsx';
 // import useBaseUrl from '@docusaurus/useBaseUrl'
 import styles from './styles.module.css';
+import type { NavbarProps } from '../Navbar';
 
-export interface LogoWrapperProps {
+export interface LogoWrapperProps extends NavbarProps {
   tabIndex?: number;
-  titleImages?: { light: string; dark: string };
-  heroImages?: { logo: string; title?: string };
   titleClassName?: string;
   imageClassName?: string;
   className?: string;
