@@ -7,18 +7,8 @@ import type { LogoWrapperProps } from '../Logo';
 import styles from './styles.module.css';
 import usePageType from '../../hooks/usePageType';
 
-interface LogoProps extends LogoWrapperProps {
-  titleImages?: {
-    light: string;
-    dark: string;
-  };
-  heroImages?: {
-    logo: string;
-    title?: string;
-  };
-}
 
-const getWrappedImage = (image?: JSX.Element, className?: string) => {
+const getWrappedImage = (image: JSX.Element, className?: string) => {
   return className ? <div className={className}>{image}</div> : image;
 };
 
@@ -51,7 +41,7 @@ const LogoThemedImage = ({
   return getWrappedImage(themedImage, imageClassName);
 };
 
-const LogoStyling = (props: LogoProps): JSX.Element => {
+const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
   const {
     siteConfig: { title },
   } = useDocusaurusContext();
@@ -64,6 +54,7 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
     heroImages,
     imageClassName,
     titleClassName,
+    useTitleLogoOnLandingPage,
     ...propsRest
   } = props;
   const logoLink = useBaseUrl(logo?.href || '/');
@@ -81,7 +72,15 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
   };
 
   const titleImage = {
-    docs: titleImages && <ThemedImage sources={titleImages} />,
+    docs: <ThemedImage sources={titleImages} />,
+    hero: (
+      <ThemedImage
+        sources={{
+          light: heroImages?.title ?? '',
+          dark: heroImages?.title ?? '',
+        }}
+      />
+    ),
   };
 
   return (
@@ -105,7 +104,9 @@ const LogoStyling = (props: LogoProps): JSX.Element => {
           imageClassName={imageClassName}
         />
       )}
-      {titleImages && getWrappedImage(titleImage.docs, titleClassName)}
+      {titleImages && (!isLanding || useTitleLogoOnLandingPage)
+        ? getWrappedImage(titleImage.docs,titleClassName)
+        : getWrappedImage(titleImage.hero,titleClassName)}
     </Link>
   );
 };

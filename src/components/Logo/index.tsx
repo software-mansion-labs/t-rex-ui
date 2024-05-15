@@ -2,11 +2,10 @@ import LogoStyling from './LogoStyling';
 import clsx from 'clsx';
 // import useBaseUrl from '@docusaurus/useBaseUrl'
 import styles from './styles.module.css';
+import type { NavbarProps } from '../Navbar';
 
-export interface LogoWrapperProps {
+export interface LogoWrapperProps extends NavbarProps {
   tabIndex?: number;
-  titleImages?: { light: string; dark: string };
-  heroImages?: { logo: string; title?: string };
   titleClassName?: string;
   imageClassName?: string;
   className?: string;
@@ -17,6 +16,7 @@ export function LogoWrapper({
   titleImages,
   heroImages,
   className,
+  useTitleLogoOnLandingPage
 }: LogoWrapperProps) {
   // TODO:
   // instead of passing heroImages to DocSidebarDesktop pass them directly to Logo from project
@@ -26,6 +26,7 @@ export function LogoWrapper({
       <LogoStyling
         titleImages={titleImages}
         heroImages={heroImages}
+        useTitleLogoOnLandingPage={useTitleLogoOnLandingPage}
         imageClassName={clsx(className, styles.navbar__logo)}
         titleClassName={clsx(titleClassName, styles.navbar__title)}
       />

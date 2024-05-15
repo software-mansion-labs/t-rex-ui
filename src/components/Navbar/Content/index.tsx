@@ -18,6 +18,7 @@ import clsx from 'clsx';
 import usePageType from '../../../hooks/usePageType';
 import { type NavbarItemProps } from '../../NavbarItem';
 import AlgoliaSearchBar from '../../AlgoliaSearchBar';
+import { NavbarProps } from '..';
 
 function useNavbarItems() {
   return useThemeConfig().navbar.items;
@@ -68,10 +69,9 @@ function NavbarContentLayout({
 export default function NavbarContent({
   heroImages,
   titleImages,
-}: {
-  heroImages?: { logo: string; title: string };
-  titleImages?: { light: string; dark: string };
-}) {
+  useTitleLogoOnLandingPage
+}: NavbarProps
+) {
   const windowSize = useWindowSize();
   const isMobile = windowSize === 'mobile';
 
@@ -85,7 +85,7 @@ export default function NavbarContent({
       left={
         <>
           <div className={styles.logoWrapper}>
-            <NavbarLogo heroImages={heroImages} titleImages={titleImages} />
+            <NavbarLogo useTitleLogoOnLandingPage={useTitleLogoOnLandingPage} heroImages={heroImages} titleImages={titleImages} />
           </div>
           {!isLanding && <NavbarItems items={leftItems} />}
           {!searchBarItem && !isMobile && !isLanding && <AlgoliaSearchBar />}
