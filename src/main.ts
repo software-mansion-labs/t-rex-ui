@@ -18,3 +18,5 @@ export { DocItemMetadata } from './components/DocItem/Metadata';
 export { TOCCollapsible } from './components/TOCCollapsible';
 export { TOCItems } from './components/TOCItems';
 export { TOCItemTree } from './components/TOCItems/Tree';
+
+export { SearchPage } from './components/SearchPage'
