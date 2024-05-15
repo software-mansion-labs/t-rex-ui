@@ -16,7 +16,6 @@ export function LogoWrapper({
   titleImages,
   heroImages,
   className,
-  useTitleLogoOnLandingPage
 }: LogoWrapperProps) {
   // TODO:
   // instead of passing heroImages to DocSidebarDesktop pass them directly to Logo from project
@@ -26,7 +25,6 @@ export function LogoWrapper({
       <LogoStyling
         titleImages={titleImages}
         heroImages={heroImages}
-        useTitleLogoOnLandingPage={useTitleLogoOnLandingPage}
         imageClassName={clsx(className, styles.navbar__logo)}
         titleClassName={clsx(titleClassName, styles.navbar__title)}
       />

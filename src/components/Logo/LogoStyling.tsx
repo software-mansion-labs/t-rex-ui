@@ -54,7 +54,6 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
     heroImages,
     imageClassName,
     titleClassName,
-    useTitleLogoOnLandingPage,
     ...propsRest
   } = props;
   const logoLink = useBaseUrl(logo?.href || '/');
@@ -104,7 +103,7 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
           imageClassName={imageClassName}
         />
       )}
-      {titleImages && (!isLanding || useTitleLogoOnLandingPage)
+      {titleImages && (!isLanding || !heroImages?.title)
         ? getWrappedImage(titleImage.docs,titleClassName)
         : getWrappedImage(titleImage.hero,titleClassName)}
     </Link>
