@@ -491,7 +491,7 @@ function SearchPageContent() {
     </Layout>
   );
 }
-export default function SearchPage() {
+export function SearchPage() {
   return (
     <HtmlClassNameProvider className="search-page-wrapper">
       <SearchPageContent />

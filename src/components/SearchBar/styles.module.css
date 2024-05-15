@@ -86,6 +86,10 @@
 [class*='DocSearch-Hits'] mark {
   text-decoration: underline;
   text-underline-offset: 2px;
+} 
+
+[class*='DocSearch-Hit-source'], [class*='DocSearch-Hits'] mark {
+  color: var(--swm-docsearch-hit-source-color) !important
 }
 
 [class*='DocSearch-Hit-Container'] {
