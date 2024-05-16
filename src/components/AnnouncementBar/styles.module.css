@@ -1,47 +1,40 @@
 :root {
-  --docusaurus-announcement-bar-font-size: 24px;
+  --docusaurus-announcement-bar-height: auto;
 }
 
 .announcementBar {
   display: flex;
-  font-size: var(--docusaurus-announcement-bar-font-size);
-  background-image: linear-gradient(#03c, #03c);
-  background-position: 0;
-  background-size: cover;
-  color: var(--swm-off-white);
-  position: relative;
-  overflow: hidden;
-  z-index: 10;
+  align-items: center;
+  height: var(--docusaurus-announcement-bar-height);
+  background-color: var(--ifm-color-white);
+  color: var(--ifm-color-black);
+
+  /*
+  Unfortunately we can't make announcement bar render above the navbar
+  IE need to use border-bottom instead of shadow
+  See https://github.com/facebookincubator/infima/issues/275
+
+  box-shadow: var(--ifm-global-shadow-lw);
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
+  */
+  border-bottom: 1px solid var(--ifm-color-emphasis-100);
 }
 
-.announcementBarAdornment {
-  height: 500px;
-  width: 500px;
-  position: absolute;
-  opacity: 0.3;
-  pointer-events: none;
+html[data-announcement-bar-initially-dismissed='true'] .announcementBar {
+  display: none;
 }
 
 .announcementBarPlaceholder {
-  flex: 0 0 30px;
-  margin: 0 25px;
+  flex: 0 0 10px;
 }
 
 .announcementBarClose {
   flex: 0 0 30px;
-  margin: 0 25px;
   align-self: stretch;
-  opacity: 1;
 }
 
 .announcementBarContent {
   flex: 1 1 auto;
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: center;
-  padding-right: 1rem;
 }
 
 @media print {
@@ -50,24 +43,13 @@
   }
 }
 
-@media screen and (max-width: 996px) {
+@media (min-width: 997px) {
+  :root {
+    --docusaurus-announcement-bar-height: 30px;
+  }
+
+  .announcementBarPlaceholder,
   .announcementBarClose {
-    margin: 0;
-  }
-  .announcementBarPlaceholder {
-    display: none;
-  }
-}
-@media screen and (max-width: 768px) {
-  .buttonContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 1rem;
-  }
-}
-@media screen and (max-width: 600px) {
-  .announcementBarRightAdornment {
-    display: none;
+    flex-basis: 50px;
   }
 }

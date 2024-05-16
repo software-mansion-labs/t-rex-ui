@@ -1,27 +1,17 @@
 import clsx from 'clsx';
-import ArrowButton from './ArrowButton';
+import {useThemeConfig} from '@docusaurus/theme-common';
 import styles from './styles.module.css';
-
-export default function AnnouncementBarContent(props: { className: string }) {
+import { AnnouncementBarConfig } from 'node_modules/@docusaurus/theme-common/lib/utils/useThemeConfig';
+export default function AnnouncementBarContent(props:{className?: string}) {
+  const {announcementBar} = useThemeConfig();
+  const {content} = announcementBar as AnnouncementBarConfig
   return (
-    <div className={clsx(styles.content, props.className)}>
-      <div className={styles.wrapper}>
-        <strong className={styles.headline}>App.js Conf 2024</strong>
-        <p className={styles.subText}>
-          An Expo & React Native conference in Europe is back, May 22-24 in
-          Kraków, Poland!
-        </p>
-      </div>
-      <a
-        className={styles.link}
-        href="https://appjs.co/"
-        target="_blank"
-        rel="noreferrer noopener">
-        <span className={styles.linkTitle}>Learn More</span>
-        <div className={styles.linkArrowContainer}>
-          <ArrowButton className={styles.linkArrow} />
-        </div>
-      </a>
-    </div>
+    <div
+      {...props}
+      className={clsx(styles.content, props.className)}
+      // Developer provided the HTML, so assume it's safe.
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{__html: content}}
+    />
   );
 }
