@@ -1,75 +1,30 @@
-import { useEffect, useState } from 'react';
-import { useThemeConfig } from '@docusaurus/theme-common';
-import { useAnnouncementBar } from '@docusaurus/theme-common/internal';
+import {useThemeConfig} from '@docusaurus/theme-common';
+import {useAnnouncementBar} from '@docusaurus/theme-common/internal';
 import AnnouncementBarCloseButton from './CloseButton';
 import AnnouncementBarContent from './Content';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import styles from './styles.module.css';
 import { AnnouncementBarConfig } from 'node_modules/@docusaurus/theme-common/lib/utils/useThemeConfig';
 
-function AnnouncementBar() {
-  const { announcementBar } = useThemeConfig();
-  const { isActive, close } = useAnnouncementBar();
-  const [isPageLoaded, setIsPageLoaded] = useState(
-    document.readyState === 'complete'
-  );
-
-  useEffect(() => {
-    const handlePageLoad = () => {
-      setIsPageLoaded(true);
-    };
-
-    if (document.readyState === 'complete') {
-      setIsPageLoaded(true);
-    } else {
-      window.addEventListener('load', handlePageLoad);
-    }
-
-    return () => {
-      window.removeEventListener('load', handlePageLoad);
-    };
-  }, []);
-
-  if (!isPageLoaded || !isActive) {
+export default function AnnouncementBar() {
+  const {announcementBar} = useThemeConfig();
+  const {isActive, close} = useAnnouncementBar();
+  if (!isActive) {
     return null;
   }
-
-  // hide announcement bar after app.js
-  const today = new Date();
-  const endOfAppJS = new Date('2024-05-25T00:00:00.000Z');
-  if (today > endOfAppJS) {
-    return null;
-  }
-
-  const { backgroundColor, textColor, isCloseable } =
-    announcementBar as AnnouncementBarConfig;
+  const {backgroundColor, textColor, isCloseable} = announcementBar as AnnouncementBarConfig
   return (
-    <BrowserOnly fallback={<div>Loading...</div>}>
-      {() => (
-        <div
-          className={styles.announcementBar}
-          style={{ backgroundColor, color: textColor }}
-          role="banner">
-          {isCloseable && <div className={styles.announcementBarPlaceholder} />}
-          <AnnouncementBarContent className={styles.announcementBarContent} />
-          {isCloseable && (
-            <div className={styles.buttonContainer}>
-              <AnnouncementBarCloseButton
-                onClick={close}
-                className={styles.announcementBarClose}
-              />
-            </div>
-          )}
-        </div>
+    <div
+      className={styles.announcementBar}
+      style={{backgroundColor, color: textColor}}
+      role="banner">
+      {isCloseable && <div className={styles.announcementBarPlaceholder} />}
+      <AnnouncementBarContent className={styles.announcementBarContent} />
+      {isCloseable && (
+        <AnnouncementBarCloseButton
+          onClick={close}
+          className={styles.announcementBarClose}
+        />
       )}
-    </BrowserOnly>
-  );
-}
-
-export default function HOCAnnouncementBar() {
-  return (
-    <BrowserOnly fallback={<div></div>}>
-      {() => <AnnouncementBar />}
-    </BrowserOnly>
+    </div>
   );
 }
