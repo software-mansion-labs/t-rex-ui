@@ -69,6 +69,8 @@ function NavbarContentLayout({
 export default function NavbarContent({
   heroImages,
   titleImages,
+  isAlgolia,
+  isToggle
 }: NavbarProps
 ) {
   const windowSize = useWindowSize();
@@ -79,6 +81,8 @@ export default function NavbarContent({
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
+  const searchComponent = isAlgolia ? <AlgoliaSearchBar/> : <div/>
+
   return (
     <NavbarContentLayout
       left={
@@ -87,15 +91,15 @@ export default function NavbarContent({
             <NavbarLogo heroImages={heroImages} titleImages={titleImages} />
           </div>
           {!isLanding && <NavbarItems items={leftItems} />}
-          {!searchBarItem && !isMobile && !isLanding && <AlgoliaSearchBar />}
-          {!isMobile && isDocumentation && (
+          {!searchBarItem && !isMobile && !isLanding && searchComponent}
+          {!isMobile && isDocumentation && isToggle && (
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
         </>
       }
       right={
         <>
-          {(isLanding || (!isMobile && !isDocumentation)) && (
+          {(isLanding || (!isMobile && !isDocumentation)) && isToggle && (
             <NavbarColorModeToggle className={styles.colorModeToggle} />
           )}
           <NavbarItems items={rightItems} />
