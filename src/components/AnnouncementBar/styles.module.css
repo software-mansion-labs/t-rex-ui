@@ -5,7 +5,7 @@
 .announcementBar {
   display: flex;
   font-size: var(--docusaurus-announcement-bar-font-size);
-  background-image: url(/static/img/appjs.svg), linear-gradient(#03c, #03c);
+  background-image: linear-gradient(#03c, #03c);
   background-position: 0;
   background-size: cover;
   color: var(--swm-off-white);
