@@ -8,7 +8,9 @@
   color: var(--swm-off-white);
 
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 [data-theme='dark'] .homepageButton {
@@ -62,7 +64,6 @@ a.homepageButtonLink:hover {
   left: 16px;
 }
 
-
 .buttonNavyStyling {
   background-color: var(--swm-navy-light-100);
   color: var(--swm-off-white);
@@ -76,10 +77,19 @@ a.homepageButtonLink:hover {
   background-color: transparent;
   color: var(--swm-navy-light-100);
 }
+
 [data-theme='dark'] .buttonNavyStyling:hover {
   background-color: transparent;
-  color: var(--swm-navy-light-100);
-  border: 1px solid var(--swm-navy-light-100)
+  color: var(--swm-navy-light-40);
+  border: 1px solid var(--swm-navy-light-40);
+}
+
+[data-theme='dark'] .buttonNavyStyling:hover svg {
+  stroke: var(--swm-navy-light-40);
+}
+
+[data-theme='dark'] .buttonNavyBorderStyling {
+  border: 1px solid var(--swm-navy-light-40);
 }
 
 .buttonNavyStyling:hover svg {
