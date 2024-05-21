@@ -12,8 +12,8 @@
 }
 
 [data-theme='dark'] .homepageButton {
-  background-color: var(--swm-navy-light-100);
-  border-color: var(--swm-navy-light-100);
+  background-color: var(--swm-blue-light-80);
+  border-color: var(--swm-blue-light-80);
 }
 
 a.homepageButtonLink:hover {
@@ -75,6 +75,11 @@ a.homepageButtonLink:hover {
 .buttonNavyStyling:hover {
   background-color: transparent;
   color: var(--swm-navy-light-100);
+}
+[data-theme='dark'] .buttonNavyStyling:hover {
+  background-color: transparent;
+  color: var(--swm-navy-light-100);
+  border: 1px solid var(--swm-navy-light-100)
 }
 
 .buttonNavyStyling:hover svg {
