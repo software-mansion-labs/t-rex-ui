@@ -8,6 +8,9 @@ import { TOCItemTree } from './Tree';
 import { type TOCProp } from './Tree';
 import type { TOCItem } from '@docusaurus/mdx-loader';
 
+import { HireUsButton } from '../HireUsButton';
+import styles from './styles.module.css';
+
 interface TOCItemsProps {
   toc: TOCItem[];
   minHeadingLevel?: number;
@@ -49,11 +52,22 @@ export function TOCItems({
   }, [linkClassName, linkActiveClassName, minHeadingLevel, maxHeadingLevel]);
   useTOCHighlight(tocHighlightConfig);
   return (
+    <>
     <TOCItemTree
       toc={tocTree as unknown as TOCProp[]}
       className={className}
       linkClassName={linkClassName}
       {...props}
     />
+      <div className={styles.hireUsContainer}>
+        <p>We are Software Mansion.</p>
+        <div className={styles.buttonContainer}>
+          <HireUsButton
+            href="https://swmansion.com/contact#contact-form"
+            title="Hire us"
+          />
+        </div>
+      </div>
+    </>
   );
 }
