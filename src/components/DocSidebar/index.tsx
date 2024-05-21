@@ -1,7 +1,6 @@
 import { useWindowSize } from '@docusaurus/theme-common';
 import DocSidebarDesktop from './Desktop';
 import DocSidebarMobile from './Mobile';
-import styles from './styles.module.css';
 import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
 
 export interface DocSidebarProps {
@@ -21,7 +20,7 @@ export function DocSidebar(props: DocSidebarProps) {
   // Mobile sidebar not visible on hydration: can avoid SSR rendering
   const shouldRenderSidebarMobile = windowSize === 'mobile';
   return (
-    <div className={styles.fix}>
+    <>
       {shouldRenderSidebarDesktop && (
         <DocSidebarDesktop
           heroImages={props.heroImages}
@@ -30,6 +29,6 @@ export function DocSidebar(props: DocSidebarProps) {
         />
       )}
       {shouldRenderSidebarMobile && <DocSidebarMobile {...props} />}
-    </div>
+    </>
   );
 }
