@@ -24,7 +24,8 @@
 }
 
 [data-theme='dark'] .hireUsContainer {
-  background-color: var(--swm-off-white);
+  border: 1px solid var(--swm-navy-light-40);
+  background-color: transparent;
 }
 
 .buttonContainer {
@@ -40,6 +41,6 @@
 }
 
 [data-theme='dark'] .hireUsContainer p {
-  background-color: var(--swm-off-white);
-  color: var(--swm-navy-light-100)
+  background-color: transparent;
+  color: var(--swm-navy-light-40);
 }
