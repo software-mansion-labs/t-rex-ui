@@ -57,16 +57,6 @@ export default function NavbarMobileSidebarLayout({
             );
           })}
         </div>
-        <div className="navbar-sidebar__rightItems">
-          <a
-            href={'/react-native-reanimated/docs/fundamentals/getting-started'}>
-            Docs
-          </a>
-          <a href={'/react-native-reanimated/examples/accordion'}>Examples</a>
-          <a href="https://github.com/software-mansion/react-native-reanimated/tree/main/docs">
-            <div className={clsx(styles.sidebarGithubIcon, 'header-github')} />
-          </a>
-        </div>
       </div>
     </div>
   );
