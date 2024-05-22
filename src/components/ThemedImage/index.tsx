@@ -25,23 +25,24 @@ export function ThemedImage(props: ThemedImageProps) {
     : // We need to render both images on the server to avoid flash
       // See https://github.com/facebook/docusaurus/pull/3730
       ['light', 'dark'];
+
   return (
     <>
-      {renderedSourceNames.map((sourceName) => (
-        <img
-          key={sourceName}
-          src={
-            sources !== undefined ? sources[sourceName as 'light' | 'dark'] : ''
-          }
-          alt={alt}
-          className={clsx(
-            styles.themedImage,
-            styles[`themedImage--${sourceName}`],
-            className
-          )}
-          {...propsRest}
-        />
-      ))}
+      {renderedSourceNames.map((sourceName) =>
+        sources ? (
+          <img
+            key={sourceName}
+            src={sources[sourceName as 'light' | 'dark']}
+            alt={alt}
+            className={clsx(
+              styles.themedImage,
+              styles[`themedImage--${sourceName}`],
+              className
+            )}
+            {...propsRest}
+          />
+        ) : null
+      )}
     </>
   );
 }
