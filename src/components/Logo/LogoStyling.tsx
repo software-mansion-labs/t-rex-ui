@@ -7,7 +7,6 @@ import type { LogoWrapperProps } from '../Logo';
 import styles from './styles.module.css';
 import usePageType from '../../hooks/usePageType';
 
-
 const getWrappedImage = (image: JSX.Element, className?: string) => {
   return className ? <div className={className}>{image}</div> : image;
 };
@@ -103,9 +102,11 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
           imageClassName={imageClassName}
         />
       )}
-      {titleImages && !isLanding 
-        ? getWrappedImage(titleImage.docs,titleClassName)
-        : getWrappedImage(titleImage.hero,titleClassName)}
+      {titleImages && !isLanding
+        ? getWrappedImage(titleImage.docs, titleClassName)
+        : heroImages?.title
+          ? getWrappedImage(titleImage.hero, titleClassName)
+          : getWrappedImage(titleImage.docs, titleClassName)}
     </Link>
   );
 };
