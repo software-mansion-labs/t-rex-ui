@@ -30,7 +30,9 @@ export function ThemedImage(props: ThemedImageProps) {
       {renderedSourceNames.map((sourceName) => (
         <img
           key={sourceName}
-          src={sources![sourceName as keyof Record<'light' | 'dark', string>]}
+          src={
+            sources !== undefined ? sources[sourceName as 'light' | 'dark'] : ''
+          }
           alt={alt}
           className={clsx(
             styles.themedImage,
