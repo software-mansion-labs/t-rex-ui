@@ -7,7 +7,7 @@
 }
 
 [class*='navbar-sidebar__backdrop'] {
-  background-color: var(--swm-sidebar-backdrop);
+  background-color: var(--swm-sidebar-backdrop) !important;
 }
 
 .navbarLanding {
