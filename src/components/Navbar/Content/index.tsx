@@ -69,10 +69,9 @@ function NavbarContentLayout({
 export default function NavbarContent({
   heroImages,
   titleImages,
-  isAlgoliaActive,
-  isThemeSwitcherShown
-}: NavbarProps
-) {
+  isAlgoliaActive = true,
+  isThemeSwitcherShown = true,
+}: NavbarProps) {
   const windowSize = useWindowSize();
   const isMobile = windowSize === 'mobile';
 
@@ -81,7 +80,7 @@ export default function NavbarContent({
   const items = useNavbarItems();
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
-  const searchComponent = isAlgoliaActive ? <AlgoliaSearchBar/> : <div/>
+  const searchComponent = isAlgoliaActive ? <AlgoliaSearchBar /> : <div />;
 
   return (
     <NavbarContentLayout
@@ -99,9 +98,10 @@ export default function NavbarContent({
       }
       right={
         <>
-          {(isLanding || (!isMobile && !isDocumentation)) && isThemeSwitcherShown && (
-            <NavbarColorModeToggle className={styles.colorModeToggle} />
-          )}
+          {(isLanding || (!isMobile && !isDocumentation)) &&
+            isThemeSwitcherShown && (
+              <NavbarColorModeToggle className={styles.colorModeToggle} />
+            )}
           <NavbarItems items={rightItems} />
           {!mobileSidebar.disabled && !isLanding && (
             <NavbarMobileSidebarToggle />
