@@ -4,20 +4,26 @@ import NavbarContent from './Content';
 export interface NavbarProps {
   heroImages?: { logo: string; title?: string };
   titleImages?: { light: string; dark: string };
-  isAlgoliaActive?: boolean
-  isThemeSwitcherShown?: boolean
+  isAlgoliaActive?: boolean;
+  isThemeSwitcherShown?: boolean;
 }
 
 export function Navbar({
   heroImages,
   titleImages,
-  isAlgoliaActive,
-  isThemeSwitcherShown
-}: NavbarProps
-) {
+  isAlgoliaActive = true,
+  isThemeSwitcherShown = true,
+}: NavbarProps) {
   return (
-    <NavbarLayout>
-      <NavbarContent isThemeSwitcherShown={isThemeSwitcherShown} isAlgoliaActive={isAlgoliaActive} heroImages={heroImages} titleImages={titleImages} />
+    <NavbarLayout
+      isAlgoliaActive={isAlgoliaActive}
+      isThemeSwitcherShown={isThemeSwitcherShown}>
+      <NavbarContent
+        isThemeSwitcherShown={isThemeSwitcherShown}
+        isAlgoliaActive={isAlgoliaActive}
+        heroImages={heroImages}
+        titleImages={titleImages}
+      />
     </NavbarLayout>
   );
 }

@@ -12,9 +12,11 @@ function isActive(path: string, locationPathname: string) {
 
 export default function NavbarMobileSidebarLayout({
   header,
+  isAlgoliaActive,
   secondaryMenu,
 }: {
   header: ReactNode;
+  isAlgoliaActive?: boolean;
   primaryMenu?: ReactNode;
   secondaryMenu: ReactNode;
 }) {
@@ -32,7 +34,7 @@ export default function NavbarMobileSidebarLayout({
   return (
     <div className="navbar-sidebar">
       {header}
-      {!isLanding && <AlgoliaSearchBar />}
+      {!isLanding && isAlgoliaActive && <AlgoliaSearchBar />}
       <div className={clsx('navbar-sidebar__items')}>
         <div className="navbar-sidebar__item menu">{secondaryMenu}</div>
       </div>

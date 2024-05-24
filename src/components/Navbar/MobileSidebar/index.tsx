@@ -7,7 +7,13 @@ import NavbarMobileSidebarHeader from '../MobileSidebar/Header';
 import NavbarMobileSidebarPrimaryMenu from '../MobileSidebar/PrimaryMenu';
 import NavbarMobileSidebarSecondaryMenu from '../MobileSidebar/SecondaryMenu';
 
-export default function NavbarMobileSidebar() {
+export default function NavbarMobileSidebar({
+  isThemeSwitcherShown,
+  isAlgoliaActive,
+}: {
+  isThemeSwitcherShown?: boolean;
+  isAlgoliaActive?: boolean;
+}) {
   const mobileSidebar = useNavbarMobileSidebar();
   useLockBodyScroll(mobileSidebar.shown);
   if (!mobileSidebar.shouldRender) {
@@ -15,7 +21,12 @@ export default function NavbarMobileSidebar() {
   }
   return (
     <NavbarMobileSidebarLayout
-      header={<NavbarMobileSidebarHeader />}
+      isAlgoliaActive={isAlgoliaActive}
+      header={
+        <NavbarMobileSidebarHeader
+          isThemeSwitcherShown={isThemeSwitcherShown}
+        />
+      }
       primaryMenu={<NavbarMobileSidebarPrimaryMenu />}
       secondaryMenu={<NavbarMobileSidebarSecondaryMenu />}
     />
