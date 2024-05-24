@@ -45,6 +45,7 @@ button[class*='DocSearch-Button'] {
   flex: 1;
   width: 100%;
   padding-left: 16px;
+  margin: 0 !important;
 
   font-weight: 400;
   font-family: var(--swm-title-font);
