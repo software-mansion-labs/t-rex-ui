@@ -21,8 +21,12 @@ function NavbarBackdrop(props: { onClick: () => void; className?: string }) {
 
 export default function NavbarLayout({
   children,
+  isThemeSwitcherShown,
+  isAlgoliaActive,
 }: {
   children: React.ReactNode;
+  isThemeSwitcherShown: boolean;
+  isAlgoliaActive: boolean;
 }) {
   const {
     navbar: { hideOnScroll, style },
@@ -55,7 +59,10 @@ export default function NavbarLayout({
       )}>
       {children}
       <NavbarBackdrop onClick={mobileSidebar.toggle} />
-      <NavbarMobileSidebar />
+      <NavbarMobileSidebar
+        isAlgoliaActive={isAlgoliaActive}
+        isThemeSwitcherShown={isThemeSwitcherShown}
+      />
     </nav>
   );
 }

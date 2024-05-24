@@ -69,8 +69,8 @@ function NavbarContentLayout({
 export default function NavbarContent({
   heroImages,
   titleImages,
-  isAlgoliaActive = true,
-  isThemeSwitcherShown = true,
+  isAlgoliaActive,
+  isThemeSwitcherShown,
 }: NavbarProps) {
   const windowSize = useWindowSize();
   const isMobile = windowSize === 'mobile';

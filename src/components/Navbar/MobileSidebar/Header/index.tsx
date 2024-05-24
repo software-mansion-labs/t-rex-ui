@@ -20,11 +20,17 @@ function CloseButton() {
     </button>
   );
 }
-export default function NavbarMobileSidebarHeader() {
+export default function NavbarMobileSidebarHeader({
+  isThemeSwitcherShown,
+}: {
+  isThemeSwitcherShown?: boolean;
+}) {
   return (
     <div className="navbar-sidebar__brand">
       <NavbarLogo />
-      <NavbarColorModeToggle className="margin-right--md" />
+      {isThemeSwitcherShown && (
+        <NavbarColorModeToggle className="margin-right--md" />
+      )}
       <CloseButton />
     </div>
   );
