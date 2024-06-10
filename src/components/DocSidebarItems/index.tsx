@@ -5,11 +5,10 @@ import SidebarLabel from '../SidebarLabel';
 import styles from './styles.module.css';
 import type { DocSidebarItemProps } from '../DocSidebarItem';
 
-const EXPERIMENTAL_APIs = ['shared-element-transitions/overview'];
-const NEW_APIS = ['animations/withClamp'];
-
 interface DocSidebarItemsProps
   extends Omit<DocSidebarItemProps, 'item' | 'index'> {
+  experimentalItems?: string[];
+  newItems?: string[];
   items: any;
 }
 
@@ -17,17 +16,25 @@ interface DocSidebarItemsProps
 // TODO this triggers whole sidebar re-renders on navigation
 const DocSidebarItems = memo(function DocSidebarItems({
   items,
+  experimentalItems,
+  newItems,
   ...props
 }: DocSidebarItemsProps) {
   return (
     <DocSidebarItemsExpandedStateProvider>
       {items.map((item: any, index: any) => (
         <div className={styles.wrapper} key={`${item.docId}-${index}`}>
-          <DocSidebarItem item={item} index={index} {...props} />
-          {EXPERIMENTAL_APIs.includes(item.docId!) && (
+          <DocSidebarItem
+            newItems={newItems}
+            experimentalItems={experimentalItems}
+            item={item}
+            index={index}
+            {...props}
+          />
+          {experimentalItems && experimentalItems.includes(item.docId!) && (
             <SidebarLabel key={item.docId} type="experimental" />
           )}
-          {NEW_APIS.includes(item.docId!) && (
+          {newItems && newItems.includes(item.docId!) && (
             <SidebarLabel key={item.docId} type="new" />
           )}
         </div>

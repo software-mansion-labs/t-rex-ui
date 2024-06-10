@@ -14,6 +14,8 @@ function DocSidebarDesktop({
   heroImages,
   titleImages,
   isHidden,
+  experimentalItems,
+  newItems,
 }: DocSidebarProps) {
   const {
     navbar: { hideOnScroll },
@@ -36,7 +38,12 @@ function DocSidebarDesktop({
           className={styles.sidebarLogo}
         />
       )}
-      <Content path={path} sidebar={sidebar} />
+      <Content
+        newItems={newItems}
+        experimentalItems={experimentalItems}
+        path={path}
+        sidebar={sidebar}
+      />
       {hideable && <CollapseButton onClick={onCollapse} />}
     </div>
   );

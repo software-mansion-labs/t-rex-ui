@@ -10,6 +10,8 @@ export interface DocSidebarProps {
   isHidden: boolean;
   heroImages?: { logo: string; title: string };
   titleImages?: { light: string; dark: string };
+  experimentalItems?: string[];
+  newItems?: string[];
 }
 
 export function DocSidebar(props: DocSidebarProps) {

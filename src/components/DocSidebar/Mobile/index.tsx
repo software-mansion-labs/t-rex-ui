@@ -9,12 +9,19 @@ import { type DocSidebarProps } from '..';
 import { DocSidebarItems } from '../../DocSidebarItems';
 
 // eslint-disable-next-line react/function-component-definition
-const DocSidebarMobileSecondaryMenu = ({ sidebar, path }: DocSidebarProps) => {
+const DocSidebarMobileSecondaryMenu = ({
+  newItems,
+  experimentalItems,
+  sidebar,
+  path,
+}: DocSidebarProps) => {
   const mobileSidebar = useNavbarMobileSidebar();
   return (
     <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
       <DocSidebarItems
         items={sidebar}
+        newItems={newItems}
+        experimentalItems={experimentalItems}
         activePath={path}
         onItemClick={(item) => {
           // Mobile sidebar should only be closed if the category has a link

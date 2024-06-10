@@ -10,12 +10,21 @@ export interface DocSidebarItemProps {
   tabIndex?: number;
   item: PropSidebarItem;
   index: number;
+  newItems?: string[];
+  experimentalItems?: string[];
 }
 
 export function DocSidebarItem({ item, ...props }: DocSidebarItemProps) {
   switch (item.type) {
     case 'category':
-      return <DocSidebarItemCategory item={item} {...props} />;
+      return (
+        <DocSidebarItemCategory
+          newItems={props.newItems}
+          experimentalItems={props.experimentalItems}
+          item={item}
+          {...props}
+        />
+      );
     case 'html':
       return <DocSidebarItemHtml item={item} {...props} />;
     case 'link':
