@@ -193,6 +193,8 @@ export default function DocSidebarItemCategory({
       <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         <DocSidebarItems
           items={items as unknown as PropSidebarItemLink[]}
+          newItems={props.newItems}
+          experimentalItems={props.experimentalItems}
           tabIndex={collapsed ? -1 : 0}
           onItemClick={onItemClick}
           activePath={activePath}

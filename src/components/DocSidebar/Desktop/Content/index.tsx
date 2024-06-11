@@ -15,6 +15,8 @@ export interface DocSidebarDesktopContentProps {
   className?: string;
   path: string;
   sidebar: PropSidebarItem[];
+  experimentalItems?: string[];
+  newItems?: string[];
 }
 function useShowAnnouncementBar() {
   const { isActive } = useAnnouncementBar();
@@ -33,6 +35,8 @@ export default function DocSidebarDesktopContent({
   path,
   sidebar,
   className,
+  experimentalItems,
+  newItems,
 }: DocSidebarDesktopContentProps) {
   const showAnnouncementBar = useShowAnnouncementBar();
   return (
@@ -49,7 +53,13 @@ export default function DocSidebarDesktopContent({
         className
       )}>
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
-        <DocSidebarItems items={sidebar} activePath={path} level={1} />
+        <DocSidebarItems
+          newItems={newItems}
+          experimentalItems={experimentalItems}
+          items={sidebar}
+          activePath={path}
+          level={1}
+        />
       </ul>
     </nav>
   );
