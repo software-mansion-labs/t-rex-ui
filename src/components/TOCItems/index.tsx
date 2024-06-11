@@ -53,17 +53,17 @@ export function TOCItems({
   useTOCHighlight(tocHighlightConfig);
   return (
     <>
-    <TOCItemTree
-      toc={tocTree as unknown as TOCProp[]}
-      className={className}
-      linkClassName={linkClassName}
-      {...props}
-    />
+      <TOCItemTree
+        toc={tocTree as unknown as TOCProp[]}
+        className={className}
+        linkClassName={linkClassName}
+        {...props}
+      />
       <div className={styles.hireUsContainer}>
         <p>We are Software Mansion.</p>
         <div className={styles.buttonContainer}>
           <HireUsButton
-            href="https://swmansion.com/contact#contact-form"
+            href="https://swmansion.com/contact/projects?utm_source=rnos-docs&utm_medium=sidebar"
             title="Hire us"
           />
         </div>
