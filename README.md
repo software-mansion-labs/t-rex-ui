@@ -18,6 +18,13 @@ import { PaginatorNavLink } from '@swmansion/t-rex-ui';
 export default PaginatorNavLink;
 ```
 
+Sometimes when you "swizzle" a Docusaurus component, it may not recognize the changes and instead use a cached old version of the component rather than the one from the package.
+
+If have used some component from `@swmansion/t-rex-ui` and doesn't see any changes, please rebuild your project using:
+
+`yarn build`
+
+
 ## Available theme components
 
 For now following components are available:
