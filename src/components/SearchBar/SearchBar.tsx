@@ -69,7 +69,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
     }
     return Promise.all([
       import('@docsearch/react/modal' as any),
-      import('@docsearch/react/style' as any),
+      // import('@docsearch/react/style' as any),
       import('./styles.module.css'),
     ]).then(([{ DocSearchModal: Modal }]) => {
       DocSearchModal = Modal;
