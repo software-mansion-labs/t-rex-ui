@@ -1,11 +1,13 @@
 [class*='DocSearch-Modal'] {
   --docsearch-modal-background: var(--swm-off-background);
   --docsearch-spacing: 16px;
+  margin: 100px auto auto !important;
 }
 
 @media (max-width: 768px) {
   [class*='DocSearch-Modal'] {
     --docsearch-spacing: 24px;
+    margin: var(--ifm-navbar-height) auto auto !important;
   }
 }
 
@@ -86,10 +88,11 @@
 [class*='DocSearch-Hits'] mark {
   text-decoration: underline;
   text-underline-offset: 2px;
-} 
+}
 
-[class*='DocSearch-Hit-source'], [class*='DocSearch-Hits'] mark {
-  color: var(--swm-docsearch-hit-source-color) !important
+[class*='DocSearch-Hit-source'],
+[class*='DocSearch-Hits'] mark {
+  color: var(--swm-docsearch-hit-source-color) !important;
 }
 
 [class*='DocSearch-Hit-Container'] {
