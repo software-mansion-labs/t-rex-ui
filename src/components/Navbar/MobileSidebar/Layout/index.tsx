@@ -54,16 +54,14 @@ export default function NavbarMobileSidebarLayout({
         )}>
         <div>
           {filteredItems.length > 1 &&
-            filteredItems.map((item) => {
-              return (
-                <NavbarNavLink
-                  className={styles.sidebarLinks}
-                  to={item.to}
-                  label={item.label}
-                  key={item.label}
-                />
-              );
-            })}
+            filteredItems.map((item) => (
+              <NavbarNavLink
+                className={styles.sidebarLinks}
+                to={item.to}
+                label={item.label}
+                key={item.label}
+              />
+            ))}
         </div>
         <div className={styles.sidebarVersions}>
           <span className={styles.sidebarVersionLabel}>Versions:</span>
