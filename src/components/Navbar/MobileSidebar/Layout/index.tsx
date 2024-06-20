@@ -13,6 +13,10 @@ function isActive(path: string, locationPathname: string) {
   return locationPathname.startsWith(path);
 }
 
+function useNavbarItems() {
+  return useThemeConfig().navbar.items;
+}
+
 export default function NavbarMobileSidebarLayout({
   header,
   isAlgoliaActive,
@@ -28,9 +32,8 @@ export default function NavbarMobileSidebarLayout({
   const data = useAllDocsData();
   const { versions } = data.default;
   const reversed = [...versions].reverse();
-  const items: NavbarNavLinkProps[] = useThemeConfig().navbar.items.filter(
-    (item) => item.label !== undefined
-  );
+  const items: NavbarNavLinkProps[] = useNavbarItems();
+  const filteredItems = items.filter((item) => item.label !== undefined);
 
   const location = useLocation();
   const activeVersion = reversed.find((version) =>
@@ -46,12 +49,12 @@ export default function NavbarMobileSidebarLayout({
       </div>
       <div
         className={clsx(
-          items.length > 1 && styles.sidebarBiggerFooter,
+          filteredItems.length > 1 && styles.sidebarBiggerFooter,
           styles.sidebarFooter
         )}>
         <div>
-          {items.length > 1 &&
-            items.map((item) => {
+          {filteredItems.length > 1 &&
+            filteredItems.map((item) => {
               return (
                 <NavbarNavLink
                   className={styles.sidebarLinks}
