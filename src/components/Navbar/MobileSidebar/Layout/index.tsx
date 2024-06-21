@@ -5,9 +5,16 @@ import usePageType from '../../../../hooks/usePageType';
 import { useAllDocsData } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 import { ReactNode } from 'react';
+import { type NavbarNavLinkProps } from 'src/components/NavbarItem/NavbarNavLink';
+import { useThemeConfig } from '@docusaurus/theme-common';
+import NavbarNavLink from '../../../NavbarItem/NavbarNavLink';
 
 function isActive(path: string, locationPathname: string) {
   return locationPathname.startsWith(path);
+}
+
+function useNavbarItems() {
+  return useThemeConfig().navbar.items;
 }
 
 export default function NavbarMobileSidebarLayout({
@@ -25,6 +32,8 @@ export default function NavbarMobileSidebarLayout({
   const data = useAllDocsData();
   const { versions } = data.default;
   const reversed = [...versions].reverse();
+  const items: NavbarNavLinkProps[] = useNavbarItems();
+  const filteredItems = items.filter((item) => item.label !== undefined);
 
   const location = useLocation();
   const activeVersion = reversed.find((version) =>
@@ -38,7 +47,22 @@ export default function NavbarMobileSidebarLayout({
       <div className={clsx('navbar-sidebar__items')}>
         <div className="navbar-sidebar__item menu">{secondaryMenu}</div>
       </div>
-      <div className={styles.sidebarFooter}>
+      <div
+        className={clsx(
+          filteredItems.length > 1 && styles.sidebarBiggerFooter,
+          styles.sidebarFooter
+        )}>
+        <div>
+          {filteredItems.length > 1 &&
+            filteredItems.map((item) => (
+              <NavbarNavLink
+                className={styles.sidebarLinks}
+                to={item.to}
+                label={item.label}
+                key={item.label}
+              />
+            ))}
+        </div>
         <div className={styles.sidebarVersions}>
           <span className={styles.sidebarVersionLabel}>Versions:</span>
           {reversed.map((version) => {
