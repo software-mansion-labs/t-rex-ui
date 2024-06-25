@@ -17,6 +17,7 @@
     "release": "release-it"
   },
   "dependencies": {
+    "@docsearch/js": "^3.6.0",
     "@docsearch/react": "^3.6.0",
     "@docusaurus/core": "^2.4.3",
     "@docusaurus/module-type-aliases": "^2.4.3",
