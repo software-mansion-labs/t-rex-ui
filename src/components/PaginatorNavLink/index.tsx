@@ -37,6 +37,7 @@ export function PaginatorNavLink(props: PaginatorNavLinkProps) {
         isNext ? 'pagination-nav__link--next' : 'pagination-nav__link--prev'
       )}
       to={permalink}>
+      Dziala
       {subLabel && (
         <div
           className={clsx(
