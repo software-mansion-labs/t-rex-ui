@@ -4,6 +4,7 @@ import NavbarContent from './Content';
 export interface NavbarProps {
   heroImages?: { logo: string; title?: string };
   titleImages?: { light: string; dark: string };
+  useLandingLogoDualVariant?: boolean;
   isAlgoliaActive?: boolean;
   isThemeSwitcherShown?: boolean;
 }
@@ -13,6 +14,7 @@ export function Navbar({
   titleImages,
   isAlgoliaActive = true,
   isThemeSwitcherShown = true,
+  useLandingLogoDualVariant = false,
 }: NavbarProps) {
   return (
     <NavbarLayout
@@ -21,6 +23,7 @@ export function Navbar({
       <NavbarContent
         isThemeSwitcherShown={isThemeSwitcherShown}
         isAlgoliaActive={isAlgoliaActive}
+        useLandingLogoDualVariant={useLandingLogoDualVariant}
         heroImages={heroImages}
         titleImages={titleImages}
       />
