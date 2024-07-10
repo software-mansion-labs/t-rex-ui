@@ -53,6 +53,7 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
     heroImages,
     imageClassName,
     titleClassName,
+    useLandingLogoDualVariant,
     ...propsRest
   } = props;
   const logoLink = useBaseUrl(logo?.href || '/');
@@ -87,7 +88,7 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
       className={styles.link}
       {...propsRest}
       {...(logo?.target && { target: logo.target })}>
-      {logo && !isLanding ? (
+      {logo && (!isLanding || useLandingLogoDualVariant) ? (
         <>
           <LogoThemedImage
             logo={logo}

@@ -70,6 +70,7 @@ export default function NavbarContent({
   heroImages,
   titleImages,
   isAlgoliaActive,
+  useLandingLogoDualVariant,
   isThemeSwitcherShown,
 }: NavbarProps) {
   const windowSize = useWindowSize();
@@ -87,7 +88,11 @@ export default function NavbarContent({
       left={
         <>
           <div className={styles.logoWrapper}>
-            <NavbarLogo heroImages={heroImages} titleImages={titleImages} />
+            <NavbarLogo
+              useLandingLogoDualVariant={useLandingLogoDualVariant}
+              heroImages={heroImages}
+              titleImages={titleImages}
+            />
           </div>
           {!isLanding && <NavbarItems items={leftItems} />}
           {!searchBarItem && !isMobile && !isLanding && searchComponent}
