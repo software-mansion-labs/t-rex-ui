@@ -5,7 +5,13 @@ import {
 } from '../HomepageButton';
 import styles from './styles.module.css';
 
-export const HireUsSection = ({ content }: { content?: string }) => {
+export const HireUsSection = ({
+  content,
+  href,
+}: {
+  content?: string;
+  href: string;
+}) => {
   return (
     <div className={styles.hireUsSectionWrapper}>
       <div className={styles.hireUsTitleContainer}>
@@ -27,7 +33,7 @@ export const HireUsSection = ({ content }: { content?: string }) => {
 
       <div className={styles.hireUsButton}>
         <HomepageButton
-          href="https://swmansion.com/contact/projects?utm_source=gesture-handler&utm_medium=docs"
+          href={href}
           title="Hire us"
           backgroundStyling={ButtonStyling.SECTION}
           borderStyling={BorderStyling.SECTION}

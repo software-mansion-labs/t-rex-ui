@@ -5,13 +5,13 @@ import ArrowRight from '../Icon/ArrowRight';
 import clsx from 'clsx';
 
 export const ButtonStyling = {
-  TOC: styles.buttonBlueStyling,
-  SECTION: styles.buttonNavyStyling,
+  TOC: styles.buttonTOCStyling,
+  SECTION: styles.buttonSectionStyling,
 };
 
 export const BorderStyling = {
-  TOC: styles.buttonBlueBorderStyling,
-  SECTION: styles.buttonNavyBorderStyling,
+  TOC: styles.buttonTOCBorderStyling,
+  SECTION: styles.buttonSectionBorderStyling,
 };
 
 export const HomepageButton: React.FC<{

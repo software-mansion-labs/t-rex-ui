@@ -69,53 +69,53 @@ a.homepageButtonLink:hover {
 
 /* HIRE US TOC - button styling */
 
-.buttonBlueStyling {
+.buttonTOCStyling {
   background-color: var(--swm-hire-us-toc);
   color: var(--swm-hire-us-toc-color);
 }
 
-.buttonBlueStyling:hover {
+.buttonTOCStyling:hover {
   background-color: transparent;
   color: var(--swm-hire-us-toc-color-hover);
 }
 
-.buttonBlueStyling svg {
+.buttonTOCStyling svg {
   stroke: var(--swm-hire-us-toc-color);
 }
 
-.buttonBlueStyling:hover svg {
+.buttonTOCStyling:hover svg {
   stroke: var(--swm-hire-us-toc-color-hover);
 }
 
-.buttonBlueBorderStyling {
+.buttonTOCBorderStyling {
   border: 1px solid var(--swm-hire-us-toc);
 }
 
-.buttonBlueBorderStyling:hover {
+.buttonTOCBorderStyling:hover {
   border: 1px solid var(--swm-hire-us-toc-border-hover);
 }
 
 /* HIRE US SECTION - button styling */
 
-.buttonNavyStyling {
+.buttonSectionStyling {
   background-color: var(--swm-hire-us-section);
   color: var(--swm-hire-us-section-color);
 }
 
-.buttonNavyStyling svg {
+.buttonSectionStyling svg {
   stroke: var(--swm-hire-us-section-color);
 }
 
-.buttonNavyStyling:hover {
+.buttonSectionStyling:hover {
   background-color: transparent;
   color: var(--swm-hire-us-section);
 }
 
-.buttonNavyStyling:hover svg {
+.buttonSectionStyling:hover svg {
   stroke: var(--swm-hire-us-section);
 }
 
-.buttonNavyBorderStyling {
+.buttonSectionBorderStyling {
   border: 1px solid var(--swm-hire-us-section);
 }
 
