@@ -19,8 +19,8 @@ export const HireUsSection = ({ content }: { content?: string }) => {
         ) : (
           <>
             React Native Core Contributors and experts in dealing with all kinds
-            of React Native issues. No matter if you need help with gestures or
-            React Native development we can help.
+            of React Native issues. No matter if you need help with gestures,
+            animations or React Native development we can help.
           </>
         )}
       </p>
