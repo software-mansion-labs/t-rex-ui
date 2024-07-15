@@ -76,7 +76,7 @@ a.homepageButtonLink:hover {
 
 .buttonBlueStyling:hover {
   background-color: transparent;
-  color: var(--swm-hire-us-toc-line);
+  color: var(--swm-hire-us-toc-color-hover);
 }
 
 .buttonBlueStyling svg {
@@ -84,7 +84,7 @@ a.homepageButtonLink:hover {
 }
 
 .buttonBlueStyling:hover svg {
-  stroke: var(--swm-hire-us-toc-line);
+  stroke: var(--swm-hire-us-toc-color-hover);
 }
 
 .buttonBlueBorderStyling {
@@ -92,7 +92,7 @@ a.homepageButtonLink:hover {
 }
 
 .buttonBlueBorderStyling:hover {
-  border: 1px solid var(--swm-hire-us-toc-hover);
+  border: 1px solid var(--swm-hire-us-toc-border-hover);
 }
 
 /* HIRE US SECTION - button styling */
