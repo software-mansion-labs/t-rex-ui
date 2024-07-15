@@ -20,3 +20,5 @@ export { TOCItems } from './components/TOCItems';
 export { TOCItemTree } from './components/TOCItems/Tree';
 
 export { SearchPage } from './components/SearchPage';
+
+export { HireUsSection } from './components/HireUsSection';
