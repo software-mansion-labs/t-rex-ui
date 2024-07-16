@@ -8,7 +8,11 @@ import { TOCItemTree } from './Tree';
 import { type TOCProp } from './Tree';
 import type { TOCItem } from '@docusaurus/mdx-loader';
 
-import { HireUsButton } from '../HireUsButton';
+import {
+  ButtonStyling,
+  BorderStyling,
+  HomepageButton,
+} from '../HomepageButton';
 import styles from './styles.module.css';
 
 interface TOCItemsProps {
@@ -62,9 +66,12 @@ export function TOCItems({
       <div className={styles.hireUsContainer}>
         <p>We are Software Mansion.</p>
         <div className={styles.buttonContainer}>
-          <HireUsButton
+          <HomepageButton
             href="https://swmansion.com/contact/projects?utm_source=rnos-docs&utm_medium=sidebar"
             title="Hire us"
+            backgroundStyling={ButtonStyling.TOC}
+            borderStyling={BorderStyling.TOC}
+            enlarged={false}
           />
         </div>
       </div>
