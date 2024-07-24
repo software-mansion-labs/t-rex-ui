@@ -1,6 +1,6 @@
 {
   "name": "@swmansion/t-rex-ui",
-  "version": "0.0.13",
+  "version": "0.0.12",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -14,9 +14,10 @@
     "preview": "vite preview",
     "format": "prettier --write --list-different src",
     "prepare": "yarn build",
-    "release": "release-it"
+    "release": "release-it",
+    "test" : "npm run build && npm pack && tar -xf swmansion-t-rex-ui-0.0.12.tgz && rm swmansion-t-rex-ui-0.0.12.tgz && rsync -av package ./docs/"
   },
-  "dependencies": {
+  "devDependencies": {
     "@docsearch/react": "^3.6.0",
     "@docusaurus/core": "^2.4.3",
     "@docusaurus/module-type-aliases": "^2.4.3",
@@ -24,10 +25,6 @@
     "@docusaurus/theme-classic": "^2.4.3",
     "@docusaurus/theme-common": "^2.4.3",
     "@docusaurus/theme-search-algolia": "^2.4.3",
-    "algoliasearch": "^4.23.3",
-    "algoliasearch-helper": "^3.19.0"
-  },
-  "devDependencies": {
     "@docusaurus/tsconfig": "^3.2.1",
     "@docusaurus/types": "^2.4.3",
     "@mui/material": "^5.15.16",
@@ -39,12 +36,16 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "algoliasearch": "^4.23.3",
+    "algoliasearch-helper": "^3.19.0",
     "clsx": "^2.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "glob": "^10.3.12",
     "prettier": "^3.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "release-it": "^17.2.1",
     "typescript": "^5.4.5",
     "vite": "^5.2.0",
@@ -65,7 +66,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "installConfig": {
-    "hoistingLimits": "workspaces"
+  "dependencies": {
+    "tsc-watch": "^6.2.0"
   }
 }

@@ -29,7 +29,7 @@ export default function FooterCopyright({ copyright }: { copyright: string }) {
         <span className={styles.footer__brand}>
           &copy;{' '}
           <a href={BRAND_LINK} target="_blank">
-            Software Mansion
+            Software Mansion jest super
           </a>
           {' ' + new Date().getFullYear()}.
         </span>
