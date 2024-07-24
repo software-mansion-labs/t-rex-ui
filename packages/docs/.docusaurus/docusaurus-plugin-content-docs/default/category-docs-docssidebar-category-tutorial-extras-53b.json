@@ -1,0 +1,15 @@
+{
+  "title": "Tutorial - Extras",
+  "slug": "/category/tutorial---extras",
+  "permalink": "/docs/category/tutorial---extras",
+  "navigation": {
+    "previous": {
+      "title": "Lorem ipsum dolor",
+      "permalink": "/docs/fundamentals/lorem-ipsum-dolor"
+    },
+    "next": {
+      "title": "Lorem",
+      "permalink": "/docs/tutorial-extras/translate-your-site"
+    }
+  }
+}

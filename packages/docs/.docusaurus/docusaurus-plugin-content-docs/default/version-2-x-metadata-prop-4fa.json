@@ -1,0 +1,28 @@
+{
+  "pluginId": "default",
+  "version": "2.x",
+  "label": "2.x",
+  "banner": "unmaintained",
+  "badge": true,
+  "noIndex": false,
+  "className": "docs-version-2.x",
+  "isLast": false,
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "link",
+        "label": "Lorem Ipsum",
+        "href": "/docs/2.x/lorem-ip",
+        "docId": "lorem-ip"
+      }
+    ]
+  },
+  "docs": {
+    "lorem-ip": {
+      "id": "lorem-ip",
+      "title": "Lorem Ipsum",
+      "description": "Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet. Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam. 🎉",
+      "sidebar": "docs"
+    }
+  }
+}

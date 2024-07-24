@@ -1,0 +1,150 @@
+{
+  "/__docusaurus/debug-ed2": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    }
+  },
+  "/__docusaurus/debug/config-b50": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    }
+  },
+  "/__docusaurus/debug/content-f89": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    },
+    "allContent": "allContent---docusaurus-debug-content-246-9aa"
+  },
+  "/__docusaurus/debug/globalData-d2f": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    }
+  },
+  "/__docusaurus/debug/metadata-6a3": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    }
+  },
+  "/__docusaurus/debug/registry-b9a": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    }
+  },
+  "/__docusaurus/debug/routes-b53": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debug-504-062"
+    }
+  },
+  "/blog-240": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---blog-80-e-c42"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "items": [
+      {
+        "content": "content---blogddb-a29"
+      }
+    ],
+    "metadata": "metadata---blogb-2-b-df1"
+  },
+  "/blog/archive-881": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---blog-80-e-c42"
+    },
+    "archive": "archive---blog-archiveb-2-f-393"
+  },
+  "/blog/t-rex-ui-121": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "plugin": "plugin---blog-80-e-c42"
+    },
+    "sidebar": "sidebar---blog-814-8ac",
+    "content": "content---blog-t-rex-uid-28-5f3"
+  },
+  "/markdown-page-b16": {
+    "__comp": "__comp---theme-mdx-page-1-f-3-b90",
+    "__context": {
+      "plugin": "plugin---markdown-pageaf-5-86d"
+    },
+    "content": "content---markdown-page-393-028"
+  },
+  "/search-d14": {
+    "__comp": "__comp---theme-search-page-1-a-4-d6f",
+    "__context": {
+      "plugin": "plugin---searcheda-1e6"
+    }
+  },
+  "/docs/1.x-08a": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---docs-1-x-05-a-bcd"
+    },
+    "versionMetadata": "versionMetadata---docs-1-x-027-d1c"
+  },
+  "/docs/1.x/-afc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-1-x-d-83-19e"
+  },
+  "/docs/2.x-bc7": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---docs-1-x-05-a-bcd"
+    },
+    "versionMetadata": "versionMetadata---docs-2-x-45-a-f14"
+  },
+  "/docs/2.x/lorem-ip-19f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-2-x-lorem-ipb-50-88f"
+  },
+  "/docs-0e3": {
+    "__comp": "__comp---theme-doc-page-1-be-9be",
+    "__context": {
+      "plugin": "plugin---docs-1-x-05-a-bcd"
+    },
+    "versionMetadata": "versionMetadata---docs-935-398"
+  },
+  "/docs/category/fundamentals-e29": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-fundamentals-32-d-995"
+  },
+  "/docs/category/tutorial---extras-c43": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "categoryGeneratedIndex": "categoryGeneratedIndex---docs-category-tutorial-extras-0-d-8-487"
+  },
+  "/docs/fundamentals/lorem-d18": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-lorem-264-e22"
+  },
+  "/docs/fundamentals/lorem-ipsum-f5c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-lorem-ipsum-266-f3b"
+  },
+  "/docs/fundamentals/lorem-ipsum-dolor-fb4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-fundamentals-lorem-ipsum-dolor-86-a-a8c"
+  },
+  "/docs/tutorial-extras/manage-docs-versions-37f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorial-extras-manage-docs-versionsdff-6d4"
+  },
+  "/docs/tutorial-extras/translate-your-site-761": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-tutorial-extras-translate-your-sitee-44-ddf"
+  },
+  "/-413": {
+    "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
+    "__context": {
+      "plugin": "plugin---markdown-pageaf-5-86d"
+    },
+    "config": "config---5-e-9-4f3"
+  }
+}

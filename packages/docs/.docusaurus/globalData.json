@@ -1,0 +1,109 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "3.x",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "fundamentals/lorem",
+          "docs": [
+            {
+              "id": "fundamentals/lorem",
+              "path": "/docs/fundamentals/lorem",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "fundamentals/lorem-ipsum",
+              "path": "/docs/fundamentals/lorem-ipsum",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "fundamentals/lorem-ipsum-dolor",
+              "path": "/docs/fundamentals/lorem-ipsum-dolor",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "tutorial-extras/manage-docs-versions",
+              "path": "/docs/tutorial-extras/manage-docs-versions",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "tutorial-extras/translate-your-site",
+              "path": "/docs/tutorial-extras/translate-your-site",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "/category/fundamentals",
+              "path": "/docs/category/fundamentals",
+              "sidebar": "docsSidebar"
+            },
+            {
+              "id": "/category/tutorial---extras",
+              "path": "/docs/category/tutorial---extras",
+              "sidebar": "docsSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docsSidebar": {
+              "link": {
+                "path": "/docs/category/fundamentals",
+                "label": "Fundamentals"
+              }
+            }
+          }
+        },
+        {
+          "name": "2.x",
+          "label": "2.x",
+          "isLast": false,
+          "path": "/docs/2.x",
+          "mainDocId": "lorem-ip",
+          "docs": [
+            {
+              "id": "lorem-ip",
+              "path": "/docs/2.x/lorem-ip",
+              "sidebar": "docs"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "docs": {
+              "link": {
+                "path": "/docs/2.x/lorem-ip",
+                "label": "lorem-ip"
+              }
+            }
+          }
+        },
+        {
+          "name": "1.x",
+          "label": "1.x",
+          "isLast": false,
+          "path": "/docs/1.x",
+          "mainDocId": "lorem",
+          "docs": [
+            {
+              "id": "lorem",
+              "path": "/docs/1.x/",
+              "sidebar": "version-1.x/docs"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "version-1.x/docs": {
+              "link": {
+                "path": "/docs/1.x/",
+                "label": "version-1.x/lorem"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": false
+    }
+  }
+}

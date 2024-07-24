@@ -1,0 +1,27 @@
+{
+  "unversionedId": "tutorial-extras/translate-your-site",
+  "id": "tutorial-extras/translate-your-site",
+  "title": "Lorem",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.",
+  "source": "@site/docs/tutorial-extras/translate-your-site.md",
+  "sourceDirName": "tutorial-extras",
+  "slug": "/tutorial-extras/translate-your-site",
+  "permalink": "/docs/tutorial-extras/translate-your-site",
+  "draft": false,
+  "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/tutorial-extras/translate-your-site.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Tutorial - Extras",
+    "permalink": "/docs/category/tutorial---extras"
+  },
+  "next": {
+    "title": "Lorem ipsum",
+    "permalink": "/docs/tutorial-extras/manage-docs-versions"
+  }
+}

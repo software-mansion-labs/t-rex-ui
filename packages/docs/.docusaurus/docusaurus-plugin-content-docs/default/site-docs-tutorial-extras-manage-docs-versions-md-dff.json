@@ -1,0 +1,23 @@
+{
+  "unversionedId": "tutorial-extras/manage-docs-versions",
+  "id": "tutorial-extras/manage-docs-versions",
+  "title": "Lorem ipsum",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.",
+  "source": "@site/docs/tutorial-extras/manage-docs-versions.md",
+  "sourceDirName": "tutorial-extras",
+  "slug": "/tutorial-extras/manage-docs-versions",
+  "permalink": "/docs/tutorial-extras/manage-docs-versions",
+  "draft": false,
+  "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/tutorial-extras/manage-docs-versions.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Lorem",
+    "permalink": "/docs/tutorial-extras/translate-your-site"
+  }
+}

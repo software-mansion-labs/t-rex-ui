@@ -1,0 +1,27 @@
+{
+  "unversionedId": "fundamentals/lorem-ipsum",
+  "id": "fundamentals/lorem-ipsum",
+  "title": "Lorem ipsum",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.",
+  "source": "@site/docs/fundamentals/lorem-ipsum.mdx",
+  "sourceDirName": "fundamentals",
+  "slug": "/fundamentals/lorem-ipsum",
+  "permalink": "/docs/fundamentals/lorem-ipsum",
+  "draft": false,
+  "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/fundamentals/lorem-ipsum.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Lorem",
+    "permalink": "/docs/fundamentals/lorem"
+  },
+  "next": {
+    "title": "Lorem ipsum dolor",
+    "permalink": "/docs/fundamentals/lorem-ipsum-dolor"
+  }
+}

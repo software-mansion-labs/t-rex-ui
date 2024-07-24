@@ -1,0 +1,20 @@
+{
+  "unversionedId": "lorem",
+  "id": "version-1.x/lorem",
+  "title": "Lorem ipsum",
+  "description": "Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet. Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam.",
+  "source": "@site/versioned_docs/version-1.x/lorem.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/docs/1.x/",
+  "draft": false,
+  "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/versioned_docs/version-1.x/lorem.md",
+  "tags": [],
+  "version": "1.x",
+  "frontMatter": {
+    "slug": "/",
+    "title": "Lorem ipsum",
+    "sidebar_label": "Lorem"
+  },
+  "sidebar": "version-1.x/docs"
+}

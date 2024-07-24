@@ -1,0 +1,36 @@
+{
+  "pluginId": "default",
+  "version": "1.x",
+  "label": "1.x",
+  "banner": "unmaintained",
+  "badge": true,
+  "noIndex": false,
+  "className": "docs-version-1.x",
+  "isLast": false,
+  "docsSidebars": {
+    "version-1.x/docs": [
+      {
+        "type": "category",
+        "label": "Overview",
+        "items": [
+          {
+            "type": "link",
+            "label": "Lorem",
+            "href": "/docs/1.x/",
+            "docId": "lorem"
+          }
+        ],
+        "collapsed": false,
+        "collapsible": false
+      }
+    ]
+  },
+  "docs": {
+    "lorem": {
+      "id": "lorem",
+      "title": "Lorem ipsum",
+      "description": "Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet. Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam.",
+      "sidebar": "version-1.x/docs"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "unversionedId": "lorem-ip",
+  "id": "version-2.x/lorem-ip",
+  "title": "Lorem Ipsum",
+  "description": "Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet. Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam. 🎉",
+  "source": "@site/versioned_docs/version-2.x/lorem-ip.md",
+  "sourceDirName": ".",
+  "slug": "/lorem-ip",
+  "permalink": "/docs/2.x/lorem-ip",
+  "draft": false,
+  "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/versioned_docs/version-2.x/lorem-ip.md",
+  "tags": [],
+  "version": "2.x",
+  "frontMatter": {
+    "id": "lorem-ip",
+    "title": "Lorem Ipsum",
+    "sidebar_label": "Lorem Ipsum"
+  },
+  "sidebar": "docs"
+}

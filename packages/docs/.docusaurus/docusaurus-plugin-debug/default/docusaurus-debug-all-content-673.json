@@ -1,0 +1,376 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "3.x",
+          "banner": null,
+          "badge": true,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/docs",
+          "tagsPath": "/docs/tags",
+          "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs",
+          "editUrlLocalized": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/Users/marcysia/swm/repos/t-rex-ui/docs/sidebars.js",
+          "contentPath": "/Users/marcysia/swm/repos/t-rex-ui/docs/docs",
+          "contentPathLocalized": "/Users/marcysia/swm/repos/t-rex-ui/docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "unversionedId": "fundamentals/lorem",
+              "id": "fundamentals/lorem",
+              "title": "Lorem",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur. Nunc egestas sed quam at egestas. Donec eleifend, orci aliquet finibus scelerisque, erat turpis vulputate dui, ac posuere dui dolor sit amet leo. Fusce ut finibus dui. Pellentesque lacinia ultrices ex, sed pulvinar velit lobortis vitae. Curabitur dapibus erat massa, eget rhoncus urna ultrices in. Phasellus commodo dictum leo.",
+              "source": "@site/docs/fundamentals/lorem.mdx",
+              "sourceDirName": "fundamentals",
+              "slug": "/fundamentals/lorem",
+              "permalink": "/docs/fundamentals/lorem",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/fundamentals/lorem.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "docsSidebar",
+              "previous": {
+                "title": "Fundamentals",
+                "permalink": "/docs/category/fundamentals"
+              },
+              "next": {
+                "title": "Lorem ipsum",
+                "permalink": "/docs/fundamentals/lorem-ipsum"
+              }
+            },
+            {
+              "unversionedId": "fundamentals/lorem-ipsum",
+              "id": "fundamentals/lorem-ipsum",
+              "title": "Lorem ipsum",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.",
+              "source": "@site/docs/fundamentals/lorem-ipsum.mdx",
+              "sourceDirName": "fundamentals",
+              "slug": "/fundamentals/lorem-ipsum",
+              "permalink": "/docs/fundamentals/lorem-ipsum",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/fundamentals/lorem-ipsum.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "docsSidebar",
+              "previous": {
+                "title": "Lorem",
+                "permalink": "/docs/fundamentals/lorem"
+              },
+              "next": {
+                "title": "Lorem ipsum dolor",
+                "permalink": "/docs/fundamentals/lorem-ipsum-dolor"
+              }
+            },
+            {
+              "unversionedId": "fundamentals/lorem-ipsum-dolor",
+              "id": "fundamentals/lorem-ipsum-dolor",
+              "title": "Lorem ipsum dolor",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur. Nunc egestas sed quam at egestas. Donec eleifend, orci aliquet finibus scelerisque, erat turpis vulputate dui, ac posuere dui dolor sit amet leo. Fusce ut finibus dui. Pellentesque lacinia ultrices ex, sed pulvinar velit lobortis vitae. Curabitur dapibus erat massa, eget rhoncus urna ultrices in. Phasellus commodo dictum leo.",
+              "source": "@site/docs/fundamentals/lorem-ipsum-dolor.mdx",
+              "sourceDirName": "fundamentals",
+              "slug": "/fundamentals/lorem-ipsum-dolor",
+              "permalink": "/docs/fundamentals/lorem-ipsum-dolor",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/fundamentals/lorem-ipsum-dolor.mdx",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "sidebar_position": 3
+              },
+              "sidebar": "docsSidebar",
+              "previous": {
+                "title": "Lorem ipsum",
+                "permalink": "/docs/fundamentals/lorem-ipsum"
+              },
+              "next": {
+                "title": "Tutorial - Extras",
+                "permalink": "/docs/category/tutorial---extras"
+              }
+            },
+            {
+              "unversionedId": "tutorial-extras/manage-docs-versions",
+              "id": "tutorial-extras/manage-docs-versions",
+              "title": "Lorem ipsum",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.",
+              "source": "@site/docs/tutorial-extras/manage-docs-versions.md",
+              "sourceDirName": "tutorial-extras",
+              "slug": "/tutorial-extras/manage-docs-versions",
+              "permalink": "/docs/tutorial-extras/manage-docs-versions",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/tutorial-extras/manage-docs-versions.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "sidebar_position": 2
+              },
+              "sidebar": "docsSidebar",
+              "previous": {
+                "title": "Lorem",
+                "permalink": "/docs/tutorial-extras/translate-your-site"
+              }
+            },
+            {
+              "unversionedId": "tutorial-extras/translate-your-site",
+              "id": "tutorial-extras/translate-your-site",
+              "title": "Lorem",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.",
+              "source": "@site/docs/tutorial-extras/translate-your-site.md",
+              "sourceDirName": "tutorial-extras",
+              "slug": "/tutorial-extras/translate-your-site",
+              "permalink": "/docs/tutorial-extras/translate-your-site",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/docs/tutorial-extras/translate-your-site.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "sidebar_position": 1
+              },
+              "sidebar": "docsSidebar",
+              "previous": {
+                "title": "Tutorial - Extras",
+                "permalink": "/docs/category/tutorial---extras"
+              },
+              "next": {
+                "title": "Lorem ipsum",
+                "permalink": "/docs/tutorial-extras/manage-docs-versions"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "docsSidebar": [
+              {
+                "type": "category",
+                "label": "Fundamentals",
+                "collapsible": false,
+                "collapsed": false,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "fundamentals/lorem"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "fundamentals/lorem-ipsum"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "fundamentals/lorem-ipsum-dolor"
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "slug": "/category/fundamentals",
+                  "permalink": "/docs/category/fundamentals"
+                }
+              },
+              {
+                "type": "category",
+                "label": "Tutorial - Extras",
+                "collapsible": false,
+                "collapsed": false,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "tutorial-extras/translate-your-site"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "tutorial-extras/manage-docs-versions"
+                  }
+                ],
+                "link": {
+                  "type": "generated-index",
+                  "slug": "/category/tutorial---extras",
+                  "permalink": "/docs/category/tutorial---extras"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "versionName": "2.x",
+          "label": "2.x",
+          "banner": "unmaintained",
+          "badge": true,
+          "noIndex": false,
+          "className": "docs-version-2.x",
+          "path": "/docs/2.x",
+          "tagsPath": "/docs/2.x/tags",
+          "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/versioned_docs/version-2.x",
+          "editUrlLocalized": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/i18n/en/docusaurus-plugin-content-docs/version-2.x",
+          "isLast": false,
+          "sidebarFilePath": "/Users/marcysia/swm/repos/t-rex-ui/docs/versioned_sidebars/version-2.x-sidebars.json",
+          "contentPath": "/Users/marcysia/swm/repos/t-rex-ui/docs/versioned_docs/version-2.x",
+          "contentPathLocalized": "/Users/marcysia/swm/repos/t-rex-ui/docs/i18n/en/docusaurus-plugin-content-docs/version-2.x",
+          "docs": [
+            {
+              "unversionedId": "lorem-ip",
+              "id": "version-2.x/lorem-ip",
+              "title": "Lorem Ipsum",
+              "description": "Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet. Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam. 🎉",
+              "source": "@site/versioned_docs/version-2.x/lorem-ip.md",
+              "sourceDirName": ".",
+              "slug": "/lorem-ip",
+              "permalink": "/docs/2.x/lorem-ip",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/versioned_docs/version-2.x/lorem-ip.md",
+              "tags": [],
+              "version": "2.x",
+              "frontMatter": {
+                "id": "lorem-ip",
+                "title": "Lorem Ipsum",
+                "sidebar_label": "Lorem Ipsum"
+              },
+              "sidebar": "docs"
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "docs": [
+              {
+                "type": "doc",
+                "id": "lorem-ip"
+              }
+            ]
+          }
+        },
+        {
+          "versionName": "1.x",
+          "label": "1.x",
+          "banner": "unmaintained",
+          "badge": true,
+          "noIndex": false,
+          "className": "docs-version-1.x",
+          "path": "/docs/1.x",
+          "tagsPath": "/docs/1.x/tags",
+          "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/versioned_docs/version-1.x",
+          "editUrlLocalized": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/i18n/en/docusaurus-plugin-content-docs/version-1.x",
+          "isLast": false,
+          "sidebarFilePath": "/Users/marcysia/swm/repos/t-rex-ui/docs/versioned_sidebars/version-1.x-sidebars.json",
+          "contentPath": "/Users/marcysia/swm/repos/t-rex-ui/docs/versioned_docs/version-1.x",
+          "contentPathLocalized": "/Users/marcysia/swm/repos/t-rex-ui/docs/i18n/en/docusaurus-plugin-content-docs/version-1.x",
+          "docs": [
+            {
+              "unversionedId": "lorem",
+              "id": "version-1.x/lorem",
+              "title": "Lorem ipsum",
+              "description": "Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet. Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam.",
+              "source": "@site/versioned_docs/version-1.x/lorem.md",
+              "sourceDirName": ".",
+              "slug": "/",
+              "permalink": "/docs/1.x/",
+              "draft": false,
+              "editUrl": "https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs/versioned_docs/version-1.x/lorem.md",
+              "tags": [],
+              "version": "1.x",
+              "frontMatter": {
+                "slug": "/",
+                "title": "Lorem ipsum",
+                "sidebar_label": "Lorem"
+              },
+              "sidebar": "version-1.x/docs"
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "version-1.x/docs": [
+              {
+                "type": "category",
+                "label": "Overview",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "version-1.x/lorem"
+                  }
+                ],
+                "collapsed": false,
+                "collapsible": false
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Examples",
+      "blogPosts": [
+        {
+          "id": "/t-rex-ui",
+          "metadata": {
+            "permalink": "/blog/t-rex-ui",
+            "source": "@site/blog/t-rex-ui.md",
+            "title": "Lorem",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur. Nunc egestas sed quam at egestas. Donec eleifend, orci aliquet finibus scelerisque, erat turpis vulputate dui, ac posuere dui dolor sit amet leo. Fusce ut finibus dui. Pellentesque lacinia ultrices ex, sed pulvinar velit lobortis vitae. Curabitur dapibus erat massa, eget rhoncus urna ultrices in. Phasellus commodo dictum leo.",
+            "date": "2024-07-01T12:45:21.000Z",
+            "formattedDate": "July 1, 2024",
+            "tags": [],
+            "hasTruncateMarker": false,
+            "authors": [],
+            "frontMatter": {}
+          },
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur. Nunc egestas sed quam at egestas. Donec eleifend, orci aliquet finibus scelerisque, erat turpis vulputate dui, ac posuere dui dolor sit amet leo. Fusce ut finibus dui. Pellentesque lacinia ultrices ex, sed pulvinar velit lobortis vitae. Curabitur dapibus erat massa, eget rhoncus urna ultrices in. Phasellus commodo dictum leo.\n\n## Ut aliquam pellentesque dolor auctor aliquet. Nulla auctor augue nec fringilla aliquam.\n\n\n\nClass aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse molestie tellus ac nulla finibus vulputate in at lorem. Mauris consequat iaculis sem, id egestas odio tincidunt ultricies.\n \n Etiam magna leo, condimentum sed bibendum et, fringilla id lectus. Aliquam sed dolor sollicitudin, ullamcorper purus id, malesuada felis. In et lacus condimentum sem dapibus euismod non id nulla. Maecenas eu leo sed nibh fermentum auctor. Sed vel orci ac lacus tempor suscipit.\n\n\n## Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur. \n\n### Integer malesuada efficitur commodo. Duis fermentum consectetur libero, a venenatis ante molestie sit amet.\n \n Quisque vulputate nibh sed justo maximus pretium. Sed a sodales ante, euismod suscipit felis. Maecenas molestie in elit in condimentum. Fusce id nibh non mi sollicitudin imperdiet at a quam.\n\nMaecenas metus odio, ullamcorper sit amet venenatis sed, consectetur rutrum justo. Fusce vitae gravida eros. Sed laoreet sit amet sem at dignissim. Phasellus et faucibus arcu, quis venenatis arcu. \n## Mauris rhoncus aliquet nunc non blandit. Cras porttitor magna in massa varius, vitae aliquam ante varius.\n\n Pellentesque at lacinia lorem, sit amet elementum nisi. Cras malesuada lobortis elit id interdum. Nam eu dui pharetra, dignissim urna at, dignissim urna. Aenean ultricies at massa et varius. Integer pharetra neque tortor, eu feugiat nunc vulputate eu. Etiam at quam a augue aliquam accumsan.\n\nMaecenas semper posuere sodales. Fusce cursus elementum cursus. Integer libero lorem, interdum vitae cursus eu, hendrerit a ante. Phasellus ex dolor, consequat ac aliquet eu, accumsan sit amet nibh. Donec tristique eleifend facilisis. Suspendisse potenti. Praesent fringilla pellentesque lacus, vel dictum tortor molestie a. Vestibulum bibendum lacinia mi, ac sodales lectus. Morbi sapien nunc, varius condimentum interdum sit amet, posuere in justo. Nullam quis ullamcorper nisi. Nunc iaculis risus pellentesque, aliquam purus eu, imperdiet neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent ultricies, ante nec pulvinar mattis, quam purus feugiat urna, a faucibus felis metus quis magna. Duis ultrices hendrerit pellentesque. Fusce eget lacus ut mi scelerisque accumsan. Duis ullamcorper porttitor ipsum vel condimentum."
+        }
+      ],
+      "blogListPaginated": [
+        {
+          "items": [
+            "/t-rex-ui"
+          ],
+          "metadata": {
+            "permalink": "/blog",
+            "page": 1,
+            "postsPerPage": 10,
+            "totalPages": 1,
+            "totalCount": 1,
+            "blogDescription": "Blog",
+            "blogTitle": "Blog"
+          }
+        }
+      ],
+      "blogTags": {},
+      "blogTagsListPath": "/blog/tags"
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      },
+      {
+        "type": "mdx",
+        "permalink": "/markdown-page",
+        "source": "@site/src/pages/markdown-page.md",
+        "title": "Markdown page example",
+        "description": "You don't need React to write simple standalone pages.",
+        "frontMatter": {
+          "title": "Markdown page example"
+        }
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-theme-search-algolia": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

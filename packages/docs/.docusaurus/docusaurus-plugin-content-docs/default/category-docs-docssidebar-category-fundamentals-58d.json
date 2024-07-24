@@ -1,0 +1,11 @@
+{
+  "title": "Fundamentals",
+  "slug": "/category/fundamentals",
+  "permalink": "/docs/category/fundamentals",
+  "navigation": {
+    "next": {
+      "title": "Lorem",
+      "permalink": "/docs/fundamentals/lorem"
+    }
+  }
+}
