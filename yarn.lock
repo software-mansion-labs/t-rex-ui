@@ -7380,6 +7380,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"example-docs@workspace:packages/docs":
+  version: 0.0.0-use.local
+  resolution: "example-docs@workspace:packages/docs"
+  dependencies:
+    "@babel/core": "npm:^7.24.7"
+    "@babel/preset-env": "npm:^7.24.7"
+    "@babel/preset-react": "npm:^7.24.7"
+    "@babel/preset-typescript": "npm:^7.24.7"
+    "@docusaurus/core": "npm:2.4.3"
+    "@docusaurus/module-type-aliases": "npm:2.4.3"
+    "@docusaurus/preset-classic": "npm:2.4.3"
+    "@docusaurus/tsconfig": "npm:^3.0.0"
+    "@docusaurus/types": "npm:2.4.3"
+    "@emotion/react": "npm:^11.11.4"
+    "@emotion/styled": "npm:^11.11.5"
+    "@mdx-js/react": "npm:^1.6.22"
+    "@mui/material": "npm:^5.15.20"
+    "@swmansion/t-rex-ui": "workspace:*"
+    "@tsconfig/docusaurus": "npm:^2.0.3"
+    "@types/node": "npm:^20.12.7"
+    "@types/react": "npm:^18.2.79"
+    "@types/react-dom": "npm:^18.2.25"
+    babel-loader: "npm:^9.1.3"
+    clsx: "npm:^1.2.1"
+    prism-react-renderer: "npm:^1.3.5"
+    react: "npm:^17.0.2"
+    react-dom: "npm:^17.0.2"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
 "execa@npm:8.0.1, execa@npm:~8.0.1":
   version: 8.0.1
   resolution: "execa@npm:8.0.1"
@@ -13784,37 +13815,6 @@ __metadata:
   checksum: 10/7f66d93a1157f66f5eda16515ed45e6eb485d3c4acbc46e78a5e62922f5b4643d9212abc586f791021fafc71563a93475a986c52f4270a5e0b3ee50a70507d9e
   languageName: node
   linkType: hard
-
-"test-2@workspace:packages/docs":
-  version: 0.0.0-use.local
-  resolution: "test-2@workspace:packages/docs"
-  dependencies:
-    "@babel/core": "npm:^7.24.7"
-    "@babel/preset-env": "npm:^7.24.7"
-    "@babel/preset-react": "npm:^7.24.7"
-    "@babel/preset-typescript": "npm:^7.24.7"
-    "@docusaurus/core": "npm:2.4.3"
-    "@docusaurus/module-type-aliases": "npm:2.4.3"
-    "@docusaurus/preset-classic": "npm:2.4.3"
-    "@docusaurus/tsconfig": "npm:^3.0.0"
-    "@docusaurus/types": "npm:2.4.3"
-    "@emotion/react": "npm:^11.11.4"
-    "@emotion/styled": "npm:^11.11.5"
-    "@mdx-js/react": "npm:^1.6.22"
-    "@mui/material": "npm:^5.15.20"
-    "@swmansion/t-rex-ui": "workspace:*"
-    "@tsconfig/docusaurus": "npm:^2.0.3"
-    "@types/node": "npm:^20.12.7"
-    "@types/react": "npm:^18.2.79"
-    "@types/react-dom": "npm:^18.2.25"
-    babel-loader: "npm:^9.1.3"
-    clsx: "npm:^1.2.1"
-    prism-react-renderer: "npm:^1.3.5"
-    react: "npm:^17.0.2"
-    react-dom: "npm:^17.0.2"
-    typescript: "npm:^5.4.5"
-  languageName: unknown
-  linkType: soft
 
 "text-table@npm:^0.2.0":
   version: 0.2.0

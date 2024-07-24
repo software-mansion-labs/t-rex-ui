@@ -10,7 +10,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "husky && yarn workspace @swmansion/t-rex-ui build && yarn workspace test-2 build",
+    "build": "husky && yarn workspace @swmansion/t-rex-ui build && yarn workspace example-docs build",
     "lint": "yarn workspaces foreach -A -p run lint",
     "format": "yarn workspaces foreach -A -p run format"
   },
