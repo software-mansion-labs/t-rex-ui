@@ -15,7 +15,8 @@
     "format": "prettier --write --list-different src",
     "prepare": "yarn build",
     "release": "release-it",
-    "test": "npm run build && npm pack && tar -xf swmansion-t-rex-ui-0.0.12.tgz && rm swmansion-t-rex-ui-0.0.12.tgz && rsync -av package ./docs/"
+    "prepare-package": "npm run build && npm pack && tar -xf swmansion-t-rex-ui-0.0.12.tgz && rm swmansion-t-rex-ui-0.0.12.tgz && rsync -av package ./docs/",
+    "watch": "yarn tsc-watch --onSuccess 'yarn prepare-package'"
   },
   "devDependencies": {
     "@docsearch/react": "^3.6.0",
