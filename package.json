@@ -1,7 +1,7 @@
 {
   "name": "t-rex-ui-monorepo",
   "version": "0.0.0",
-  "packageManager": "yarn@4.1.1",
+  "packageManager": "yarn@4.3.1",
   "workspaces": {
     "packages": [
       "packages/t-rex-ui",
@@ -10,7 +10,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "husky && yarn workspaces foreach -A -p run build",
+    "build": "husky && yarn workspace @swmansion/t-rex-ui build && yarn workspace test-2 build",
     "lint": "yarn workspaces foreach -A -p run lint",
     "format": "yarn workspaces foreach -A -p run format"
   },

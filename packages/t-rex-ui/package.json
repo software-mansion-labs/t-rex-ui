@@ -14,7 +14,8 @@
     "preview": "vite preview",
     "format": "prettier --write --list-different src",
     "prepare": "yarn build",
-    "release": "release-it"
+    "release": "release-it",
+    "watch": "yarn tsc-watch --onSuccess \"yarn build\""
   },
   "dependencies": {
     "@docsearch/react": "^3.6.0",
@@ -45,7 +46,10 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "glob": "^10.3.12",
     "prettier": "^3.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "release-it": "^17.2.1",
+    "tsc-watch": "^6.2.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.3",
@@ -64,8 +68,5 @@
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  },
-  "installConfig": {
-    "hoistingLimits": "workspaces"
   }
 }
