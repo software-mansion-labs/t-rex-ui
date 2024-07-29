@@ -1,22 +1,27 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
-# Lorem ipsum dolor
+# Lorem
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur. Nunc egestas sed quam at egestas. Donec eleifend, orci aliquet finibus scelerisque, erat turpis vulputate dui, ac posuere dui dolor sit amet leo. Fusce ut finibus dui. Pellentesque lacinia ultrices ex, sed pulvinar velit lobortis vitae. Curabitur dapibus erat massa, eget rhoncus urna ultrices in. Phasellus commodo dictum leo.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia lacus a sem consectetur condimentum. Integer ornare vehicula consectetur.
 
-## Ut aliquam pellentesque dolor auctor aliquet. Nulla auctor augue nec fringilla aliquam.
-
-:::tip
+:::danger
 Nunc egestas sed quam at egestas. Donec eleifend, orci aliquet finibus scelerisque, erat turpis vulputate dui, ac posuere dui dolor sit amet leo. Fusce ut finibus dui.
 
 :::
 Pellentesque lacinia ultrices ex, sed pulvinar velit lobortis vitae. Curabitur dapibus erat massa, eget rhoncus urna ultrices in. Phasellus commodo dictum leo.
 
+## Ut aliquam pellentesque dolor auctor aliquet. Nulla auctor augue nec fringilla aliquam.
+
 Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse molestie tellus ac nulla finibus vulputate in at lorem. Mauris consequat iaculis sem, id egestas odio tincidunt ultricies.
 
-Etiam magna leo, condimentum sed bibendum et, fringilla id lectus. Aliquam sed dolor sollicitudin, ullamcorper purus id, malesuada felis. In et lacus condimentum sem dapibus euismod non id nulla. Maecenas eu leo sed nibh fermentum auctor. Sed vel orci ac lacus tempor suscipit.
+```
+Etiam magna leo, condimentum sed bibendum et, fringilla id lectus.
+Aliquam sed dolor sollicitudin, ullamcorper purus id, malesuada felis.
+ In et lacus condimentum sem dapibus euismod non id nulla. Maecenas eu leo sed nibh fermentum auctor. Sed vel orci ac lacus tempor suscipit.
+
+```
 
 ## Suspendisse eu tortor lorem. Sed dictum neque non libero vulputate efficitur.
 
