@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import { HomepageButton } from '@swmansion/t-rex-ui/dist/components/HomepageButton';
 
 type FeatureItem = {
   title: string;
@@ -41,7 +42,7 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -58,12 +59,16 @@ function Feature({title, Svg, description}: FeatureItem) {
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
-      <div className="container">
+      <div className={styles.container}>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>
+        <HomepageButton
+          title={'Go to documentation'}
+          href={'/docs/fundamentals/lorem'}
+        />
       </div>
     </section>
   );
