@@ -106,8 +106,8 @@ const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
       {titleImages && !isLanding
         ? getWrappedImage(titleImage.docs, titleClassName)
         : heroImages?.title
-          ? getWrappedImage(titleImage.hero, titleClassName)
-          : getWrappedImage(titleImage.docs, titleClassName)}
+        ? getWrappedImage(titleImage.hero, titleClassName)
+        : getWrappedImage(titleImage.docs, titleClassName)}
     </Link>
   );
 };

@@ -1,40 +1,43 @@
-import { useState, useRef, useEffect, ReactNode, MouseEvent } from 'react'
-import clsx from 'clsx'
-import { NavbarNavLinkProps } from './NavbarNavLink'
+import { useState, useRef, useEffect, ReactNode, MouseEvent } from 'react';
+import clsx from 'clsx';
+import { NavbarNavLinkProps } from './NavbarNavLink';
 
 import {
   isRegexpStringMatch,
   useCollapsible,
   Collapsible,
-} from '@docusaurus/theme-common'
-import { isSamePath, useLocalPathname } from '@docusaurus/theme-common/internal'
-import NavbarNavLink from './NavbarNavLink'
-import NavbarItem from './index'
+} from '@docusaurus/theme-common';
+import {
+  isSamePath,
+  useLocalPathname,
+} from '@docusaurus/theme-common/internal';
+import NavbarNavLink from './NavbarNavLink';
+import NavbarItem from './index';
 
 function isItemActive(item: NavbarNavLinkProps, localPathname: string) {
   if (isSamePath(item.to, localPathname)) {
-    return true
+    return true;
   }
   if (isRegexpStringMatch(item.activeBaseRegex, localPathname)) {
-    return true
+    return true;
   }
   if (item.activeBasePath && localPathname.startsWith(item.activeBasePath)) {
-    return true
+    return true;
   }
-  return false
+  return false;
 }
 function containsActiveItems(
   items: NavbarNavLinkProps[],
   localPathname: string
 ) {
-  return items.some((item) => isItemActive(item, localPathname))
+  return items.some((item) => isItemActive(item, localPathname));
 }
 
 export interface DropdownNavbarItemProps extends NavbarNavLinkProps {
-  items?: NavbarNavLinkProps[]
-  position?: any
-  children?: ReactNode
-  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void
+  items?: NavbarNavLinkProps[];
+  position?: any;
+  children?: ReactNode;
+  onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 function DropdownNavbarItemDesktop({
@@ -44,61 +47,59 @@ function DropdownNavbarItemDesktop({
   onClick,
   ...props
 }: DropdownNavbarItemProps) {
-  const dropdownRef = useRef<HTMLDivElement>(null)
-  const [showDropdown, setShowDropdown] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [showDropdown, setShowDropdown] = useState(false);
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (!dropdownRef.current || dropdownRef.current.contains(event.target)) {
-        return
+        return;
       }
-      setShowDropdown(false)
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('touchstart', handleClickOutside)
-    document.addEventListener('focusin', handleClickOutside)
+      setShowDropdown(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('focusin', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('touchstart', handleClickOutside)
-      document.removeEventListener('focusin', handleClickOutside)
-    }
-  }, [dropdownRef])
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('focusin', handleClickOutside);
+    };
+  }, [dropdownRef]);
   return (
     <div
       ref={dropdownRef}
       className={clsx('navbar__item', 'dropdown', 'dropdown--hoverable', {
         'dropdown--right': position === 'right',
         'dropdown--show': showDropdown,
-      })}
-    >
+      })}>
       <NavbarNavLink
-        aria-haspopup='true'
+        aria-haspopup="true"
         aria-expanded={showDropdown}
-        role='button'
+        role="button"
         href={props.to ? undefined : '#'}
         className={clsx('navbar__link', className)}
         {...props}
         onClick={props.to ? undefined : (e) => e.preventDefault()}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            e.preventDefault()
-            setShowDropdown(!showDropdown)
+            e.preventDefault();
+            setShowDropdown(!showDropdown);
           }
-        }}
-      >
+        }}>
         {props.children ?? props.label}
       </NavbarNavLink>
-      <ul className='dropdown__menu'>
+      <ul className="dropdown__menu">
         {items!.map((childItemProps, i) => (
           <NavbarItem
             isDropdownItem
-            activeClassName='dropdown__link--active'
+            activeClassName="dropdown__link--active"
             {...childItemProps}
             key={i}
           />
         ))}
       </ul>
     </div>
-  )
+  );
 }
 function DropdownNavbarItemMobile({
   items,
@@ -107,53 +108,51 @@ function DropdownNavbarItemMobile({
   onClick,
   ...props
 }: DropdownNavbarItemProps) {
-  const localPathname = useLocalPathname()
-  const containsActive = containsActiveItems(items!, localPathname)
+  const localPathname = useLocalPathname();
+  const containsActive = containsActiveItems(items!, localPathname);
   const { collapsed, toggleCollapsed, setCollapsed } = useCollapsible({
     initialState: () => !containsActive,
-  })
+  });
   // Expand/collapse if any item active after a navigation
   useEffect(() => {
     if (containsActive) {
-      setCollapsed(!containsActive)
+      setCollapsed(!containsActive);
     }
-  }, [localPathname, containsActive, setCollapsed])
+  }, [localPathname, containsActive, setCollapsed]);
   return (
     <li
       className={clsx('menu__list-item', {
         'menu__list-item--collapsed': collapsed,
-      })}
-    >
+      })}>
       <NavbarNavLink
-        role='button'
+        role="button"
         className={clsx(
           'menu__link menu__link--sublist menu__link--sublist-caret',
           className
         )}
         {...props}
         onClick={(e) => {
-          e.preventDefault()
-          toggleCollapsed()
-        }}
-      >
+          e.preventDefault();
+          toggleCollapsed();
+        }}>
         {props.children ?? props.label}
       </NavbarNavLink>
-      <Collapsible lazy as='ul' className='menu__list' collapsed={collapsed}>
+      <Collapsible lazy as="ul" className="menu__list" collapsed={collapsed}>
         {items!.map((childItemProps, i) => (
           <NavbarItem
             mobile
             isDropdownItem
             onClick={onClick}
-            activeClassName='menu__link--active'
+            activeClassName="menu__link--active"
             {...childItemProps}
             key={i}
           />
         ))}
       </Collapsible>
     </li>
-  )
+  );
 }
 export default function DropdownNavbarItem({ mobile = false, ...props }) {
-  const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop
-  return <Comp {...props} />
+  const Comp = mobile ? DropdownNavbarItemMobile : DropdownNavbarItemDesktop;
+  return <Comp {...props} />;
 }

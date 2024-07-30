@@ -1,11 +1,11 @@
-import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client'
-import { useLayoutDoc } from '@docusaurus/theme-common/internal'
-import DefaultNavbarItem from './DefaultNavbarItem'
+import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
+import { useLayoutDoc } from '@docusaurus/theme-common/internal';
+import DefaultNavbarItem from './DefaultNavbarItem';
 
 export interface DocNavbarItemProps {
-  docId: string
-  docsPluginId?: string
-  label: string
+  docId: string;
+  docsPluginId?: string;
+  label: string;
 }
 
 export default function DocNavbarItem({
@@ -14,11 +14,11 @@ export default function DocNavbarItem({
   docsPluginId,
   ...props
 }: DocNavbarItemProps) {
-  const { activeDoc } = useActiveDocContext(docsPluginId)
-  const doc = useLayoutDoc(docId, docsPluginId)
+  const { activeDoc } = useActiveDocContext(docsPluginId);
+  const doc = useLayoutDoc(docId, docsPluginId);
   // Draft items are not displayed in the navbar.
   if (doc === null) {
-    return null
+    return null;
   }
   return (
     <DefaultNavbarItem
@@ -31,5 +31,5 @@ export default function DocNavbarItem({
       label={staticLabel ?? doc.id}
       to={doc.path}
     />
-  )
+  );
 }

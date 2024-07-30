@@ -1,3 +1,3 @@
-import { PaginatorNavLink } from "@swmansion/t-rex-ui";
+import { PaginatorNavLink } from '@swmansion/t-rex-ui';
 
-export default PaginatorNavLink
+export default PaginatorNavLink;

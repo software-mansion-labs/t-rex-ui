@@ -2,25 +2,25 @@ import {
   useVersions,
   useActiveDocContext,
   type GlobalVersion,
-} from '@docusaurus/plugin-content-docs/client'
-import { useDocsPreferredVersion } from '@docusaurus/theme-common'
-import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal'
-import { translate } from '@docusaurus/Translate'
-import { useLocation } from '@docusaurus/router'
+} from '@docusaurus/plugin-content-docs/client';
+import { useDocsPreferredVersion } from '@docusaurus/theme-common';
+import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
+import { translate } from '@docusaurus/Translate';
+import { useLocation } from '@docusaurus/router';
 
-import DefaultNavbarItem from './DefaultNavbarItem'
-import DropdownNavbarItem from './DropdownNavbarItem'
-import { NavbarNavLinkProps } from './NavbarNavLink'
+import DefaultNavbarItem from './DefaultNavbarItem';
+import DropdownNavbarItem from './DropdownNavbarItem';
+import { NavbarNavLinkProps } from './NavbarNavLink';
 
 const getVersionMainDoc = (version: GlobalVersion) =>
-  version.docs.find((doc) => doc.id === version.mainDocId)
+  version.docs.find((doc) => doc.id === version.mainDocId);
 
 interface DocsVersionDropdownNavbarItemProps {
-  mobile: boolean
-  docsPluginId: string
-  dropdownActiveClassDisabled: boolean
-  dropdownItemsBefore: NavbarNavLinkProps[]
-  dropdownItemsAfter: NavbarNavLinkProps[]
+  mobile: boolean;
+  docsPluginId: string;
+  dropdownActiveClassDisabled: boolean;
+  dropdownItemsBefore: NavbarNavLinkProps[];
+  dropdownItemsAfter: NavbarNavLinkProps[];
 }
 
 export default function DocsVersionDropdownNavbarItem({
@@ -31,26 +31,30 @@ export default function DocsVersionDropdownNavbarItem({
   dropdownItemsAfter,
   ...props
 }: DocsVersionDropdownNavbarItemProps) {
-  const { search, hash } = useLocation()
-  const activeDocContext = useActiveDocContext(docsPluginId)
-  const versions = useVersions(docsPluginId)
-  const { savePreferredVersionName } = useDocsPreferredVersion(docsPluginId)
+  const { search, hash } = useLocation();
+  const activeDocContext = useActiveDocContext(docsPluginId);
+  const versions = useVersions(docsPluginId);
+  const { savePreferredVersionName } = useDocsPreferredVersion(docsPluginId);
   const versionLinks = versions.map((version) => {
     // We try to link to the same doc, in another version
     // When not possible, fallback to the "main doc" of the version
     const versionDoc =
       activeDocContext.alternateDocVersions[version.name] ??
-      getVersionMainDoc(version)
+      getVersionMainDoc(version);
     return {
       label: version.label,
       // preserve ?search#hash suffix on version switches
       to: `${versionDoc.path}${search}${hash}`,
       isActive: () => version === activeDocContext.activeVersion,
       onClick: () => savePreferredVersionName(version.name),
-    }
-  })
-  const items = [...dropdownItemsBefore, ...versionLinks, ...dropdownItemsAfter]
-  const dropdownVersion = useDocsVersionCandidates(docsPluginId)[0]
+    };
+  });
+  const items = [
+    ...dropdownItemsBefore,
+    ...versionLinks,
+    ...dropdownItemsAfter,
+  ];
+  const dropdownVersion = useDocsVersionCandidates(docsPluginId)[0];
   // Mobile dropdown is handled a bit differently
   const dropdownLabel =
     mobile && items.length > 1
@@ -60,11 +64,11 @@ export default function DocsVersionDropdownNavbarItem({
           description:
             'The label for the navbar versions dropdown on mobile view',
         })
-      : dropdownVersion.label
+      : dropdownVersion.label;
   const dropdownTo =
     mobile && items.length > 1
       ? undefined
-      : getVersionMainDoc(dropdownVersion)?.path
+      : getVersionMainDoc(dropdownVersion)?.path;
   // We don't want to render a version dropdown with 0 or 1 item. If we build
   // the site with a single docs version (onlyIncludeVersions: ['1.0.0']),
   // We'd rather render a button instead of a dropdown
@@ -77,7 +81,7 @@ export default function DocsVersionDropdownNavbarItem({
         to={dropdownTo}
         isActive={dropdownActiveClassDisabled ? () => false : undefined}
       />
-    )
+    );
   }
   return (
     <DropdownNavbarItem
@@ -88,5 +92,5 @@ export default function DocsVersionDropdownNavbarItem({
       items={items}
       isActive={dropdownActiveClassDisabled ? () => false : undefined}
     />
-  )
+  );
 }

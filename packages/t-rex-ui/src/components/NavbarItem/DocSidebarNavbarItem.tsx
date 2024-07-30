@@ -1,11 +1,11 @@
-import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client'
-import { useLayoutDocsSidebar } from '@docusaurus/theme-common/internal'
-import DefaultNavbarItem from './DefaultNavbarItem'
+import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
+import { useLayoutDocsSidebar } from '@docusaurus/theme-common/internal';
+import DefaultNavbarItem from './DefaultNavbarItem';
 
 interface DocSidebarNavbarItemProps {
-  sidebarId: string
-  label: string
-  docsPluginId?: string
+  sidebarId: string;
+  label: string;
+  docsPluginId?: string;
 }
 
 export default function DocSidebarNavbarItem({
@@ -14,12 +14,12 @@ export default function DocSidebarNavbarItem({
   docsPluginId,
   ...props
 }: DocSidebarNavbarItemProps) {
-  const { activeDoc } = useActiveDocContext(docsPluginId)
-  const sidebarLink = useLayoutDocsSidebar(sidebarId, docsPluginId).link
+  const { activeDoc } = useActiveDocContext(docsPluginId);
+  const sidebarLink = useLayoutDocsSidebar(sidebarId, docsPluginId).link;
   if (!sidebarLink) {
     throw new Error(
       `DocSidebarNavbarItem: Sidebar with ID "${sidebarId}" doesn't have anything to be linked to.`
-    )
+    );
   }
   return (
     <DefaultNavbarItem
@@ -29,5 +29,5 @@ export default function DocSidebarNavbarItem({
       label={label ?? sidebarLink.label}
       to={sidebarLink.path}
     />
-  )
+  );
 }

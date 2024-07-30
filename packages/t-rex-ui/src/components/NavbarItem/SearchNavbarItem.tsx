@@ -1,19 +1,19 @@
-import SearchBar from '../SearchBar'
-import NavbarSearch from '../Navbar/Search'
+import SearchBar from '../SearchBar';
+import NavbarSearch from '../Navbar/Search';
 
 export default function SearchNavbarItem({
   mobile,
   className,
 }: {
-  mobile: boolean
-  className: string
+  mobile: boolean;
+  className: string;
 }) {
   if (mobile) {
-    return null
+    return null;
   }
   return (
     <NavbarSearch className={className}>
       <SearchBar />
     </NavbarSearch>
-  )
+  );
 }

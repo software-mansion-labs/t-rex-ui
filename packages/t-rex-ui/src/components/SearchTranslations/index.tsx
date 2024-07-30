@@ -1,4 +1,4 @@
-import {translate} from '@docusaurus/Translate';
+import { translate } from '@docusaurus/Translate';
 const translations = {
   button: {
     buttonText: translate({

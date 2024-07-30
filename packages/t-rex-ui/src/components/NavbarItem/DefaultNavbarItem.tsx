@@ -1,10 +1,10 @@
-import clsx from 'clsx'
-import NavbarNavLink from './NavbarNavLink'
+import clsx from 'clsx';
+import NavbarNavLink from './NavbarNavLink';
 
 interface DefaultNavbarItemProps {
-  activeClassName: string
-  className?: string
-  isDropdownItem?: boolean
+  activeClassName: string;
+  className?: string;
+  isDropdownItem?: boolean;
 }
 
 function DefaultNavbarItemDesktop({
@@ -21,11 +21,11 @@ function DefaultNavbarItemDesktop({
       isDropdownLink={isDropdownItem}
       {...props}
     />
-  )
+  );
   if (isDropdownItem) {
-    return <li>{element}</li>
+    return <li>{element}</li>;
   }
-  return element
+  return element;
 }
 function DefaultNavbarItemMobile({
   className,
@@ -33,25 +33,25 @@ function DefaultNavbarItemMobile({
   ...props
 }: DefaultNavbarItemProps) {
   return (
-    <li className='menu__list-item'>
+    <li className="menu__list-item">
       <NavbarNavLink className={clsx('menu__link', className)} {...props} />
     </li>
-  )
+  );
 }
 export default function DefaultNavbarItem({
   mobile = false,
   position, // Need to destructure position from props so that it doesn't get passed on.
   ...props
 }: {
-  isActive?: () => boolean
-  label?: string
-  to?: string
-  exact?: boolean
-  mobile?: boolean
-  position?: string
-  activeClassName?: string
+  isActive?: () => boolean;
+  label?: string;
+  to?: string;
+  exact?: boolean;
+  mobile?: boolean;
+  position?: string;
+  activeClassName?: string;
 }) {
-  const Comp = mobile ? DefaultNavbarItemMobile : DefaultNavbarItemDesktop
+  const Comp = mobile ? DefaultNavbarItemMobile : DefaultNavbarItemDesktop;
   return (
     <Comp
       {...props}
@@ -60,5 +60,5 @@ export default function DefaultNavbarItem({
         (mobile ? 'menu__link--active' : 'navbar__link--active')
       }
     />
-  )
+  );
 }

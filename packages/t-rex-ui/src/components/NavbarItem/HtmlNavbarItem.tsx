@@ -1,10 +1,10 @@
-import clsx from 'clsx'
+import clsx from 'clsx';
 
 interface HtmlNavbarItemProps {
-  value: HTMLElement
-  className: string
-  mobile: boolean
-  isDropdownItem: boolean
+  value: HTMLElement;
+  className: string;
+  mobile: boolean;
+  isDropdownItem: boolean;
 }
 
 export default function HtmlNavbarItem({
@@ -13,7 +13,7 @@ export default function HtmlNavbarItem({
   mobile = false,
   isDropdownItem = false,
 }: HtmlNavbarItemProps) {
-  const Comp = isDropdownItem ? 'li' : 'div'
+  const Comp = isDropdownItem ? 'li' : 'div';
   return (
     <Comp
       className={clsx(
@@ -25,5 +25,5 @@ export default function HtmlNavbarItem({
       )}
       dangerouslySetInnerHTML={{ __html: value }}
     />
-  )
+  );
 }

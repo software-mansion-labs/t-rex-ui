@@ -1,9 +1,9 @@
-import clsx from 'clsx'
-import { useThemeConfig } from '@docusaurus/theme-common'
-import styles from './styles.module.css'
+import clsx from 'clsx';
+import { useThemeConfig } from '@docusaurus/theme-common';
+import styles from './styles.module.css';
 export default function AnnouncementBarContent(props: { className?: string }) {
-  const { announcementBar } = useThemeConfig()
-  const { content } = announcementBar as any
+  const { announcementBar } = useThemeConfig();
+  const { content } = announcementBar as any;
   return (
     <div
       {...props}
@@ -12,5 +12,5 @@ export default function AnnouncementBarContent(props: { className?: string }) {
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: content }}
     />
-  )
+  );
 }

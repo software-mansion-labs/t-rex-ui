@@ -1,6 +1,6 @@
 import { IconProps } from '../Close';
 
-function ArrowRight(props:IconProps) {
+function ArrowRight(props: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,14 +8,12 @@ function ArrowRight(props:IconProps) {
       height="10"
       fill="none"
       viewBox="0 0 13 10"
-      {...props}
-    >
+      {...props}>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
-        d="M11.687 5h-10M7.687 9l4-4-4-4"
-      ></path>
+        d="M11.687 5h-10M7.687 9l4-4-4-4"></path>
     </svg>
   );
 }

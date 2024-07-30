@@ -1,15 +1,15 @@
-import DefaultNavbarItem from './DefaultNavbarItem'
-import DropdownNavbarItem from './DropdownNavbarItem'
-import LocaleDropdownNavbarItem from './LocaleDropdownNavbarItem'
-import SearchNavbarItem from './SearchNavbarItem'
-import HtmlNavbarItem from './HtmlNavbarItem'
-import DocNavbarItem from './DocNavbarItem'
-import DocSidebarNavbarItem from './DocSidebarNavbarItem'
-import DocsVersionNavbarItem from './DocsVersionNavbarItem'
-import DocsVersionDropdownNavbarItem from './DocsVersionDropdownNavbarItem'
+import DefaultNavbarItem from './DefaultNavbarItem';
+import DropdownNavbarItem from './DropdownNavbarItem';
+import LocaleDropdownNavbarItem from './LocaleDropdownNavbarItem';
+import SearchNavbarItem from './SearchNavbarItem';
+import HtmlNavbarItem from './HtmlNavbarItem';
+import DocNavbarItem from './DocNavbarItem';
+import DocSidebarNavbarItem from './DocSidebarNavbarItem';
+import DocsVersionNavbarItem from './DocsVersionNavbarItem';
+import DocsVersionDropdownNavbarItem from './DocsVersionDropdownNavbarItem';
 
 interface ComponentTypes {
-  [key: string]: any
+  [key: string]: any;
 }
 
 const ComponentTypes: ComponentTypes = {
@@ -22,5 +22,5 @@ const ComponentTypes: ComponentTypes = {
   docSidebar: DocSidebarNavbarItem,
   docsVersion: DocsVersionNavbarItem,
   docsVersionDropdown: DocsVersionDropdownNavbarItem,
-}
-export default ComponentTypes
+};
+export default ComponentTypes;
