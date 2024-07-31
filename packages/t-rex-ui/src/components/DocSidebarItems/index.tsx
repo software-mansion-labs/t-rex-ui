@@ -22,7 +22,6 @@ const DocSidebarItems = memo(function DocSidebarItems({
   newItems,
   ...props
 }: DocSidebarItemsProps) {
-  console.log('doc sidebar items', deprecatedItems);
   return (
     <DocSidebarItemsExpandedStateProvider>
       {items.map((item: any, index: any) => (

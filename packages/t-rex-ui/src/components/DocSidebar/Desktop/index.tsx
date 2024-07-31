@@ -18,7 +18,6 @@ function DocSidebarDesktop({
   deprecatedItems,
   newItems,
 }: DocSidebarProps) {
-  console.log('doc sidebar desktop', deprecatedItems);
   const {
     navbar: { hideOnScroll },
     docs: {

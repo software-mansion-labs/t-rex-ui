@@ -41,7 +41,6 @@ export default function DocSidebarDesktopContent({
   deprecatedItems,
 }: DocSidebarDesktopContentProps) {
   const showAnnouncementBar = useShowAnnouncementBar();
-  console.log('doc sidebar desktop content', deprecatedItems);
   return (
     <nav
       aria-label={translate({
