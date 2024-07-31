@@ -17,6 +17,7 @@ export interface DocSidebarDesktopContentProps {
   sidebar: PropSidebarItem[];
   experimentalItems?: string[];
   newItems?: string[];
+  deprecatedItems?: string[];
 }
 function useShowAnnouncementBar() {
   const { isActive } = useAnnouncementBar();
@@ -37,8 +38,10 @@ export default function DocSidebarDesktopContent({
   className,
   experimentalItems,
   newItems,
+  deprecatedItems,
 }: DocSidebarDesktopContentProps) {
   const showAnnouncementBar = useShowAnnouncementBar();
+  console.log('doc sidebar desktop content', deprecatedItems);
   return (
     <nav
       aria-label={translate({
@@ -56,6 +59,7 @@ export default function DocSidebarDesktopContent({
         <DocSidebarItems
           newItems={newItems}
           experimentalItems={experimentalItems}
+          deprecatedItems={deprecatedItems}
           items={sidebar}
           activePath={path}
           level={1}

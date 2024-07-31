@@ -12,6 +12,7 @@ export interface DocSidebarProps {
   titleImages?: { light: string; dark: string };
   experimentalItems?: string[];
   newItems?: string[];
+  deprecatedItems?: string[];
 }
 
 export function DocSidebar(props: DocSidebarProps) {
@@ -21,6 +22,8 @@ export function DocSidebar(props: DocSidebarProps) {
     windowSize === 'desktop' || windowSize === 'ssr';
   // Mobile sidebar not visible on hydration: can avoid SSR rendering
   const shouldRenderSidebarMobile = windowSize === 'mobile';
+
+  console.log('doc sidebar', props.deprecatedItems);
   return (
     <>
       {shouldRenderSidebarDesktop && (

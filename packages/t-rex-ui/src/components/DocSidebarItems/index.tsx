@@ -9,6 +9,7 @@ interface DocSidebarItemsProps
   extends Omit<DocSidebarItemProps, 'item' | 'index'> {
   experimentalItems?: string[];
   newItems?: string[];
+  deprecatedItems?: string[];
   items: any;
 }
 
@@ -17,9 +18,11 @@ interface DocSidebarItemsProps
 const DocSidebarItems = memo(function DocSidebarItems({
   items,
   experimentalItems,
+  deprecatedItems,
   newItems,
   ...props
 }: DocSidebarItemsProps) {
+  console.log('doc sidebar items', deprecatedItems);
   return (
     <DocSidebarItemsExpandedStateProvider>
       {items.map((item: any, index: any) => (
@@ -27,6 +30,7 @@ const DocSidebarItems = memo(function DocSidebarItems({
           <DocSidebarItem
             newItems={newItems}
             experimentalItems={experimentalItems}
+            deprecatedItems={deprecatedItems}
             item={item}
             index={index}
             {...props}
@@ -36,6 +40,9 @@ const DocSidebarItems = memo(function DocSidebarItems({
           )}
           {newItems && newItems.includes(item.docId!) && (
             <SidebarLabel key={item.docId} type="new" />
+          )}
+          {deprecatedItems && deprecatedItems.includes(item.docId!) && (
+            <SidebarLabel key={item.docId} type="deprecated" />
           )}
         </div>
       ))}

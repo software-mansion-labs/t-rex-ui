@@ -15,8 +15,10 @@ function DocSidebarDesktop({
   titleImages,
   isHidden,
   experimentalItems,
+  deprecatedItems,
   newItems,
 }: DocSidebarProps) {
+  console.log('doc sidebar desktop', deprecatedItems);
   const {
     navbar: { hideOnScroll },
     docs: {
@@ -41,6 +43,7 @@ function DocSidebarDesktop({
       <Content
         newItems={newItems}
         experimentalItems={experimentalItems}
+        deprecatedItems={deprecatedItems}
         path={path}
         sidebar={sidebar}
       />

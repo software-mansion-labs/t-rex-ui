@@ -8,5 +8,17 @@ export default function DocSidebarWrapper(props) {
     title: useBaseUrl('/img/logo.svg'),
   };
 
-  return <DocSidebar heroImages={heroImages} {...props} />;
+  const newItems = ['fundamentals/lorem'];
+  const experimentalItems = ['fundamentals/lorem-ipsum'];
+  const deprecatedItems = ['fundamentals/lorem-ipsum-dolor'];
+
+  return (
+    <DocSidebar
+      newItems={newItems}
+      experimentalItems={experimentalItems}
+      deprecatedItems={deprecatedItems}
+      heroImages={heroImages}
+      {...props}
+    />
+  );
 }

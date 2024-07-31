@@ -12,6 +12,7 @@ export interface DocSidebarItemProps {
   index: number;
   newItems?: string[];
   experimentalItems?: string[];
+  deprecatedItems?: string[];
 }
 
 export function DocSidebarItem({ item, ...props }: DocSidebarItemProps) {
@@ -21,6 +22,7 @@ export function DocSidebarItem({ item, ...props }: DocSidebarItemProps) {
         <DocSidebarItemCategory
           newItems={props.newItems}
           experimentalItems={props.experimentalItems}
+          deprecatedItems={props.deprecatedItems}
           item={item}
           {...props}
         />
