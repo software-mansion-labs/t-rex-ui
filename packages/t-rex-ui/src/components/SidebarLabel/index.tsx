@@ -1,15 +1,19 @@
 import styles from './styles.module.css';
+import clsx from 'clsx';
 
 interface Props {
-  type: 'new' | 'experimental';
+  type: 'new' | 'experimental' | 'deprecated';
 }
 
 export default function SidebarLabel({ type }: Props) {
   return (
     <div
-      className={`${styles.badge} ${
-        type === 'new' ? styles.new : styles.experimental
-      }`}>
+      className={clsx(
+        styles.badge,
+        type === 'new' && styles.new,
+        type === 'experimental' && styles.experimental,
+        type === 'deprecated' && styles.deprecated
+      )}>
       {type}
     </div>
   );

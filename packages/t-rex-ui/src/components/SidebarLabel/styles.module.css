@@ -21,3 +21,8 @@
   color: var(--swm-sidebar-label-text-experimental);
   background-color: var(--swm-sidebar-label-background-experimental);
 }
+
+.deprecated {
+  color: var(--swm-sidebar-label-text-deprecated);
+  background-color: var(--swm-sidebar-label-background-deprecated);
+}

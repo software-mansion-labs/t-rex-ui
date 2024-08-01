@@ -15,6 +15,7 @@ function DocSidebarDesktop({
   titleImages,
   isHidden,
   experimentalItems,
+  deprecatedItems,
   newItems,
 }: DocSidebarProps) {
   const {
@@ -41,6 +42,7 @@ function DocSidebarDesktop({
       <Content
         newItems={newItems}
         experimentalItems={experimentalItems}
+        deprecatedItems={deprecatedItems}
         path={path}
         sidebar={sidebar}
       />

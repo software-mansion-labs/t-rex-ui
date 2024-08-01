@@ -175,7 +175,9 @@ export default function DocSidebarItemCategory({
           }
           aria-current={isCurrentPage ? 'page' : undefined}
           aria-expanded={collapsible ? !collapsed : undefined}
-          href={collapsible ? hrefWithSSRFallback ?? '#' : hrefWithSSRFallback}
+          href={
+            collapsible ? (hrefWithSSRFallback ?? '#') : hrefWithSSRFallback
+          }
           {...props}>
           {label}
         </Link>
@@ -195,6 +197,7 @@ export default function DocSidebarItemCategory({
           items={items as unknown as PropSidebarItemLink[]}
           newItems={props.newItems}
           experimentalItems={props.experimentalItems}
+          deprecatedItems={props.deprecatedItems}
           tabIndex={collapsed ? -1 : 0}
           onItemClick={onItemClick}
           activePath={activePath}

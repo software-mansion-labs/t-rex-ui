@@ -12,6 +12,7 @@ export interface DocSidebarProps {
   titleImages?: { light: string; dark: string };
   experimentalItems?: string[];
   newItems?: string[];
+  deprecatedItems?: string[];
 }
 
 export function DocSidebar(props: DocSidebarProps) {

@@ -10,6 +10,7 @@
   },
   "private": true,
   "scripts": {
+    "start": "yarn workspace example-docs start & yarn workspace @swmansion/t-rex-ui watch",
     "build": "husky && yarn workspace @swmansion/t-rex-ui build && yarn workspace example-docs build",
     "lint": "yarn workspaces foreach -A -p run lint",
     "format": "yarn workspaces foreach -A -p run format"
