@@ -1,0 +1,14 @@
+{
+  "version-1.x/docs": [
+    {
+      "type": "category",
+      "label": "Overview",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-1.x/lorem"
+        }
+      ]
+    }
+  ]
+}

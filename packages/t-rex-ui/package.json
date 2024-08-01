@@ -1,0 +1,72 @@
+{
+  "name": "@swmansion/t-rex-ui",
+  "version": "0.0.13",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --p ./tsconfig-build.json && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "format": "prettier --write --list-different src",
+    "prepare": "yarn build",
+    "release": "release-it",
+    "watch": "yarn tsc-watch --onSuccess \"yarn build\""
+  },
+  "dependencies": {
+    "@docsearch/react": "^3.6.0",
+    "@docusaurus/core": "^2.4.3",
+    "@docusaurus/module-type-aliases": "^2.4.3",
+    "@docusaurus/plugin-content-docs": "^2.4.3",
+    "@docusaurus/theme-classic": "^2.4.3",
+    "@docusaurus/theme-common": "^2.4.3",
+    "@docusaurus/theme-search-algolia": "^2.4.3",
+    "algoliasearch": "^4.23.3",
+    "algoliasearch-helper": "^3.19.0"
+  },
+  "devDependencies": {
+    "@docusaurus/tsconfig": "^3.2.1",
+    "@docusaurus/types": "^2.4.3",
+    "@mui/material": "^5.15.16",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@tsconfig/docusaurus": "^2.0.3",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "clsx": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "glob": "^10.3.12",
+    "prettier": "^3.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "release-it": "^17.2.1",
+    "tsc-watch": "^6.2.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.8.3",
+    "vite-plugin-lib-inject-css": "^2.0.1"
+  },
+  "peerDependencies": {
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "@mui/material": ">=5.0.0",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
