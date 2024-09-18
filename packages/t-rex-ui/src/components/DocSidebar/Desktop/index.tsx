@@ -16,6 +16,7 @@ function DocSidebarDesktop({
   isHidden,
   experimentalItems,
   deprecatedItems,
+  unreleasedItems,
   newItems,
 }: DocSidebarProps) {
   const {
@@ -43,6 +44,7 @@ function DocSidebarDesktop({
         newItems={newItems}
         experimentalItems={experimentalItems}
         deprecatedItems={deprecatedItems}
+        unreleasedItems={unreleasedItems}
         path={path}
         sidebar={sidebar}
       />

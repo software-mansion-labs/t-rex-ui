@@ -11,12 +11,14 @@ export default function DocSidebarWrapper(props) {
   const newItems = ['fundamentals/lorem'];
   const experimentalItems = ['fundamentals/lorem-ipsum'];
   const deprecatedItems = ['fundamentals/lorem-ipsum-dolor'];
+  const unreleasedItems = ['tutorial-extras/lorem'];
 
   return (
     <DocSidebar
       newItems={newItems}
       experimentalItems={experimentalItems}
       deprecatedItems={deprecatedItems}
+      unreleasedItems={unreleasedItems}
       heroImages={heroImages}
       {...props}
     />

@@ -13,6 +13,7 @@ export interface DocSidebarProps {
   experimentalItems?: string[];
   newItems?: string[];
   deprecatedItems?: string[];
+  unreleasedItems?: string[];
 }
 
 export function DocSidebar(props: DocSidebarProps) {
