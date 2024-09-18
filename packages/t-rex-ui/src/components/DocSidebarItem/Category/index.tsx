@@ -198,6 +198,7 @@ export default function DocSidebarItemCategory({
           newItems={props.newItems}
           experimentalItems={props.experimentalItems}
           deprecatedItems={props.deprecatedItems}
+          unreleasedItems={props.unreleasedItems}
           tabIndex={collapsed ? -1 : 0}
           onItemClick={onItemClick}
           activePath={activePath}

@@ -10,6 +10,7 @@ interface DocSidebarItemsProps
   experimentalItems?: string[];
   newItems?: string[];
   deprecatedItems?: string[];
+  unreleasedItems?: string[];
   items: any;
 }
 
@@ -20,6 +21,7 @@ const DocSidebarItems = memo(function DocSidebarItems({
   experimentalItems,
   deprecatedItems,
   newItems,
+  unreleasedItems,
   ...props
 }: DocSidebarItemsProps) {
   return (
@@ -30,6 +32,7 @@ const DocSidebarItems = memo(function DocSidebarItems({
             newItems={newItems}
             experimentalItems={experimentalItems}
             deprecatedItems={deprecatedItems}
+            unreleasedItems={unreleasedItems}
             item={item}
             index={index}
             {...props}
@@ -42,6 +45,9 @@ const DocSidebarItems = memo(function DocSidebarItems({
           )}
           {deprecatedItems && deprecatedItems.includes(item.docId!) && (
             <SidebarLabel key={item.docId} type="deprecated" />
+          )}
+          {unreleasedItems && unreleasedItems.includes(item.docId!) && (
+            <SidebarLabel key={item.docId} type="unreleased" />
           )}
         </div>
       ))}

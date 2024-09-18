@@ -18,6 +18,7 @@ export interface DocSidebarDesktopContentProps {
   experimentalItems?: string[];
   newItems?: string[];
   deprecatedItems?: string[];
+  unreleasedItems?: string[];
 }
 function useShowAnnouncementBar() {
   const { isActive } = useAnnouncementBar();
@@ -39,6 +40,7 @@ export default function DocSidebarDesktopContent({
   experimentalItems,
   newItems,
   deprecatedItems,
+  unreleasedItems,
 }: DocSidebarDesktopContentProps) {
   const showAnnouncementBar = useShowAnnouncementBar();
   return (
@@ -59,6 +61,7 @@ export default function DocSidebarDesktopContent({
           newItems={newItems}
           experimentalItems={experimentalItems}
           deprecatedItems={deprecatedItems}
+          unreleasedItems={unreleasedItems}
           items={sidebar}
           activePath={path}
           level={1}

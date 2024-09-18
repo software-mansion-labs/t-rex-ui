@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 import clsx from 'clsx';
 
 interface Props {
-  type: 'new' | 'experimental' | 'deprecated';
+  type: 'new' | 'experimental' | 'deprecated' | 'unreleased';
 }
 
 export default function SidebarLabel({ type }: Props) {
@@ -12,7 +12,8 @@ export default function SidebarLabel({ type }: Props) {
         styles.badge,
         type === 'new' && styles.new,
         type === 'experimental' && styles.experimental,
-        type === 'deprecated' && styles.deprecated
+        type === 'deprecated' && styles.deprecated,
+        type === 'unreleased' && styles.unreleased
       )}>
       {type}
     </div>
