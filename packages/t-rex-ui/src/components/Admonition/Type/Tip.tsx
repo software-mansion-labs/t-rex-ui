@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Translate from '@docusaurus/Translate';
 import AdmonitionLayout from '../Layout';
 import AdmonitionIcon from '../Icon';
+import { AdmonitionTypeProps } from '../Types';
 
 const infimaClassName = 'alert alert--success';
 
@@ -15,7 +16,7 @@ const defaultProps = {
     </Translate>
   ),
 };
-export default function AdmonitionTypeTip(props: any) {
+export default function AdmonitionTypeTip(props: AdmonitionTypeProps) {
   return (
     <AdmonitionLayout
       {...defaultProps}

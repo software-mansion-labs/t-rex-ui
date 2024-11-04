@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import styles from '../styles.module.css';
 import { AdmonitionType } from '../Types';
+import { ReactNode } from 'react';
 
 function AdmonitionContainer({
   type,
@@ -24,7 +25,7 @@ function AdmonitionContainer({
     </div>
   );
 }
-function AdmonitionHeading({ icon, title }: { icon: any; title: string }) {
+function AdmonitionHeading({ icon, title }: { icon: any; title: ReactNode }) {
   return (
     <div className={styles.admonitionHeading}>
       <span className={styles.admonitionIcon}>{icon}</span>
@@ -38,10 +39,10 @@ function AdmonitionContent({ children }: { children: React.ReactNode }) {
   ) : null;
 }
 
-interface AdmonitionLayoutProps {
+export interface AdmonitionLayoutProps {
   type: AdmonitionType;
   icon: any;
-  title: string;
+  title: ReactNode;
   children: React.ReactNode;
   className?: string;
 }

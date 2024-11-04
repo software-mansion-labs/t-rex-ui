@@ -7,6 +7,12 @@ import AdmonitionTypeCaution from './Type/Caution';
 
 export type AdmonitionType = keyof typeof admonitionTypes;
 
+export interface AdmonitionTypeProps {
+  type: AdmonitionType;
+  className?: string;
+  children: React.ReactNode;
+}
+
 const admonitionTypes = {
   note: AdmonitionTypeNote,
   tip: AdmonitionTypeTip,

@@ -11,6 +11,7 @@ import {
   useDocsPreferredVersion,
   useDocsVersion,
 } from '@docusaurus/theme-common/internal';
+import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import styles from '../Admonition/styles.module.css';
 
 function UnreleasedVersionLabel({
@@ -18,7 +19,7 @@ function UnreleasedVersionLabel({
   versionMetadata,
 }: {
   siteTitle: string;
-  versionMetadata: any;
+  versionMetadata: PropVersionMetadata;
 }) {
   return (
     <Translate
@@ -39,7 +40,7 @@ function UnmaintainedVersionLabel({
   versionMetadata,
 }: {
   siteTitle: string;
-  versionMetadata: any;
+  versionMetadata: PropVersionMetadata;
 }) {
   return (
     <Translate
@@ -59,7 +60,10 @@ const BannerLabelComponents = {
   unreleased: UnreleasedVersionLabel,
   unmaintained: UnmaintainedVersionLabel,
 };
-function BannerLabel(props: any) {
+function BannerLabel(props: {
+  versionMetadata: PropVersionMetadata;
+  siteTitle: string;
+}) {
   const BannerLabelComponent =
     BannerLabelComponents[
       props.versionMetadata.banner as 'unreleased' | 'unmaintained'
@@ -104,7 +108,7 @@ function DocVersionBannerEnabled({
   versionMetadata,
 }: {
   className: string;
-  versionMetadata: any;
+  versionMetadata: PropVersionMetadata;
 }) {
   const {
     siteConfig: { title: siteTitle },
