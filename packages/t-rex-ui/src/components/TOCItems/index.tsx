@@ -4,8 +4,7 @@ import {
   useTOCHighlight,
   useFilteredAndTreeifiedTOC,
 } from '@docusaurus/theme-common/internal';
-import { TOCItemTree } from './Tree';
-import { type TOCProp } from './Tree';
+import { TOCItemTree, type TOCProp } from './Tree';
 import type { TOCItem } from '@docusaurus/mdx-loader';
 
 import {
