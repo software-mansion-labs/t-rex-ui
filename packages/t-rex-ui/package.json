@@ -25,9 +25,9 @@
   "devDependencies": {
     "@docusaurus/tsconfig": "^3.2.1",
     "@docusaurus/types": "^3.0.0",
-    "@mui/material": "^5.15.16",
     "@mdx-js/react": "^3.0.0",
-    "@rollup/plugin-commonjs": "^28.0.1",
+    "@mui/material": "^5.15.16",
+    "@rollup/plugin-commonjs": "27",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
