@@ -2,10 +2,10 @@ import {
   useLockBodyScroll,
   useNavbarMobileSidebar,
 } from '@docusaurus/theme-common/internal';
-import NavbarMobileSidebarLayout from '../MobileSidebar/Layout';
-import NavbarMobileSidebarHeader from '../MobileSidebar/Header';
-import NavbarMobileSidebarPrimaryMenu from '../MobileSidebar/PrimaryMenu';
-import NavbarMobileSidebarSecondaryMenu from '../MobileSidebar/SecondaryMenu';
+import NavbarMobileSidebarLayout from './Layout';
+import NavbarMobileSidebarHeader from './Header';
+import NavbarMobileSidebarPrimaryMenu from './PrimaryMenu';
+import NavbarMobileSidebarSecondaryMenu from './SecondaryMenu';
 
 export default function NavbarMobileSidebar({
   isThemeSwitcherShown,

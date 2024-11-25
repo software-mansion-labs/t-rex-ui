@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import useIsBrowser from '@docusaurus/useIsBrowser';
-import { useColorMode } from '@docusaurus/theme-common';
+import { ThemedComponent } from '@docusaurus/theme-common';
 import styles from './styles.module.css';
 
 export interface ThemedImageProps {
@@ -16,33 +15,19 @@ export interface ThemedImageProps {
 }
 
 export function ThemedImage(props: ThemedImageProps) {
-  const isBrowser = useIsBrowser();
-  const { colorMode } = useColorMode();
-  const { sources, className, alt, ...propsRest } = props;
-  const clientThemes = colorMode === 'dark' ? ['dark'] : ['light'];
-  const renderedSourceNames = isBrowser
-    ? clientThemes
-    : // We need to render both images on the server to avoid flash
-      // See https://github.com/facebook/docusaurus/pull/3730
-      ['light', 'dark'];
-
+  const { sources, className: parentClassName, alt, ...propsRest } = props;
   return (
-    <>
-      {renderedSourceNames.map((sourceName) =>
+    <ThemedComponent className={parentClassName}>
+      {({ theme, className }) =>
         sources ? (
           <img
-            key={sourceName}
-            src={sources[sourceName as 'light' | 'dark']}
+            src={sources[theme]}
             alt={alt}
-            className={clsx(
-              styles.themedImage,
-              styles[`themedImage--${sourceName}`],
-              className
-            )}
+            className={clsx(styles.themedImage, className)}
             {...propsRest}
           />
         ) : null
-      )}
-    </>
+      }
+    </ThemedComponent>
   );
 }

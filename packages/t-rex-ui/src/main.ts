@@ -14,6 +14,7 @@ export { DocSidebar } from './components/DocSidebar';
 export { DocSidebarItem } from './components/DocSidebarItem';
 export { DocItemTOCMobile } from './components/DocItem/TOC/Mobile';
 export { DocItemMetadata } from './components/DocItem/Metadata';
+export { DocVersionBanner } from './components/DocVersionBanner';
 
 export { TOCCollapsible } from './components/TOCCollapsible';
 export { TOCItems } from './components/TOCItems';

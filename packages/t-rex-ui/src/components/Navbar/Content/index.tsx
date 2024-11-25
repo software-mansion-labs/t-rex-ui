@@ -14,13 +14,13 @@ import NavbarMobileSidebarToggle from '../MobileSidebar/Toggle';
 import NavbarLogo from '../Logo';
 import styles from './styles.module.css';
 import clsx from 'clsx';
-// TODO: possibly would not work
 import usePageType from '../../../hooks/usePageType';
 import { type NavbarItemProps } from '../../NavbarItem';
 import AlgoliaSearchBar from '../../AlgoliaSearchBar';
 import { NavbarProps } from '..';
 
 function useNavbarItems() {
+  // TODO temporary casting until ThemeConfig type is improved
   return useThemeConfig().navbar.items;
 }
 
