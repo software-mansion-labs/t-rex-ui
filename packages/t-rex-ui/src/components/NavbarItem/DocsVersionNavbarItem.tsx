@@ -1,4 +1,4 @@
-import { useDocsVersionCandidates } from '@docusaurus/theme-common/internal';
+import { useDocsVersionCandidates } from '@docusaurus/plugin-content-docs/client';
 import DefaultNavbarItem from './DefaultNavbarItem';
 import { type GlobalVersion } from '@docusaurus/plugin-content-docs/client';
 

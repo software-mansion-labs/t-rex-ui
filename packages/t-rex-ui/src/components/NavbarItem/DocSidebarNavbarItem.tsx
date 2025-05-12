@@ -1,5 +1,7 @@
-import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
-import { useLayoutDocsSidebar } from '@docusaurus/theme-common/internal';
+import {
+  useActiveDocContext,
+  useLayoutDocsSidebar,
+} from '@docusaurus/plugin-content-docs/client';
 import DefaultNavbarItem from './DefaultNavbarItem';
 
 interface DocSidebarNavbarItemProps {

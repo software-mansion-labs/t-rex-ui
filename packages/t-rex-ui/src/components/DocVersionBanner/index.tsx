@@ -10,7 +10,7 @@ import { ThemeClassNames } from '@docusaurus/theme-common';
 import {
   useDocsPreferredVersion,
   useDocsVersion,
-} from '@docusaurus/theme-common/internal';
+} from '@docusaurus/plugin-content-docs/client';
 import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import styles from '../Admonition/styles.module.css';
 

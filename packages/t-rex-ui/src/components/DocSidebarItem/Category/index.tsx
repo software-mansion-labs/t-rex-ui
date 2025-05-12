@@ -6,11 +6,11 @@ import {
   Collapsible,
   useCollapsible,
 } from '@docusaurus/theme-common';
+import { isSamePath } from '@docusaurus/theme-common/internal';
 import {
   isActiveSidebarItem,
   findFirstSidebarItemLink,
-  isSamePath,
-} from '@docusaurus/theme-common/internal';
+} from '@docusaurus/plugin-content-docs/client';
 import Link from '@docusaurus/Link';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import { DocSidebarItems } from '../../DocSidebarItems';
