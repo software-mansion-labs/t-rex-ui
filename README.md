@@ -45,6 +45,7 @@ For now following components are available:
 - HireUsPage
 - Logo
 - Navbar
+- MDXComponents
 - PaginatorNavLink
 - SearchPage
 - ThemedImage
