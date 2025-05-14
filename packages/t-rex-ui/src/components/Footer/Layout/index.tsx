@@ -1,3 +1,4 @@
+import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -10,9 +11,9 @@ export default function FooterLayout({
   copyright,
 }: {
   style: 'dark' | 'light';
-  links: JSX.Element | boolean;
-  logo?: JSX.Element;
-  copyright?: JSX.Element | '';
+  links: React.JSX.Element | boolean;
+  logo?: React.JSX.Element;
+  copyright?: React.JSX.Element | '';
 }) {
   const { isLanding } = usePageType();
 
