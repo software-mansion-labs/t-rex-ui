@@ -1,7 +1,7 @@
 import { useCollapsible, Collapsible } from '@docusaurus/theme-common';
 
 import clsx from 'clsx';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import styles from './styles.module.css';
 import useIsBrowser from '@docusaurus/useIsBrowser';
@@ -10,7 +10,11 @@ import { ThemedImage } from '../ThemedImage';
 import Arrow from '../../assets/Arrow.svg';
 import ArrowDark from '../../assets/Arrow-dark.svg';
 
-const DetailsStyling = ({ summary, children, ...props }: any): JSX.Element => {
+const DetailsStyling = ({
+  summary,
+  children,
+  ...props
+}: any): React.JSX.Element => {
   const isBrowser = useIsBrowser();
   const { collapsed, setCollapsed } = useCollapsible({
     initialState: !props.open,
