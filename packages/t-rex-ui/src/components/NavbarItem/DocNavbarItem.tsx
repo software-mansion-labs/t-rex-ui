@@ -1,5 +1,7 @@
-import { useActiveDocContext } from '@docusaurus/plugin-content-docs/client';
-import { useLayoutDoc } from '@docusaurus/theme-common/internal';
+import {
+  useActiveDocContext,
+  useLayoutDoc,
+} from '@docusaurus/plugin-content-docs/client';
 import DefaultNavbarItem from './DefaultNavbarItem';
 
 export interface DocNavbarItemProps {

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
-import { useDoc } from '@docusaurus/theme-common/internal';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import { TOCCollapsible } from '../../../TOCCollapsible';
 import type { TOCItem } from '@docusaurus/mdx-loader';
 import styles from './styles.module.css';

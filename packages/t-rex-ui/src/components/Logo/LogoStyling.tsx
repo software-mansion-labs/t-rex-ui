@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -7,7 +8,7 @@ import type { LogoWrapperProps } from './index';
 import styles from './styles.module.css';
 import usePageType from '../../hooks/usePageType';
 
-const getWrappedImage = (image: JSX.Element, className?: string) => {
+const getWrappedImage = (image: React.JSX.Element, className?: string) => {
   return className ? <div className={className}>{image}</div> : image;
 };
 
@@ -40,7 +41,7 @@ const LogoThemedImage = ({
   return getWrappedImage(themedImage, imageClassName);
 };
 
-const LogoStyling = (props: LogoWrapperProps): JSX.Element => {
+const LogoStyling = (props: LogoWrapperProps): React.JSX.Element => {
   const {
     siteConfig: { title },
   } = useDocusaurusContext();
