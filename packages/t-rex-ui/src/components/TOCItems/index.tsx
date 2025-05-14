@@ -4,8 +4,7 @@ import {
   useTOCHighlight,
   useFilteredAndTreeifiedTOC,
 } from '@docusaurus/theme-common/internal';
-import { TOCItemTree } from './Tree';
-import { type TOCProp } from './Tree';
+import { TOCItemTree, type TOCProp } from './Tree';
 import type { TOCItem } from '@docusaurus/mdx-loader';
 
 import {
@@ -17,6 +16,7 @@ import styles from './styles.module.css';
 
 interface TOCItemsProps {
   toc: TOCItem[];
+  slot?: React.ReactNode;
   minHeadingLevel?: number;
   maxHeadingLevel?: number;
   className?: string;
@@ -26,6 +26,7 @@ interface TOCItemsProps {
 
 export function TOCItems({
   toc,
+  slot,
   className = 'table-of-contents table-of-contents__left-border',
   linkClassName = 'table-of-contents__link',
   linkActiveClassName = undefined,
@@ -63,18 +64,20 @@ export function TOCItems({
         linkClassName={linkClassName}
         {...props}
       />
-      <div className={styles.hireUsContainer}>
-        <p>We are Software Mansion.</p>
-        <div className={styles.buttonContainer}>
-          <HomepageButton
-            href="https://swmansion.com/contact/projects?utm_source=rnos-docs&utm_medium=sidebar"
-            title="Hire us"
-            backgroundStyling={ButtonStyling.TOC}
-            borderStyling={BorderStyling.TOC}
-            enlarged={false}
-          />
+      {slot ?? (
+        <div className={styles.hireUsContainer}>
+          <p>We are Software Mansion.</p>
+          <div className={styles.buttonContainer}>
+            <HomepageButton
+              href="https://swmansion.com/contact/projects?utm_source=rnos-docs&utm_medium=sidebar"
+              title="Hire us"
+              backgroundStyling={ButtonStyling.TOC}
+              borderStyling={BorderStyling.TOC}
+              enlarged={false}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
