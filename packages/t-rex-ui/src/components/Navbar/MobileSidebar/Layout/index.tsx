@@ -10,7 +10,15 @@ import { useThemeConfig } from '@docusaurus/theme-common';
 import NavbarNavLink from '../../../NavbarItem/NavbarNavLink';
 
 function isActive(path: string, locationPathname: string) {
-  return locationPathname.startsWith(path);
+  if (locationPathname === path) {
+    return true;
+  }
+
+  if (locationPathname.startsWith(path)) {
+    return true;
+  }
+
+  return false;
 }
 
 function useNavbarItems() {

@@ -2,7 +2,7 @@
 import { useEffect, useReducer, useRef, useState } from 'react';
 import clsx from 'clsx';
 import algoliaSearchHelper from 'algoliasearch-helper';
-import algoliaSearch from 'algoliasearch/lite';
+import { liteClient } from 'algoliasearch/lite';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -80,13 +80,7 @@ function SearchVersionSelectList({
     // Do not show a version select for unversioned docs plugin instances
     .filter(([, docsData]) => (docsData as any).versions.length > 1);
   return (
-    <div
-      className={clsx(
-        'col',
-        'col--3',
-        'padding-left--none',
-        styles.searchVersionColumn
-      )}>
+    <div className={clsx('col', 'col--3', styles.searchVersionColumn)}>
       {versionedPluginEntries.map(([pluginId, docsData]) => {
         const labelPrefix =
           versionedPluginEntries.length > 1 ? `${pluginId}: ` : '';
@@ -175,7 +169,7 @@ function SearchPageContent() {
     },
     initialSearchResultState
   );
-  const algoliaClient = algoliaSearch(appId, apiKey);
+  const algoliaClient = liteClient(appId, apiKey);
   const algoliaHelper = algoliaSearchHelper(algoliaClient, indexName, {
     hitsPerPage: 15,
     advancedSyntax: true,
