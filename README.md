@@ -45,12 +45,35 @@ For now following components are available:
 - Admonition
 - ColorModeToggle
 - DocCard
-- DocItem
 - DocSidebar
 - DocSidebarItem
 - DocSidebarItems
+- DocItem (including DocItemTOCMobile and DocItemMetadata)
+- DocVersionBanner
+- Footer
+- HireUsPage
 - Logo
+- Navbar
 - PaginatorNavLink
+- SearchPage
 - ThemedImage
 - TOCCollapsible
 - TOCItems (including TOCItems and TOCItemTree)
+
+## Example docs and testing
+
+To run the T-Rex UI example documentation and test components live, follow these steps:
+
+In the `/packages/t-rex-ui directory`, run:
+
+```sh
+yarn watch
+```
+
+In the `/packages/docs directory`, run:
+
+```sh
+yarn start
+```
+
+When changes are made, the T-Rex UI documentation should automatically rebuild.

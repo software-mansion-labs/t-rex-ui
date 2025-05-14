@@ -39,9 +39,17 @@ export default function FooterLinksMultiColumn({
 }) {
   return (
     <div className="row footer__links">
-      {columns.map((column: any, i: number) => (
-        <Column key={i} column={column} />
-      ))}
+      {columns.map(
+        (
+          column: {
+            title: string | null;
+            items: FooterLinkItem[];
+          },
+          i: number
+        ) => (
+          <Column key={i} column={column} />
+        )
+      )}
     </div>
   );
 }

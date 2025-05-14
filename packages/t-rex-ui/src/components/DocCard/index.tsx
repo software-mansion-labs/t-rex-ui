@@ -1,10 +1,13 @@
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {
-  findFirstCategoryLink,
+  findFirstSidebarItemLink,
   useDocById,
 } from '@docusaurus/theme-common/internal';
 import { translate } from '@docusaurus/Translate';
+import Heading from '../Heading';
+
 import type {
   PropSidebarItem,
   PropSidebarItemCategory,
@@ -51,9 +54,12 @@ function CardLayout({
         <ThemedImage sources={cardIcons} className={styles.cardIcon} />
       </div>
       <div className={styles.cardLabels}>
-        <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
+        <Heading
+          as="h2"
+          className={clsx('text--truncate', styles.cardTitle)}
+          title={title}>
           {title}
-        </h2>
+        </Heading>
         {description && (
           <p
             className={clsx('text--truncate', styles.cardDescription)}
@@ -65,9 +71,8 @@ function CardLayout({
     </CardContainer>
   );
 }
-
 function CardCategory({ item }: { item: PropSidebarItemCategory }) {
-  const href = findFirstCategoryLink(item);
+  const href = findFirstSidebarItemLink(item);
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {
     return null;
@@ -97,7 +102,7 @@ function CardLink({ item }: { item: PropSidebarItemLink }) {
     <CardLayout
       href={item.href}
       title={item.label}
-      description={item.description ?? doc!.description}
+      description={item.description ?? doc?.description ?? ''}
     />
   );
 }

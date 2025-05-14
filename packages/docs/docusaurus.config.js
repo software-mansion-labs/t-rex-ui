@@ -1,5 +1,9 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+// `@type` JSDoc annotations allow editor autocompletion and type checking
+// (when paired with `@ts-check`).
+// There are various equivalent ways to declare your Docusaurus config.
+// See: https://docusaurus.io/docs/api/docusaurus-config
+
 const lightCodeTheme = require('./src/theme/CodeBlock/highlighting-light.js');
 const darkCodeTheme = require('./src/theme/CodeBlock/highlighting-dark.js');
 
@@ -20,9 +24,9 @@ const config = {
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'ignore',
 
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -35,11 +39,11 @@ const config = {
       ({
         docs: {
           breadcrumbs: false,
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
           sidebarCollapsible: false,
           editUrl:
             'https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs',
-          lastVersion: 'current', // <- this makes 3.x docs as default
+          lastVersion: 'current',
           versions: {
             current: {
               label: '3.x',
@@ -51,7 +55,7 @@ const config = {
           blogSidebarTitle: 'Examples',
         },
         theme: {
-          customCss: require.resolve('./src/css/index.css'),
+          customCss: './src/css/index.css',
         },
       }),
     ],
@@ -110,4 +114,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;
