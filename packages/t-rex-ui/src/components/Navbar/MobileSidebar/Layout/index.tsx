@@ -73,6 +73,7 @@ export default function NavbarMobileSidebarLayout({
         </div>
         <div className={styles.sidebarVersions}>
           <span className={styles.sidebarVersionLabel}>Versions:</span>
+          <div className={styles.sidebarVersionLinks}>
           {reversed.map((version) => {
             return (
               <a
@@ -90,6 +91,8 @@ export default function NavbarMobileSidebarLayout({
               </a>
             );
           })}
+
+          </div>
         </div>
       </div>
     </div>

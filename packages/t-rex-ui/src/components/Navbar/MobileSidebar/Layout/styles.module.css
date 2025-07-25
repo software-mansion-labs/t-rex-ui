@@ -45,11 +45,20 @@
 
 .sidebarVersionLabel {
   margin-right: 12px;
+  
+}
+.sidebarVersions {
+  display: flex;
 }
 
 .sidebarVersion {
   margin: 0 8px;
   color: var(--swm-sidebar-elements-version-inactive);
+}
+
+.sidebarVersionLinks {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .active {
