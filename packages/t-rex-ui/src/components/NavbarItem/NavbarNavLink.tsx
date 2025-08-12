@@ -1,8 +1,6 @@
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import isInternalUrl from '@docusaurus/isInternalUrl';
 import { isRegexpStringMatch } from '@docusaurus/theme-common';
-import IconExternalLink from '../Icon/ExternalLink';
 import { ReactNode, KeyboardEvent, MouseEvent } from 'react';
 
 export interface NavbarNavLinkProps {
@@ -37,7 +35,6 @@ export default function NavbarNavLink({
   const toUrl = useBaseUrl(to);
   const activeBaseUrl = useBaseUrl(activeBasePath);
   const normalizedHref = useBaseUrl(href, { forcePrependBaseUrl: true });
-  const isExternalLink = label && href && !isInternalUrl(href);
   // Link content is set through html XOR label
   const linkContentProps = html
     ? { dangerouslySetInnerHTML: { __html: html } }
@@ -45,11 +42,6 @@ export default function NavbarNavLink({
         children: (
           <>
             {label}
-            {isExternalLink && (
-              <IconExternalLink
-                {...(isDropdownLink && { width: 12, height: 12 })}
-              />
-            )}
           </>
         ),
       };

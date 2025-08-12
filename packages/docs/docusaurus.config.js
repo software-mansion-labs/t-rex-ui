@@ -89,6 +89,37 @@ const config = {
             dropdownActiveClassDisabled: true,
           },
           {
+            label: 'Our products',
+            position: 'right',
+            items: [
+              {
+                href: 'https://docs.swmansion.com/react-native-reanimated/',
+                label: 'Reanimated',
+                target: '_blank',
+              },
+              {
+                href: 'https://docs.swmansion.com/react-native-gesture-handler/',
+                label: 'Gesture Handler',
+                target: '_blank',
+              },
+              {
+                href: 'https://docs.swmansion.com/react-native-screens/',
+                label: 'Screens',
+                target: '_blank',
+              },
+              {
+                href: 'https://docs.swmansion.com/react-native-audio-api/',
+                label: 'AudioAPI',
+                target: '_blank',
+              },
+              {
+                href: 'https://docs.swmansion.com/react-native-executorch/',
+                label: 'ExecuTorch',
+                target: '_blank',
+              }
+            ],
+          },
+          {
             href: 'https://github.com/software-mansion-labs/t-rex-ui/',
             position: 'right',
             className: 'header-github',
