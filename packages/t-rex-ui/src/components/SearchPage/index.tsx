@@ -297,7 +297,7 @@ function SearchPageContent() {
   return (
     <Layout>
       <Head>
-        <title>{useTitleFormatter(getTitle())}</title>
+        <title>{useTitleFormatter().toString()}</title>
         {/*
          We should not index search pages
           See https://github.com/facebook/docusaurus/pull/3233

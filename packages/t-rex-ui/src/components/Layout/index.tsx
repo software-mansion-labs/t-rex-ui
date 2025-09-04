@@ -15,7 +15,7 @@ import ErrorPageContent from '../ErrorPageContent';
 import styles from './styles.module.css';
 
 export default function Layout(props: {
-  children: React.ReactNode;
+  children: any;
   noFooter?: boolean;
   wrapperClassName?: string;
   title?: string;

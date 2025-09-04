@@ -25,6 +25,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'react',
+        'react-dom',
         /@docusaurus\/.*/,
         '@docusaurus/theme-common',
         '@docusaurus/theme-classic',
