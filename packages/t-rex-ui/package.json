@@ -18,14 +18,15 @@
     "watch": "yarn tsc-watch --onSuccess \"yarn build\""
   },
   "dependencies": {
-    "@docusaurus/core": "3.7.0",
-    "@docusaurus/module-type-aliases": "3.7.0",
-    "@docusaurus/preset-classic": "3.7.0",
-    "@docusaurus/theme-search-algolia": "3.7.0"
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/module-type-aliases": "^3.8.1",
+    "@docusaurus/plugin-debug": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+    "@docusaurus/theme-search-algolia": "^3.8.1"
   },
   "devDependencies": {
-    "@docusaurus/tsconfig": "3.7.0",
-    "@docusaurus/types": "3.7.0",
+    "@docusaurus/tsconfig": "^3.8.1",
+    "@docusaurus/types": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
     "@mui/material": "^5.15.16",
     "@rollup/plugin-commonjs": "27",
@@ -40,13 +41,13 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "glob": "^10.3.12",
+    "glob": "^10.4.2",
     "prettier": "^3.2.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "release-it": "^17.2.1",
     "tsc-watch": "^6.2.0",
-    "typescript": "~5.2.2",
+    "typescript": "5.8.3",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.8.3",
     "vite-plugin-lib-inject-css": "^2.0.1"

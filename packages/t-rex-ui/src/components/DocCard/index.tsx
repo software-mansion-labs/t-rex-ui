@@ -1,4 +1,3 @@
-import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {
@@ -19,13 +18,7 @@ import styles from './styles.module.css';
 import Card from '../../assets/card-icon.svg';
 import CardDark from '../../assets/card-icon-dark.svg';
 
-function CardContainer({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+function CardContainer({ href, children }: { href: string; children: any }) {
   return (
     <Link
       href={href}

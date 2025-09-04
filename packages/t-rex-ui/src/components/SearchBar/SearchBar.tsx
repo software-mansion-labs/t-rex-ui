@@ -1,5 +1,5 @@
 // TODO: Add types
-import { ReactNode, useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -18,7 +18,7 @@ import { createPortal } from 'react-dom';
 import translations from '../SearchTranslations';
 
 let DocSearchModal: any = null;
-function Hit({ hit, children }: { hit: any; children: ReactNode }) {
+function Hit({ hit, children }: { hit: any; children: any }) {
   return <Link to={hit.url}>{children}</Link>;
 }
 function ResultsFooter({
@@ -122,8 +122,9 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
   const resultsFooterComponent = useMemo(
     () =>
       // eslint-disable-next-line react/no-unstable-nested-components
-      (footerProps: any) =>
-        <ResultsFooter {...footerProps} onClose={onClose} />,
+      (footerProps: any) => (
+        <ResultsFooter {...footerProps} onClose={onClose} />
+      ),
     [onClose]
   );
   const transformSearchClient = useCallback(

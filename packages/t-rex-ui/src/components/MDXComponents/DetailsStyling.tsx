@@ -77,7 +77,6 @@ const DetailsStyling = ({
       <Collapsible
         lazy={false}
         collapsed={collapsed}
-        disableSSRStyle
         onCollapseTransitionEnd={(newCollapsed) => {
           setCollapsed(newCollapsed);
           setOpen(!newCollapsed);

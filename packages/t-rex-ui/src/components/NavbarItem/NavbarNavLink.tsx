@@ -1,7 +1,7 @@
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { isRegexpStringMatch } from '@docusaurus/theme-common';
-import { ReactNode, KeyboardEvent, MouseEvent } from 'react';
+import { KeyboardEvent, MouseEvent } from 'react';
 
 export interface NavbarNavLinkProps {
   activeBasePath?: string;
@@ -13,7 +13,7 @@ export interface NavbarNavLinkProps {
   isDropdownLink?: boolean;
   prependBaseUrlToHref?: boolean;
   className?: string;
-  children?: ReactNode;
+  children?: any;
   role?: string;
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
   onKeyDown?: (e: KeyboardEvent) => void;
@@ -39,11 +39,7 @@ export default function NavbarNavLink({
   const linkContentProps = html
     ? { dangerouslySetInnerHTML: { __html: html } }
     : {
-        children: (
-          <>
-            {label}
-          </>
-        ),
+        children: <>{label}</>,
       };
   if (href) {
     return (

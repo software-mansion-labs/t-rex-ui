@@ -12,14 +12,10 @@ const Provider = composeProviders([
   ColorModeProvider,
   AnnouncementBarProvider,
   ScrollControllerProvider,
-  DocsPreferredVersionContextProvider,
+  DocsPreferredVersionContextProvider as any,
   PluginHtmlClassNameProvider,
   NavbarProvider,
 ]);
-export default function LayoutProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function LayoutProvider({ children }: { children: any }) {
   return <Provider>{children}</Provider>;
 }
