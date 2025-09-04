@@ -28,7 +28,7 @@ function UnreleasedVersionLabel({
         versionLabel: <b>{versionMetadata.label}</b>,
       }}>
       {
-        'This is unreleased documentation for {siteTitle} {versionLabel} version.'
+        'This is the unreleased documentation for {siteTitle}, version {versionLabel}.'
       }
     </Translate>
   );
@@ -49,7 +49,7 @@ function UnmaintainedVersionLabel({
         versionLabel: <b>{versionMetadata.label}</b>,
       }}>
       {
-        'This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.'
+        'This is the documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.'
       }
     </Translate>
   );
@@ -96,7 +96,7 @@ function LatestVersionSuggestionLabel({
         ),
       }}>
       {
-        'For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).'
+        'For up-to-date documentation, refer to the {latestVersionLink} ({versionLabel}).'
       }
     </Translate>
   );
