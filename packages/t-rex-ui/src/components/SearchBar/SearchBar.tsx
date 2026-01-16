@@ -17,6 +17,11 @@ import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { createPortal } from 'react-dom';
 import translations from '../SearchTranslations';
+import { DocSearchSidepanel } from '@docsearch/react/sidepanel';
+import { ThemeConfigAlgolia } from '@docusaurus/theme-search-algolia';
+
+import '@docsearch/css/dist/style.css';
+import '@docsearch/css/dist/sidepanel.css';
 
 let DocSearchModal: any = null;
 function Hit({ hit, children }: { hit: any; children: any }) {
@@ -197,10 +202,45 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
           />,
           searchContainer.current
         )}
+
+      {props.enableSidePanel && (
+        <DocSearchSidepanel
+          appId={props.askAi.appId}
+          apiKey={props.askAi.apiKey}
+          indexName={props.askAi.indexName}
+          assistantId={props.askAi.assistantId}
+          panel={{
+            suggestedQuestions: props.suggestedQuestions,
+          }}
+        />
+      )}
     </>
   );
 }
+
+interface CustomAlgoliaConfig {
+  suggestedQuestions?: boolean;
+  enableSidePanel?: boolean;
+}
+
 export default function SearchBar() {
   const { siteConfig } = useDocusaurusContext();
-  return <DocSearch {...(siteConfig.themeConfig.algolia as object)} />;
+
+  const algoliaConfig = siteConfig.themeConfig.algolia as ThemeConfigAlgolia;
+
+  const customAlgoliaConfig = siteConfig.customFields?.algolia as
+    | CustomAlgoliaConfig
+    | undefined;
+
+  const enableSuggestedQuestions =
+    customAlgoliaConfig?.suggestedQuestions ?? false;
+  const enableSidePanel = customAlgoliaConfig?.enableSidePanel ?? false;
+
+  return (
+    <DocSearch
+      {...algoliaConfig}
+      suggestedQuestions={enableSuggestedQuestions}
+      enableSidePanel={enableSidePanel}
+    />
+  );
 }
