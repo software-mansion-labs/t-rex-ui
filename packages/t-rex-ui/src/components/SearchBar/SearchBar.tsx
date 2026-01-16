@@ -39,7 +39,7 @@ function ResultsFooter({
     </Link>
   );
 }
-function mergeFacetFilters(f1: [string, string[]], f2: any) {
+function mergeFacetFilters(f1: any, f2: any) {
   const normalize = (f: any) => (typeof f === 'string' ? [f] : f);
   return [...normalize(f1), ...normalize(f2)];
 }

@@ -18,15 +18,19 @@
     "watch": "yarn tsc-watch --onSuccess \"yarn build\""
   },
   "dependencies": {
-    "@docusaurus/core": "^3.8.1",
-    "@docusaurus/module-type-aliases": "^3.8.1",
-    "@docusaurus/plugin-debug": "^3.8.1",
-    "@docusaurus/preset-classic": "^3.8.1",
-    "@docusaurus/theme-search-algolia": "^3.8.1"
+    "@docsearch/core": "^4.4.0",
+    "@docsearch/css": "^4.4.0",
+    "@docsearch/sidepanel": "^4.4.0",
+    "@docusaurus/core": "3.9.2",
+    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/plugin-debug": "3.9.2",
+    "@docusaurus/preset-classic": "3.9.2",
+    "@docusaurus/theme-search-algolia": "3.9.2",
+    "copy-text-to-clipboard": "^3.2.2"
   },
   "devDependencies": {
-    "@docusaurus/tsconfig": "^3.8.1",
-    "@docusaurus/types": "^3.8.1",
+    "@docusaurus/tsconfig": "3.9.2",
+    "@docusaurus/types": "3.9.2",
     "@mdx-js/react": "^3.0.0",
     "@mui/material": "^5.15.16",
     "@rollup/plugin-commonjs": "27",
