@@ -1,5 +1,5 @@
 // TODO: Add types
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
 import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -17,16 +17,16 @@ import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { createPortal } from 'react-dom';
 import translations from '../SearchTranslations';
-import { DocSearchSidepanel } from '@docsearch/react/sidepanel';
 import { ThemeConfigAlgolia } from '@docusaurus/theme-search-algolia';
-
 import '@docsearch/css/dist/style.css';
-import '@docsearch/css/dist/sidepanel.css';
 
-let DocSearchModal: any = null;
+const DocSearchModal = lazy(() => import('./DocSearchModalWrapper'));
+const DocSearchSidepanel = lazy(() => import('./DocSearchSidepanelWrapper'));
+
 function Hit({ hit, children }: { hit: any; children: any }) {
   return <Link to={hit.url}>{children}</Link>;
 }
+
 function ResultsFooter({
   state,
   onClose,
@@ -45,25 +45,26 @@ function ResultsFooter({
     </Link>
   );
 }
+
 function mergeFacetFilters(f1: any, f2: any) {
   const normalize = (f: any) => (typeof f === 'string' ? [f] : f);
   return [...normalize(f1), ...normalize(f2)];
 }
+
 function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
   const { siteMetadata } = useDocusaurusContext();
   const processSearchResultUrl = useSearchResultUrlProcessor();
   const contextualSearchFacetFilters = useAlgoliaContextualFacetFilters();
   const configFacetFilters = props.searchParameters?.facetFilters ?? [];
   const facetFilters = contextualSearch
-    ? // Merge contextual search filters with config filters
-      mergeFacetFilters(contextualSearchFacetFilters, configFacetFilters)
-    : // ... or use config facetFilters
-      configFacetFilters;
-  // We let user override default searchParameters if she wants to
+    ? mergeFacetFilters(contextualSearchFacetFilters, configFacetFilters)
+    : configFacetFilters;
+
   const searchParameters = {
     ...props.searchParameters,
     facetFilters,
   };
+
   const history = useHistory();
   const searchContainer = useRef(null);
   const searchButtonRef = useRef(null);
@@ -71,47 +72,30 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
   const [initialQuery, setInitialQuery] = useState(undefined);
   const { isAskAiActive, onAskAiToggle } = useAlgoliaAskAi(props);
 
-  const importDocSearchModalIfNeeded = useCallback(() => {
-    if (DocSearchModal) {
-      return Promise.resolve();
-    }
-    return Promise.all([
-      import('@docsearch/react/modal' as any),
-      import('@docsearch/react/style' as any),
-      import('./styles.module.css'),
-    ]).then(([{ DocSearchModal: Modal }]) => {
-      DocSearchModal = Modal;
-    });
-  }, []);
   const onOpen = useCallback(() => {
-    importDocSearchModalIfNeeded().then(() => {
-      (searchContainer.current as any) = document.createElement('div');
-      document.body.insertBefore(
-        searchContainer.current as any,
-        document.body.firstChild
-      );
-      setIsOpen(true);
-    });
-  }, [importDocSearchModalIfNeeded, setIsOpen]);
+    (searchContainer.current as any) = document.createElement('div');
+    document.body.insertBefore(
+      searchContainer.current as any,
+      document.body.firstChild
+    );
+    setIsOpen(true);
+  }, [setIsOpen]);
 
   const onClose = useCallback(() => {
     setIsOpen(false);
-    (searchContainer.current as any).remove();
+    (searchContainer.current as any)?.remove();
   }, [setIsOpen]);
 
   const onInput = useCallback(
     (event: any) => {
-      importDocSearchModalIfNeeded().then(() => {
-        setIsOpen(true);
-        setInitialQuery(event.key);
-      });
+      setIsOpen(true);
+      setInitialQuery(event.key);
     },
-    [importDocSearchModalIfNeeded, setIsOpen, setInitialQuery]
+    [setIsOpen, setInitialQuery]
   );
+
   const navigator = useRef({
     navigate({ itemUrl }: { itemUrl: string }) {
-      // Algolia results could contain URL's from other domains which cannot
-      // be served through history and should navigate with window.location
       if (isRegexpStringMatch(externalUrlRegex, itemUrl)) {
         window.location.href = itemUrl;
       } else {
@@ -119,24 +103,23 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
       }
     },
   }).current;
+
   const transformItems = useRef((items: any) =>
     props.transformItems
-      ? // Custom transformItems
-        props.transformItems(items)
-      : // Default transformItems
-        items.map((item: any) => ({
+      ? props.transformItems(items)
+      : items.map((item: any) => ({
           ...item,
           url: processSearchResultUrl(item.url),
         }))
   ).current;
+
   const resultsFooterComponent = useMemo(
-    () =>
-      // eslint-disable-next-line react/no-unstable-nested-components
-      (footerProps: any) => (
-        <ResultsFooter {...footerProps} onClose={onClose} />
-      ),
+    () => (footerProps: any) => (
+      <ResultsFooter {...footerProps} onClose={onClose} />
+    ),
     [onClose]
   );
+
   const transformSearchClient = useCallback(
     (searchClient: any) => {
       searchClient.addAlgoliaAgent(
@@ -147,6 +130,7 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
     },
     [siteMetadata.docusaurusVersion]
   );
+
   useDocSearchKeyboardEvents({
     isOpen,
     onOpen,
@@ -156,12 +140,10 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
     isAskAiActive,
     onAskAiToggle,
   });
+
   return (
     <>
       <Head>
-        {/* This hints the browser that the website will load data from Algolia,
-        and allows it to preconnect to the DocSearch cluster. It makes the first
-        query faster, especially on mobile. */}
         <link
           rel="preconnect"
           href={`https://${props.appId}-dsn.algolia.net`}
@@ -170,49 +152,49 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
       </Head>
 
       <DocSearchButton
-        onTouchStart={importDocSearchModalIfNeeded}
-        onFocus={importDocSearchModalIfNeeded}
-        onMouseOver={importDocSearchModalIfNeeded}
         onClick={onOpen}
         ref={searchButtonRef}
         translations={translations.button}
       />
 
       {isOpen &&
-        DocSearchModal &&
         searchContainer.current &&
         createPortal(
-          <DocSearchModal
-            onClose={onClose}
-            initialScrollY={window.scrollY}
-            initialQuery={initialQuery}
-            navigator={navigator}
-            transformItems={transformItems}
-            hitComponent={Hit}
-            transformSearchClient={transformSearchClient}
-            {...(props.searchPagePath && {
-              resultsFooterComponent,
-            })}
-            {...props}
-            searchParameters={searchParameters}
-            placeholder={translations.placeholder}
-            translations={translations.modal}
-            isAskAiActive={isAskAiActive}
-            onAskAiToggle={onAskAiToggle}
-          />,
+          <Suspense fallback={null}>
+            <DocSearchModal
+              onClose={onClose}
+              initialScrollY={window.scrollY}
+              initialQuery={initialQuery}
+              navigator={navigator}
+              transformItems={transformItems}
+              hitComponent={Hit}
+              transformSearchClient={transformSearchClient}
+              {...(props.searchPagePath && {
+                resultsFooterComponent,
+              })}
+              {...props}
+              searchParameters={searchParameters}
+              placeholder={translations.placeholder}
+              translations={translations.modal}
+              isAskAiActive={isAskAiActive}
+              onAskAiToggle={onAskAiToggle}
+            />
+          </Suspense>,
           searchContainer.current
         )}
 
       {props.enableSidePanel && (
-        <DocSearchSidepanel
-          appId={props.askAi.appId}
-          apiKey={props.askAi.apiKey}
-          indexName={props.askAi.indexName}
-          assistantId={props.askAi.assistantId}
-          panel={{
-            suggestedQuestions: props.suggestedQuestions,
-          }}
-        />
+        <Suspense fallback={null}>
+          <DocSearchSidepanel
+            appId={props.askAi.appId}
+            apiKey={props.askAi.apiKey}
+            indexName={props.askAi.indexName}
+            assistantId={props.askAi.assistantId}
+            panel={{
+              suggestedQuestions: props.suggestedQuestions,
+            }}
+          />
+        </Suspense>
       )}
     </>
   );
