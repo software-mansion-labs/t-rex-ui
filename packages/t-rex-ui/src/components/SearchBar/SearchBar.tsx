@@ -11,6 +11,7 @@ import {
 import {
   useAlgoliaContextualFacetFilters,
   useSearchResultUrlProcessor,
+  useAlgoliaAskAi,
 } from '@docusaurus/theme-search-algolia/client';
 import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -63,6 +64,8 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
   const searchButtonRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [initialQuery, setInitialQuery] = useState(undefined);
+  const { isAskAiActive, onAskAiToggle } = useAlgoliaAskAi(props);
+
   const importDocSearchModalIfNeeded = useCallback(() => {
     if (DocSearchModal) {
       return Promise.resolve();
@@ -85,10 +88,12 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
       setIsOpen(true);
     });
   }, [importDocSearchModalIfNeeded, setIsOpen]);
+
   const onClose = useCallback(() => {
     setIsOpen(false);
     (searchContainer.current as any).remove();
   }, [setIsOpen]);
+
   const onInput = useCallback(
     (event: any) => {
       importDocSearchModalIfNeeded().then(() => {
@@ -143,6 +148,8 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
     onClose,
     onInput,
     searchButtonRef,
+    isAskAiActive,
+    onAskAiToggle,
   });
   return (
     <>
@@ -185,6 +192,8 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
             searchParameters={searchParameters}
             placeholder={translations.placeholder}
             translations={translations.modal}
+            isAskAiActive={isAskAiActive}
+            onAskAiToggle={onAskAiToggle}
           />,
           searchContainer.current
         )}
