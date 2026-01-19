@@ -181,3 +181,9 @@
     box-sizing: border-box !important;
   }
 }
+
+[class*='DocSearch-Sidepanel-Container'] {
+  top: calc(var(--ifm-navbar-height) + 1rem) !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+}
