@@ -1,5 +1,12 @@
-// TODO: Add types
-import { lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  PropsWithChildren,
+} from 'react';
 import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
@@ -18,20 +25,37 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { createPortal } from 'react-dom';
 import translations from '../SearchTranslations';
 import { ThemeConfigAlgolia } from '@docusaurus/theme-search-algolia';
+import type { FacetFilters } from 'algoliasearch/lite';
+import type {
+  InternalDocSearchHit,
+  DocSearchHit,
+  StoredDocSearchHit,
+  DocSearchTransformClient,
+} from '@docsearch/react';
+import { AutocompleteState } from '@algolia/autocomplete-core';
+
 import '@docsearch/css/dist/style.css';
 
 const DocSearchModal = lazy(() => import('./DocSearchModal'));
 const DocSearchSidepanel = lazy(() => import('./DocSearchSidepanel'));
 
-function Hit({ hit, children }: { hit: any; children: any }) {
+function Hit({
+  hit,
+  children,
+}: PropsWithChildren<{
+  hit: InternalDocSearchHit | StoredDocSearchHit;
+}>) {
   return <Link to={hit.url}>{children}</Link>;
 }
+
+type FooterProps = {
+  state: AutocompleteState<InternalDocSearchHit>;
+};
 
 function ResultsFooter({
   state,
   onClose,
-}: {
-  state: any;
+}: FooterProps & {
   onClose: () => void;
 }) {
   const createSearchLink = useSearchLinkCreator();
@@ -46,12 +70,27 @@ function ResultsFooter({
   );
 }
 
-function mergeFacetFilters(f1: any, f2: any) {
-  const normalize = (f: any) => (typeof f === 'string' ? [f] : f);
+function mergeFacetFilters(f1: FacetFilters, f2: FacetFilters): FacetFilters {
+  const normalize = (f: FacetFilters) => (typeof f === 'string' ? [f] : f);
   return [...normalize(f1), ...normalize(f2)];
 }
 
-function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
+interface CustomAlgoliaConfig {
+  suggestedQuestions?: boolean;
+  enableSidePanel?: boolean;
+}
+
+type DocSearchProps = ThemeConfigAlgolia &
+  CustomAlgoliaConfig & {
+    transformItems?: (items: DocSearchHit[]) => DocSearchHit[];
+  };
+
+function DocSearch({
+  contextualSearch,
+  externalUrlRegex,
+  transformItems: customTransformItems,
+  ...props
+}: DocSearchProps) {
   const { siteMetadata } = useDocusaurusContext();
   const processSearchResultUrl = useSearchResultUrlProcessor();
   const contextualSearchFacetFilters = useAlgoliaContextualFacetFilters();
@@ -66,16 +105,18 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
   };
 
   const history = useHistory();
-  const searchContainer = useRef(null);
-  const searchButtonRef = useRef(null);
+  const searchContainer = useRef<Element>(null);
+  const searchButtonRef = useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [initialQuery, setInitialQuery] = useState(undefined);
+  const [initialQuery, setInitialQuery] = useState<string | undefined>(
+    undefined
+  );
   const { isAskAiActive, onAskAiToggle } = useAlgoliaAskAi(props);
 
   const onOpen = useCallback(() => {
-    (searchContainer.current as any) = document.createElement('div');
+    searchContainer.current = document.createElement('div');
     document.body.insertBefore(
-      searchContainer.current as any,
+      searchContainer.current,
       document.body.firstChild
     );
     setIsOpen(true);
@@ -83,11 +124,11 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
 
   const onClose = useCallback(() => {
     setIsOpen(false);
-    (searchContainer.current as any)?.remove();
+    searchContainer.current?.remove();
   }, [setIsOpen]);
 
   const onInput = useCallback(
-    (event: any) => {
+    (event: KeyboardEvent) => {
       setIsOpen(true);
       setInitialQuery(event.key);
     },
@@ -104,24 +145,24 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
     },
   }).current;
 
-  const transformItems = useRef((items: any) =>
-    props.transformItems
-      ? props.transformItems(items)
-      : items.map((item: any) => ({
+  const transformItems = useRef((items: DocSearchHit[]) =>
+    customTransformItems
+      ? customTransformItems(items)
+      : items.map((item: DocSearchHit) => ({
           ...item,
           url: processSearchResultUrl(item.url),
         }))
   ).current;
 
   const resultsFooterComponent = useMemo(
-    () => (footerProps: any) => (
-      <ResultsFooter {...footerProps} onClose={onClose} />
+    () => (footerProps: FooterProps) => (
+      <ResultsFooter state={footerProps.state} onClose={onClose} />
     ),
     [onClose]
   );
 
   const transformSearchClient = useCallback(
-    (searchClient: any) => {
+    (searchClient: DocSearchTransformClient) => {
       searchClient.addAlgoliaAgent(
         'docusaurus',
         siteMetadata.docusaurusVersion
@@ -140,6 +181,27 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
     isAskAiActive,
     onAskAiToggle,
   });
+
+  const askAi = props.askAi?.assistantId
+    ? {
+        indexName: props.askAi?.indexName
+          ? props.askAi.indexName
+          : props.indexName,
+        apiKey: props.askAi?.apiKey ? props.askAi.apiKey : props.apiKey,
+        appId: props.askAi?.appId ? props.askAi.appId : props.appId,
+        assistantId: props.askAi?.assistantId,
+        suggestedQuestions: props.suggestedQuestions,
+      }
+    : undefined;
+
+  const preprocessedTranslations = {
+    searchBox: {
+      clearButtonTitle: translations.modal.searchBox.resetButtonTitle,
+      clearButtonAriaLabel: translations.modal.searchBox.resetButtonAriaLabel,
+      closeButtonText: translations.modal.searchBox.cancelButtonText,
+      closeButtonAriaLabel: translations.modal.searchBox.cancelButtonAriaLabel,
+    },
+  };
 
   return (
     <>
@@ -169,13 +231,14 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
               transformItems={transformItems}
               hitComponent={Hit}
               transformSearchClient={transformSearchClient}
-              {...(props.searchPagePath && {
-                resultsFooterComponent,
-              })}
+              resultsFooterComponent={
+                props.searchPagePath ? resultsFooterComponent : undefined
+              }
               {...props}
               searchParameters={searchParameters}
+              askAi={askAi}
               placeholder={translations.placeholder}
-              translations={translations.modal}
+              translations={preprocessedTranslations}
               isAskAiActive={isAskAiActive}
               onAskAiToggle={onAskAiToggle}
             />
@@ -183,13 +246,10 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
           searchContainer.current
         )}
 
-      {props.enableSidePanel && (
+      {props.enableSidePanel && askAi && (
         <Suspense fallback={null}>
           <DocSearchSidepanel
-            appId={props.askAi.appId}
-            apiKey={props.askAi.apiKey}
-            indexName={props.askAi.indexName}
-            assistantId={props.askAi.assistantId}
+            {...askAi}
             panel={{
               suggestedQuestions: props.suggestedQuestions,
             }}
@@ -198,11 +258,6 @@ function DocSearch({ contextualSearch, externalUrlRegex, ...props }: any) {
       )}
     </>
   );
-}
-
-interface CustomAlgoliaConfig {
-  suggestedQuestions?: boolean;
-  enableSidePanel?: boolean;
 }
 
 export default function SearchBar() {
