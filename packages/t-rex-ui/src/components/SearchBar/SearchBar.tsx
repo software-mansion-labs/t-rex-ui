@@ -20,8 +20,8 @@ import translations from '../SearchTranslations';
 import { ThemeConfigAlgolia } from '@docusaurus/theme-search-algolia';
 import '@docsearch/css/dist/style.css';
 
-const DocSearchModal = lazy(() => import('./DocSearchModalWrapper'));
-const DocSearchSidepanel = lazy(() => import('./DocSearchSidepanelWrapper'));
+const DocSearchModal = lazy(() => import('./DocSearchModal'));
+const DocSearchSidepanel = lazy(() => import('./DocSearchSidepanel'));
 
 function Hit({ hit, children }: { hit: any; children: any }) {
   return <Link to={hit.url}>{children}</Link>;
