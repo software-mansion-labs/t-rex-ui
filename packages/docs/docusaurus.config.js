@@ -116,7 +116,7 @@ const config = {
                 href: 'https://docs.swmansion.com/react-native-executorch/',
                 label: 'ExecuTorch',
                 target: '_blank',
-              }
+              },
             ],
           },
           {
