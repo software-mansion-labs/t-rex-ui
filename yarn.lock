@@ -4534,9 +4534,13 @@ __metadata:
     vite-plugin-dts: "npm:^3.8.3"
     vite-plugin-lib-inject-css: "npm:^2.0.1"
   peerDependencies:
+    "@docsearch/core": ^4.4.0
+    "@docsearch/css": ^4.4.0
+    "@docsearch/sidepanel": ^4.4.0
     "@emotion/react": "*"
     "@emotion/styled": "*"
     "@mui/material": ">=5.0.0"
+    copy-text-to-clipboard: ^3.2.2
     react: "*"
     react-dom: "*"
   languageName: unknown

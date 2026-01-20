@@ -46,6 +46,9 @@ export default defineConfig({
         '@docusaurus/Head',
         '@docusaurus/ErrorBoundary',
         '@mui/material',
+        /^@docsearch\/.*/,
+        /^algoliasearch\/.*/,
+        'copy-text-to-clipboard',
       ],
       input: Object.fromEntries(
         glob
