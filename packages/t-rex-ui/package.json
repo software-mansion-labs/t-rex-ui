@@ -1,6 +1,6 @@
 {
   "name": "@swmansion/t-rex-ui",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
