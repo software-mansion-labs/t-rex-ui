@@ -189,3 +189,22 @@
     box-sizing: border-box !important;
   }
 }
+
+[class*='DocSearch-Sidepanel-Container'][class*='is-open'] {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@keyframes ds-fade-in-button {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+[class*='DocSearch-SidepanelButton'] {
+  animation: ds-fade-in-button 0.4s ease-out forwards !important;
+}

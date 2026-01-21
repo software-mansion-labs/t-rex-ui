@@ -1,4 +1,12 @@
-import { lazy, Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 import Head from '@docusaurus/Head';
 import { useHistory } from '@docusaurus/router';
@@ -17,6 +25,8 @@ import type { DocSearchHit, DocSearchTransformClient } from '@docsearch/react';
 import { Hit } from './Hit';
 import { FooterProps, ResultsFooter } from './ResultsFooter';
 import { CustomAlgoliaConfig } from './SearchBar';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 import '@docsearch/css/dist/style.css';
 
@@ -56,12 +66,33 @@ function DocSearch({
 
   const history = useHistory();
   const searchContainer = useRef<Element>(null);
+  const sidepanelContainer = useRef<Element>(null);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
+  const isBrowser = useIsBrowser();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSidepanelMounted, setIsSidepanelMounted] = useState(false);
   const [initialQuery, setInitialQuery] = useState<string | undefined>(
     undefined
   );
   const { isAskAiActive, onAskAiToggle } = useAlgoliaAskAi(props);
+
+  useEffect(() => {
+    if (isBrowser && !isSidepanelMounted) {
+      const div = document.createElement('div');
+      sidepanelContainer.current = div;
+      document.body.insertBefore(
+        sidepanelContainer.current,
+        document.body.firstChild
+      );
+      setIsSidepanelMounted(true);
+
+      return () => {
+        if (document.body.contains(div)) {
+          document.body.removeChild(div);
+        }
+      };
+    }
+  }, [isBrowser, isSidepanelMounted]);
 
   const onOpen = useCallback(() => {
     searchContainer.current = document.createElement('div');
@@ -196,16 +227,26 @@ function DocSearch({
           searchContainer.current
         )}
 
-      {props.enableSidePanel && askAi && (
-        <Suspense fallback={null}>
-          <DocSearchSidepanel
-            {...askAi}
-            panel={{
-              suggestedQuestions: props.suggestedQuestions,
-            }}
-          />
-        </Suspense>
-      )}
+      {props.enableSidePanel &&
+        askAi &&
+        sidepanelContainer.current &&
+        isSidepanelMounted && (
+          <BrowserOnly fallback={null}>
+            {() =>
+              createPortal(
+                <Suspense fallback={null}>
+                  <DocSearchSidepanel
+                    {...askAi}
+                    panel={{
+                      suggestedQuestions: props.suggestedQuestions,
+                    }}
+                  />
+                </Suspense>,
+                sidepanelContainer.current!
+              )
+            }
+          </BrowserOnly>
+        )}
     </>
   );
 }
