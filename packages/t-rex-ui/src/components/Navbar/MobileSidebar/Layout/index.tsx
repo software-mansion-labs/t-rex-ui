@@ -14,7 +14,7 @@ function isActive(path: string, locationPathname: string) {
     return true;
   }
 
-  if (locationPathname.startsWith(path)) {
+  if (locationPathname.startsWith(path.endsWith('/') ? path : `${path}/`)) {
     return true;
   }
 
@@ -44,9 +44,10 @@ export default function NavbarMobileSidebarLayout({
   const filteredItems = items.filter((item) => item.label !== undefined);
 
   const location = useLocation();
-  const activeVersion = reversed.find((version) =>
-    isActive(version.path, location.pathname)
-  );
+
+  const activeVersion = [...reversed]
+    .sort((a, b) => b.path.length - a.path.length)
+    .find((version) => isActive(version.path, location.pathname));
 
   return (
     <div className="navbar-sidebar">
@@ -74,24 +75,23 @@ export default function NavbarMobileSidebarLayout({
         <div className={styles.sidebarVersions}>
           <span className={styles.sidebarVersionLabel}>Versions:</span>
           <div className={styles.sidebarVersionLinks}>
-          {reversed.map((version) => {
-            return (
-              <a
-                key={version.label}
-                href={
-                  version.isLast
-                    ? `${version.path}/${version.mainDocId}`
-                    : version.path
-                }
-                className={clsx(
-                  styles.sidebarVersion,
-                  activeVersion?.label === version.label && styles.active
-                )}>
-                {version.label}
-              </a>
-            );
-          })}
-
+            {reversed.map((version) => {
+              return (
+                <a
+                  key={version.label}
+                  href={
+                    version.isLast
+                      ? `${version.path}/${version.mainDocId}`
+                      : version.path
+                  }
+                  className={clsx(
+                    styles.sidebarVersion,
+                    activeVersion?.label === version.label && styles.active
+                  )}>
+                  {version.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
