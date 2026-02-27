@@ -59,9 +59,7 @@ const config = {
         },
       }),
     ],
-  ],
-  plugins: [
-    require.resolve('@swmansion/docusaurus-plugin-llms'),
+    require.resolve('@swmansion/t-rex-ui/preset'),
   ],
 
   themeConfig:

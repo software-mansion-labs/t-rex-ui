@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { HomepageButton } from '@swmansion/t-rex-ui/dist/components/HomepageButton';
+import HomepageButton from '../HomepageButton';
 
 type FeatureItem = {
   title: string;

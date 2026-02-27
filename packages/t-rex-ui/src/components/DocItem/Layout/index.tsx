@@ -39,7 +39,7 @@ function useDocTOC() {
   };
 }
 
-export function DocItemLayout({children, showButtonForLLM = true}: {children: ReactNode, showButtonForLLM?: boolean}): ReactNode {
+export function DocItemLayout({children, showLLMButton = true}: {children: ReactNode, showLLMButton?: boolean}): ReactNode {
   const docTOC = useDocTOC();
   const {metadata} = useDoc();
   return (
@@ -49,7 +49,7 @@ export function DocItemLayout({children, showButtonForLLM = true}: {children: Re
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>
-            {showButtonForLLM && <LLMButton />}
+            {showLLMButton && <LLMButton />}
             <DocBreadcrumbs />
             <DocVersionBadge />
             {docTOC.mobile}
