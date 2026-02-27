@@ -71,13 +71,13 @@
     }
   },
   "peerDependencies": {
+    "@swmansion/docusaurus-plugin-llms": "*",
     "@docsearch/core": "^4.4.0",
     "@docsearch/css": "^4.4.0",
     "@docsearch/sidepanel": "^4.4.0",
     "@emotion/react": "*",
     "@emotion/styled": "*",
     "@mui/material": ">=5.0.0",
-    "@swmansion/docusaurus-plugin-llms": "*",
     "copy-text-to-clipboard": "^3.2.2",
     "react": "*",
     "react-dom": "*",

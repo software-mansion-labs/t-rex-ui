@@ -186,6 +186,8 @@ yarn start
 
 When changes are made, the T-Rex UI documentation should automatically rebuild.
 
+---
+
 ## Using DocSearch
 
 Since Docusaurus v3.9.2, Algolia DocSearch v4 is supported with new AI-based features, including Ask AI. To enable Ask AI in your docs, follow [official instructions](https://docsearch.algolia.com/docs/v4/askai/) and add to your `docusaurus.config.js` config file:
