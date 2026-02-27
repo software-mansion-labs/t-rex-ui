@@ -94,7 +94,7 @@ async function convertMdxToMd(content) {
 function convertAdmonitions(content) {
   return content.replace(
     /:::(\w+)?[ \t]*\r?\n([\s\S]*?)\r?\n[ \t]*:::/g,
-    (match, type, body) => {
+    (_, type, body) => {
       const trimmed = body.trim();
       if (!trimmed) return '';
 
@@ -111,14 +111,6 @@ function convertAdmonitions(content) {
   );
 }
 
-/**
- * Remark plugin that removes MDX-specific nodes from the AST:
- *  - mdxjsEsm           import/export statements
- *  - mdxJsxFlowElement  block-level JSX  → unwrap children
- *  - mdxJsxTextElement  inline JSX       → unwrap children
- *  - mdxFlowExpression  block {expr}     → remove
- *  - mdxTextExpression  inline {expr}    → remove
- */
 function stripMdxPlugin() {
   return (tree) => {
     stripMdxNodes(tree);
@@ -129,17 +121,17 @@ function stripMdxNodes(node) {
   if (!node.children) return;
 
   node.children = node.children.flatMap((child) => {
-    // Remove import/export statements
+    // import/export statements
     if (child.type === 'mdxjsEsm') {
       return [];
     }
 
-    // Remove JS expressions ({...})
+    // JS expressions ({...})
     if (child.type === 'mdxFlowExpression' || child.type === 'mdxTextExpression') {
       return [];
     }
 
-    // Unwrap JSX elements — keep their Markdown children, drop JSX attributes
+    // drop JSX attributes, keeping children
     if (child.type === 'mdxJsxFlowElement' || child.type === 'mdxJsxTextElement') {
       if (child.children && child.children.length > 0) {
         stripMdxNodes(child);
@@ -148,7 +140,6 @@ function stripMdxNodes(node) {
       return [];
     }
 
-    // Recurse into all other nodes
     stripMdxNodes(child);
     return [child];
   });
