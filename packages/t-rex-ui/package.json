@@ -4,8 +4,16 @@
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "exports": {
+    ".": "./dist/main.js",
+    "./theme": "./theme.cjs",
+    "./preset": "./preset.cjs"
+  },
   "files": [
-    "dist"
+    "dist",
+    "theme",
+    "theme.cjs",
+    "preset.cjs"
   ],
   "scripts": {
     "dev": "vite",
@@ -57,7 +65,11 @@
     "vite-plugin-dts": "^3.8.3",
     "vite-plugin-lib-inject-css": "^2.0.1"
   },
+  "peerDependenciesMeta": {
+    "@swmansion/docusaurus-plugin-llms": { "optional": true }
+  },
   "peerDependencies": {
+    "@swmansion/docusaurus-plugin-llms": "*",
     "@docsearch/core": "^4.4.0",
     "@docsearch/css": "^4.4.0",
     "@docsearch/sidepanel": "^4.4.0",

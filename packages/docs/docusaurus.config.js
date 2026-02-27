@@ -33,6 +33,7 @@ const config = {
   },
 
   presets: [
+    require.resolve('@swmansion/t-rex-ui/preset'),
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
@@ -59,9 +60,6 @@ const config = {
         },
       }),
     ],
-  ],
-  plugins: [
-    require.resolve('@swmansion/docusaurus-plugin-llms'),
   ],
 
   themeConfig:
