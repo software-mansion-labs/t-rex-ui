@@ -5,7 +5,8 @@
   "workspaces": {
     "packages": [
       "packages/t-rex-ui",
-      "packages/docs"
+      "packages/docs",
+      "packages/docusaurus-plugin-llms"
     ]
   },
   "private": true,

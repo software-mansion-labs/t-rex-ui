@@ -4494,6 +4494,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swmansion/docusaurus-plugin-llms@workspace:*, @swmansion/docusaurus-plugin-llms@workspace:packages/docusaurus-plugin-llms":
+  version: 0.0.0-use.local
+  resolution: "@swmansion/docusaurus-plugin-llms@workspace:packages/docusaurus-plugin-llms"
+  dependencies:
+    fs-extra: "npm:^11.3.3"
+    gray-matter: "npm:^4.0.3"
+    remark-mdx: "npm:^3.0.0"
+    remark-parse: "npm:^11.0.0"
+    remark-stringify: "npm:^11.0.0"
+    unified: "npm:^11.0.5"
+  languageName: unknown
+  linkType: soft
+
 "@swmansion/t-rex-ui@workspace:*, @swmansion/t-rex-ui@workspace:packages/t-rex-ui":
   version: 0.0.0-use.local
   resolution: "@swmansion/t-rex-ui@workspace:packages/t-rex-ui"
@@ -8247,11 +8260,13 @@ __metadata:
     "@emotion/react": "npm:^11.13.0"
     "@emotion/styled": "npm:^11.13.0"
     "@mdx-js/react": "npm:^3.0.0"
+    "@swmansion/docusaurus-plugin-llms": "workspace:*"
     "@swmansion/t-rex-ui": "workspace:*"
     clsx: "npm:^1.2.1"
     prism-react-renderer: "npm:^2.3.0"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
+    react-icons: "npm:^5.5.0"
   languageName: unknown
   linkType: soft
 
@@ -8656,6 +8671,17 @@ __metadata:
     jsonfile: "npm:^6.0.1"
     universalify: "npm:^2.0.0"
   checksum: 10/c9fe7b23dded1efe7bbae528d685c3206477e20cc60e9aaceb3f024f9b9ff2ee1f62413c161cb88546cc564009ab516dec99e9781ba782d869bb37e4fe04a97f
+  languageName: node
+  linkType: hard
+
+"fs-extra@npm:^11.3.3":
+  version: 11.3.3
+  resolution: "fs-extra@npm:11.3.3"
+  dependencies:
+    graceful-fs: "npm:^4.2.0"
+    jsonfile: "npm:^6.0.1"
+    universalify: "npm:^2.0.0"
+  checksum: 10/daeaefafbebe8fa6efd2fb96fc926f2c952be5877811f00a6794f0d64e0128e3d0d93368cd328f8f063b45deacf385c40e3d931aa46014245431cd2f4f89c67a
   languageName: node
   linkType: hard
 
@@ -13782,6 +13808,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-icons@npm:^5.5.0":
+  version: 5.5.0
+  resolution: "react-icons@npm:5.5.0"
+  peerDependencies:
+    react: "*"
+  checksum: 10/67d5b311c23f74829cb90d58b78ddc87959d2087eda7f29b78d1ab6e337b04b0358a00724d73ab60652469d9a2c66ba3c034b8b7d4f32caae942592f92f59a84
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1, react-is@npm:^16.6.0, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -15837,7 +15872,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unified@npm:^11.0.0, unified@npm:^11.0.3, unified@npm:^11.0.4":
+"unified@npm:^11.0.0, unified@npm:^11.0.3, unified@npm:^11.0.4, unified@npm:^11.0.5":
   version: 11.0.5
   resolution: "unified@npm:11.0.5"
   dependencies:
