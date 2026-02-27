@@ -6,18 +6,120 @@ T-Rex UI is a React component library that contains reusable Docusaurus theme co
 
 Install the package in your project directory with:
 
-`npm install @swmansion/t-rex-ui`
-
-## Usage
-
-To use components in your project you need to simply import them from the package in appriopriate folder, just as in example below:
-
-**PaginatorNavLink/index.js**
-
+```bash
+npm install @swmansion/t-rex-ui
 ```
-import { PaginatorNavLink } from '@swmansion/t-rex-ui';
-export default PaginatorNavLink;
+
+## Setup
+
+The recommended way to use T-Rex UI is via the **preset**, which automatically registers all theme components and the LLM plugin.
+
+Add the preset to your `docusaurus.config.js` **after** the `classic` preset (order matters):
+
+```js
+presets: [
+  [
+    'classic',
+    {
+      // your classic preset options
+    },
+  ],
+  require.resolve('@swmansion/t-rex-ui/preset'),
+],
 ```
+
+The preset accepts the following options:
+
+```js
+require.resolve('@swmansion/t-rex-ui/preset'),
+// or, with options:
+[require.resolve('@swmansion/t-rex-ui/preset'), { llms: false }],
+```
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `llms` | `true`  | Enables `@swmansion/docusaurus-plugin-llms`. Pass `false` to disable, or an object to forward options to the plugin. |
+
+## Customization
+
+The preset applies all T-Rex UI theme components automatically. However, some components require **site-specific props** and must still be swizzled manually in your project.
+
+### Navbar
+
+The T-Rex UI `Navbar` requires `heroImages` to display the logo on the landing page. Create `src/theme/Navbar/index.js`:
+
+```js
+import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { Navbar } from '@swmansion/t-rex-ui';
+
+export default function NavbarWrapper(props) {
+  const heroImages = {
+    logo: useBaseUrl('/img/logo.svg'),
+  };
+
+  return <Navbar heroImages={heroImages} {...props} />;
+}
+```
+
+### DocSidebar
+
+The T-Rex UI `DocSidebar` requires `heroImages` for the sidebar logo/title and accepts optional arrays to badge sidebar items. Create `src/theme/DocSidebar/index.js`:
+
+```js
+import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import { DocSidebar } from '@swmansion/t-rex-ui';
+
+export default function DocSidebarWrapper(props) {
+  const heroImages = {
+    logo: useBaseUrl('/img/logo.svg'),
+    title: useBaseUrl('/img/logo.svg'),
+  };
+
+  // Optional: badge specific doc IDs in the sidebar
+  const newItems = [];
+  const experimentalItems = [];
+  const deprecatedItems = [];
+  const unreleasedItems = [];
+
+  return (
+    <DocSidebar
+      newItems={newItems}
+      experimentalItems={experimentalItems}
+      deprecatedItems={deprecatedItems}
+      unreleasedItems={unreleasedItems}
+      heroImages={heroImages}
+      {...props}
+    />
+  );
+}
+```
+
+### TOCItems                                                                             
+                                                                                         
+The T-Rex UI `TOCItems` component renders the table of contents and by default shows a "H
+ire us" banner at the bottom. Additionally you can insert your own banner with custom content using the `
+slot` prop. Moreover you can modify "Hire us" banner's url using `hireUsUrl`. Create `src/theme/TOCItems/index.js`:                                        
+                                                                                         
+```js                                                                                    
+import React from 'react';                                                               
+import { TOCItems } from '@swmansion/t-rex-ui';                                          
+                                                                                         
+export default function TOCItemsWrapper(props) {                                         
+  const slot = (                                                                         
+    <div>                                                                                
+      <p>Your custom banner content here.</p>                                            
+    </div>                                                                               
+  );                                                                                     
+                                                                                         
+  return <TOCItems slot={slot} {...props} />;                                            
+}                                                                                        
+```                                                              
+
+### Other components
+
+All other T-Rex UI components are applied automatically by the preset and require no additional setup. If you need to further customize any component, follow the standard [Docusaurus swizzling](https://docusaurus.io/docs/swizzling) approach - import the component from `@swmansion/t-rex-ui` and wrap or override it as needed.
 
 ## Example app
 
@@ -113,8 +215,6 @@ customFields: {
 },
 ```
 
----
-
 ## LLM Button
 
 T-Rex UI provides an optional **LLM Button** integrated into the `DocItem/Layout` component.
@@ -128,22 +228,10 @@ This button allows users to:
 
 ### Enabling the LLM Button
 
-To enable the LLM Button, you need to replace the default Docusaurus `DocItem/Layout` component with the one provided by `@swmansion/t-rex-ui` - just like in other cases.
-
-Create the following file in your project:
-
-```js
-src/theme/DocItem/Layout/index.js
-```
-
-Then add:
-
-```js
-import { DocItemLayout } from '@swmansion/t-rex-ui';
-export default DocItemLayout;
-```
+The `DocItem/Layout` component (which embeds the LLM Button) is applied automatically when using the preset. No additional swizzling is required.
 
 ---
+
 ## Docusaurus Plugin: LLM Support
 
 T-Rex UI provides a dedicated Docusaurus plugin:
@@ -160,16 +248,21 @@ During the build process, the plugin:
 2. **Generates `llms-full.txt`**
 3. **Converts `.mdx` files to `.md`**
 
+### Setup
 
-### Installation
+The plugin is **included automatically** when using the T-Rex UI preset. No extra configuration is needed.
+
+If you want to disable it, pass `llms: false` to the preset options:
+
+```js
+[require.resolve('@swmansion/t-rex-ui/preset'), { llms: false }],
+```
+
+If you are **not** using the preset, you can add it manually:
 
 ```bash
 yarn add @swmansion/docusaurus-plugin-llms
 ```
-
-### Enabling the plugin
-
-Add the plugin to your `docusaurus.config.js`:
 
 ```js
 plugins: [

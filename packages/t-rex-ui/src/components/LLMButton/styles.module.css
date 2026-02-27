@@ -10,7 +10,7 @@
   gap: 8px;
   background-color: var(--swm-background);
   color: var(--swm-markdown-copy-button-color);
-  border: 1px solid var(--swm-markdown-copy-button-color);
+  border: 1px solid var(--swm-markdown-copy-button-border-color);
   border-radius: 0px;
   padding: 7px 10px;
   font-size: 0.85rem;
