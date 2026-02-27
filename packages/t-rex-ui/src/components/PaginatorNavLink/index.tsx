@@ -8,12 +8,11 @@ import ArrowRight from '../../assets/arrow-right.svg';
 import ArrowRightDark from '../../assets/arrow-right-dark.svg';
 import ArrowLeft from '../../assets/arrow-left.svg';
 import ArrowLeftDark from '../../assets/arrow-left-dark.svg';
+import type { PropNavigationLink } from '@docusaurus/plugin-content-docs';
 
-interface PaginatorNavLinkProps {
-  permalink: string;
-  title: string;
-  subLabel: string;
-  isNext: boolean;
+export interface PaginatorNavLinkProps extends PropNavigationLink {
+  subLabel: string | React.ReactNode;
+  isNext?: boolean;
 }
 
 export function PaginatorNavLink(props: PaginatorNavLinkProps) {

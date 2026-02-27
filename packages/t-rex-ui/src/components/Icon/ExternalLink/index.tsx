@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import { IconProps } from '../Close';
+import { IconProps } from '../types';
 
 export default function IconExternalLink({
   width = 13.5,

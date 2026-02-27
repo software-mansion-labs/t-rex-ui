@@ -1,11 +1,4 @@
-export interface IconProps {
-  width?: number;
-  height?: number;
-  className?: string;
-  color?: string;
-  strokeWidth?: number;
-  restProps?: any;
-}
+import { IconProps } from '../types';
 
 export default function IconClose({
   width = 21,

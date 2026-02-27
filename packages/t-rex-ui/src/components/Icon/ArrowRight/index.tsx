@@ -1,4 +1,4 @@
-import { IconProps } from '../Close';
+import { IconProps } from '../types';
 
 function ArrowRight(props: IconProps) {
   return (
