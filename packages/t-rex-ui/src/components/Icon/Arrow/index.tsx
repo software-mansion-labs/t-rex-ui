@@ -1,4 +1,4 @@
-import { IconProps } from '../Close';
+import { IconProps } from "../types";
 
 export default function IconArrow(props: IconProps) {
   return (

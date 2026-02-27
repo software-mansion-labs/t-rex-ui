@@ -15,7 +15,7 @@ import {
 import styles from './styles.module.css';
 
 interface TOCItemsProps {
-  toc: TOCItem[];
+  toc?: TOCItem[];
   slot?: React.ReactNode;
   minHeadingLevel?: number;
   maxHeadingLevel?: number;
@@ -25,7 +25,7 @@ interface TOCItemsProps {
 }
 
 export function TOCItems({
-  toc,
+  toc = [],
   slot,
   className = 'table-of-contents table-of-contents__left-border',
   linkClassName = 'table-of-contents__link',

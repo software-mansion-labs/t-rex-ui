@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { IconProps } from '../Close';
+import { IconProps } from '../types';
 
 export default function IconSuccess(props: IconProps): ReactNode {
   return (

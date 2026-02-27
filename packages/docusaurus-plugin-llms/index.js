@@ -111,14 +111,6 @@ function convertAdmonitions(content) {
   );
 }
 
-/**
- * Remark plugin that removes MDX-specific nodes from the AST:
- *  - mdxjsEsm           import/export statements
- *  - mdxJsxFlowElement  block-level JSX  → unwrap children
- *  - mdxJsxTextElement  inline JSX       → unwrap children
- *  - mdxFlowExpression  block {expr}     → remove
- *  - mdxTextExpression  inline {expr}    → remove
- */
 function stripMdxPlugin() {
   return (tree) => {
     stripMdxNodes(tree);
@@ -129,7 +121,7 @@ function stripMdxNodes(node) {
   if (!node.children) return;
 
   node.children = node.children.flatMap((child) => {
-    //  import/export statements
+    // import/export statements
     if (child.type === 'mdxjsEsm') {
       return [];
     }

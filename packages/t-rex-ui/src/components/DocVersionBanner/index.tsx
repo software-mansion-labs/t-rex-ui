@@ -143,12 +143,12 @@ function DocVersionBannerEnabled({
     </div>
   );
 }
-export function DocVersionBanner({ className }: { className: string }) {
+export function DocVersionBanner({ className }: { className?: string }) {
   const versionMetadata = useDocsVersion();
   if (versionMetadata.banner) {
     return (
       <DocVersionBannerEnabled
-        className={className}
+        className={className || ''}
         versionMetadata={versionMetadata}
       />
     );

@@ -1,9 +1,4 @@
-interface IconProps {
-  width?: number;
-  height?: number;
-  className?: string;
-  restProps?: any;
-}
+import { IconProps } from '../types';
 
 export default function IconMenu({
   width = 30,
