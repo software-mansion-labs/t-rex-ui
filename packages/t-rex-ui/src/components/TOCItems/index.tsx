@@ -17,6 +17,7 @@ import styles from './styles.module.css';
 interface TOCItemsProps {
   toc?: TOCItem[];
   slot?: React.ReactNode;
+  hireUsUrl?: string;
   minHeadingLevel?: number;
   maxHeadingLevel?: number;
   className?: string;
@@ -27,6 +28,7 @@ interface TOCItemsProps {
 export function TOCItems({
   toc = [],
   slot,
+  hireUsUrl,
   className = 'table-of-contents table-of-contents__left-border',
   linkClassName = 'table-of-contents__link',
   linkActiveClassName = undefined,
@@ -64,12 +66,13 @@ export function TOCItems({
         linkClassName={linkClassName}
         {...props}
       />
-      {slot ?? (
+      {slot}
+     
         <div className={styles.hireUsContainer}>
           <p>We are Software Mansion.</p>
           <div className={styles.buttonContainer}>
             <HomepageButton
-              href="https://swmansion.com/contact/projects?utm_source=rnos-docs&utm_medium=sidebar"
+              href={hireUsUrl ?? "https://swmansion.com/contact/?utm_source=rnos-docs&utm_medium=sidebar"}
               title="Hire us"
               backgroundStyling={ButtonStyling.TOC}
               borderStyling={BorderStyling.TOC}
@@ -77,7 +80,7 @@ export function TOCItems({
             />
           </div>
         </div>
-      )}
+      
     </>
   );
 }
