@@ -60,6 +60,9 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    require.resolve('@swmansion/docusaurus-plugin-llms'),
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
