@@ -23,7 +23,7 @@ function presetTRexUI(_context, options = {}) {
   }
 
   return {
-    themes: [/** @type {import('@docusaurus/types').PluginConfig} */ (path.join(__dirname, 'theme.cjs'))],
+    themes: [/** @type {import('@docusaurus/types').PluginConfig} */ ([path.join(__dirname, 'theme.cjs'), { showLLMButton: llms !== false }])],
     plugins,
   };
 }
