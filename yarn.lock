@@ -4494,19 +4494,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swmansion/docusaurus-plugin-llms@workspace:*, @swmansion/docusaurus-plugin-llms@workspace:packages/docusaurus-plugin-llms":
-  version: 0.0.0-use.local
-  resolution: "@swmansion/docusaurus-plugin-llms@workspace:packages/docusaurus-plugin-llms"
-  dependencies:
-    fs-extra: "npm:^11.3.3"
-    gray-matter: "npm:^4.0.3"
-    remark-mdx: "npm:^3.0.0"
-    remark-parse: "npm:^11.0.0"
-    remark-stringify: "npm:^11.0.0"
-    unified: "npm:^11.0.5"
-  languageName: unknown
-  linkType: soft
-
 "@swmansion/t-rex-ui@workspace:*, @swmansion/t-rex-ui@workspace:packages/t-rex-ui":
   version: 0.0.0-use.local
   resolution: "@swmansion/t-rex-ui@workspace:packages/t-rex-ui"
@@ -4536,14 +4523,20 @@ __metadata:
     eslint: "npm:^8.57.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-refresh: "npm:^0.4.6"
+    fs-extra: "npm:^11.3.3"
     glob: "npm:^10.4.2"
+    gray-matter: "npm:^4.0.3"
     prettier: "npm:^3.2.5"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
     react-icons: "npm:^5.0.0"
     release-it: "npm:^17.2.1"
+    remark-mdx: "npm:^3.0.0"
+    remark-parse: "npm:^11.0.0"
+    remark-stringify: "npm:^11.0.0"
     tsc-watch: "npm:^6.2.0"
     typescript: "npm:5.8.3"
+    unified: "npm:^11.0.5"
     vite: "npm:^5.2.0"
     vite-plugin-dts: "npm:^3.8.3"
     vite-plugin-lib-inject-css: "npm:^2.0.1"
@@ -4554,14 +4547,10 @@ __metadata:
     "@emotion/react": "*"
     "@emotion/styled": "*"
     "@mui/material": ">=5.0.0"
-    "@swmansion/docusaurus-plugin-llms": "*"
     copy-text-to-clipboard: ^3.2.2
     react: "*"
     react-dom: "*"
     react-icons: "*"
-  peerDependenciesMeta:
-    "@swmansion/docusaurus-plugin-llms":
-      optional: true
   languageName: unknown
   linkType: soft
 
@@ -8266,7 +8255,6 @@ __metadata:
     "@emotion/react": "npm:^11.13.0"
     "@emotion/styled": "npm:^11.13.0"
     "@mdx-js/react": "npm:^3.0.0"
-    "@swmansion/docusaurus-plugin-llms": "workspace:*"
     "@swmansion/t-rex-ui": "workspace:*"
     clsx: "npm:^1.2.1"
     prism-react-renderer: "npm:^2.3.0"
