@@ -22,8 +22,8 @@ export { TOCItems } from './components/TOCItems';
 export { TOCItemTree } from './components/TOCItems/Tree';
 
 export { SearchPage } from './components/SearchPage';
-
-export { MDXComponents } from './components/MDXComponents';
+import { MDXComponents } from './components/MDXComponents';
+export { MDXComponents };
 
 export { HireUsSection } from './components/HireUsSection';
 export { LLMButton } from './components/LLMButton';
