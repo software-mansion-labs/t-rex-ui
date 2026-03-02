@@ -145,6 +145,7 @@ yarn build
 T-Rex UI provides the following SWM-themed Docusaurus components:
 
 - `Admonition`
+- `Badges`
 - `ColorModeToggle`
 - `DocCard`
 - `DocSidebar`

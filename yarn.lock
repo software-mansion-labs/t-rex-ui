@@ -4540,6 +4540,7 @@ __metadata:
     prettier: "npm:^3.2.5"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
+    react-icons: "npm:^5.0.0"
     release-it: "npm:^17.2.1"
     tsc-watch: "npm:^6.2.0"
     typescript: "npm:5.8.3"
@@ -4553,9 +4554,14 @@ __metadata:
     "@emotion/react": "*"
     "@emotion/styled": "*"
     "@mui/material": ">=5.0.0"
+    "@swmansion/docusaurus-plugin-llms": "*"
     copy-text-to-clipboard: ^3.2.2
     react: "*"
     react-dom: "*"
+    react-icons: "*"
+  peerDependenciesMeta:
+    "@swmansion/docusaurus-plugin-llms":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -13808,7 +13814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^5.5.0":
+"react-icons@npm:^5.0.0, react-icons@npm:^5.5.0":
   version: 5.5.0
   resolution: "react-icons@npm:5.5.0"
   peerDependencies:
