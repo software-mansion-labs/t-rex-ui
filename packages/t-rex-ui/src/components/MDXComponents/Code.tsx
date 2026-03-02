@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from 'react';
 import React from 'react';
 import CodeBlock from '../CodeBlock';
-import CodeInline from '../CodeBlock';
+import CodeInline from '../CodeInline';
 
 function shouldBeInline(props: any) {
   return (
