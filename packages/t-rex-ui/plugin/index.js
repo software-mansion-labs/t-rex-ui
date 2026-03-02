@@ -6,6 +6,10 @@ import remarkParse from 'remark-parse';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
 
+// TODO:
+// For some reason creating 'md' files cause a brokenAnchor disaster in docusaurus docs,
+// Anchors can be silenced by setting `warn` to `onBrokenAnchors`
+// But in the future we might want to find a way for Docusaurus to ignore /static/docs files when checking for broken anchors
 export default function pluginLLMs(context, options) {
   return {
     name: 'docusaurus-plugin-llms',
@@ -15,7 +19,7 @@ export default function pluginLLMs(context, options) {
       const staticDir = path.join(siteDir, 'static');
       const docsDir = path.join(siteDir, 'docs');
 
-      const BASE_URL = context.siteConfig.url.replace(/\/$/, '');
+      const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${context.siteConfig.baseUrl.replace(/\/$/, '')}`;
 
       const files = await getFiles(docsDir);
 
@@ -24,7 +28,7 @@ export default function pluginLLMs(context, options) {
 
       const sections = {};
 
-      // generate llms-full.txt
+      // generate llms-full.txt and individual .md files
       for (const file of files) {
         const content = await fs.readFile(file, 'utf8');
         const { data, content: rawContent } = matter(content);
@@ -46,7 +50,13 @@ export default function pluginLLMs(context, options) {
 
         sections[sectionName].push({ title, url, description });
 
-        const mdContent = await convertMdxToMd(rawContent);
+        let mdContent;
+        try {
+          mdContent = await convertMdxToMd(rawContent);
+        } catch (err) {
+          console.warn(`[docusaurus-plugin-llms] Failed to convert ${relativePath}: ${err.message}`);
+          mdContent = rawContent;
+        }
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
@@ -58,9 +68,9 @@ export default function pluginLLMs(context, options) {
         );
       }
 
+
       // generate llms.txt
       for (const [name, docs] of Object.entries(sections)) {
-        console.log(`Processing section: ${name} with ${docs.length} docs`);
         llmsTxt += `## ${name}\n\n`;
         docs.forEach((doc) => {
           llmsTxt += `- [${doc.title}](${doc.url})${
@@ -79,7 +89,7 @@ export default function pluginLLMs(context, options) {
 }
 
 async function convertMdxToMd(content) {
-  const preprocessed = convertAdmonitions(content);
+  const preprocessed = stripHtmlComments(convertAdmonitions(content));
 
   const file = await unified()
     .use(remarkParse)
@@ -89,6 +99,10 @@ async function convertMdxToMd(content) {
     .process(preprocessed);
 
   return String(file);
+}
+
+function stripHtmlComments(content) {
+  return content.replace(/<!--[\s\S]*?-->/g, '');
 }
 
 function convertAdmonitions(content) {
@@ -128,6 +142,10 @@ function stripMdxNodes(node) {
 
     // JS expressions ({...})
     if (child.type === 'mdxFlowExpression' || child.type === 'mdxTextExpression') {
+      return [];
+    }
+
+    if (child.type === 'html') {
       return [];
     }
 

@@ -21,8 +21,8 @@ const config = {
   organizationName: 'software-mansion-labs', // Usually your GitHub org/user name.
   projectName: 't-rex-ui', // Usually your repo name.
 
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
