@@ -27,3 +27,4 @@ export { MDXComponents } from './components/MDXComponents';
 
 export { HireUsSection } from './components/HireUsSection';
 export { LLMButton } from './components/LLMButton';
+export { Badges } from './components/Badges';

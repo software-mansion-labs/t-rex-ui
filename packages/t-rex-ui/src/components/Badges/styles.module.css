@@ -1,0 +1,31 @@
+.headerWithBadges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.headerWithBadgesReversed {
+flex-direction: row-reverse;
+justify-content: flex-end;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.platformBadge {
+  background-color: var(--swm-platform-badge-background);
+  color: var(--swm-platform-badge-color);
+}
+
+.versionBadge {
+  background-color: var(--swm-available-from-badge-background);
+  color: var(--swm-available-from-badge-color);
+}
