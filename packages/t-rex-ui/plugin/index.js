@@ -6,48 +6,16 @@ import remarkParse from 'remark-parse';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
 
+// TODO:
+// For some reason creating 'md' files cause a brokenAnchor disaster in docusaurus docs,
+// Anchors can be silenced by setting `warn` to `onBrokenAnchors`
+// But in the future we might want to find a way for Docusaurus to ignore /static/docs files when checking for broken anchors
 export default function pluginLLMs(context, options) {
-  const llmsDocsPath = path.join(context.siteDir, 'static', 'llms-docs');
-
   return {
     name: 'docusaurus-plugin-llms',
 
-    configureWebpack() {
-      return {
-        module: {
-          rules: [
-            {
-              enforce: 'pre',
-              test: /\.md$/,
-              include: llmsDocsPath,
-              type: 'asset/source',
-            },
-          ],
-        },
-        plugins: [
-          // make sure docusaurus never runs link or anchor validation on generated files
-          {
-            apply(compiler) {
-              compiler.options.module.rules.forEach((rule) => {
-                if (rule && rule.use) {
-                  if (!rule.exclude) {
-                    rule.exclude = [llmsDocsPath];
-                  } else if (Array.isArray(rule.exclude)) {
-                    if (!rule.exclude.includes(llmsDocsPath)) {
-                      rule.exclude.push(llmsDocsPath);
-                    }
-                  }
-                }
-              });
-            },
-          },
-        ],
-      };
-    },
-
     async postBuild(props) {
       const siteDir = context.siteDir;
-      const outDir = props.outDir;
       const staticDir = path.join(siteDir, 'static');
       const docsDir = path.join(siteDir, 'docs');
 
@@ -92,7 +60,7 @@ export default function pluginLLMs(context, options) {
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
-        const outputDir = path.join(staticDir, 'llms-docs', path.dirname(relativePath));
+        const outputDir = path.join(staticDir, 'docs', path.dirname(relativePath));
         await fs.ensureDir(outputDir);
         await fs.writeFile(
           path.join(outputDir, path.basename(relativePath) + '.md'),
