@@ -259,5 +259,5 @@ If you want to disable it, pass `llms: false` to the preset options:
 [require.resolve('@swmansion/t-rex-ui/preset'), { llms: false }],
 ```
 
-As of current moment, there is no possibility to use this plugin on it's own.
+As of current moment, there is no possibility to use this plugin on its own.
 ```
