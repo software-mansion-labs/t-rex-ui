@@ -60,7 +60,7 @@ export default function pluginLLMs(context, options) {
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
-        const outputDir = path.join(staticDir, 'docs', path.dirname(relativePath));
+        const outputDir = path.join(staticDir, 'raw', path.dirname(relativePath));
         await fs.ensureDir(outputDir);
         await fs.writeFile(
           path.join(outputDir, path.basename(relativePath) + '.md'),
