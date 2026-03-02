@@ -1,21 +1,57 @@
-const fs = require('fs-extra');
-const path = require('path');
-const matter = require('gray-matter');
-  import { unified } from 'unified';
-  import remarkParse from 'remark-parse';
-  import remarkMdx from 'remark-mdx';
-  import remarkStringify from 'remark-stringify';
+import fs from 'fs-extra';
+import path from 'path';
+import matter from 'gray-matter';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkMdx from 'remark-mdx';
+import remarkStringify from 'remark-stringify';
 
-module.exports = function pluginLLMs(context, options) {
+export default function pluginLLMs(context, options) {
+  const llmsDocsPath = path.join(context.siteDir, 'static', 'llms-docs');
+
   return {
     name: 'docusaurus-plugin-llms',
 
+    configureWebpack() {
+      return {
+        module: {
+          rules: [
+            {
+              enforce: 'pre',
+              test: /\.md$/,
+              include: llmsDocsPath,
+              type: 'asset/source',
+            },
+          ],
+        },
+        plugins: [
+          // make sure docusaurus never runs link or anchor validation on generated files
+          {
+            apply(compiler) {
+              compiler.options.module.rules.forEach((rule) => {
+                if (rule && rule.use) {
+                  if (!rule.exclude) {
+                    rule.exclude = [llmsDocsPath];
+                  } else if (Array.isArray(rule.exclude)) {
+                    if (!rule.exclude.includes(llmsDocsPath)) {
+                      rule.exclude.push(llmsDocsPath);
+                    }
+                  }
+                }
+              });
+            },
+          },
+        ],
+      };
+    },
+
     async postBuild(props) {
       const siteDir = context.siteDir;
+      const outDir = props.outDir;
       const staticDir = path.join(siteDir, 'static');
       const docsDir = path.join(siteDir, 'docs');
 
-      const BASE_URL = context.siteConfig.url.replace(/\/$/, '');
+      const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${context.siteConfig.baseUrl.replace(/\/$/, '')}`;
 
       const files = await getFiles(docsDir);
 
@@ -24,7 +60,7 @@ module.exports = function pluginLLMs(context, options) {
 
       const sections = {};
 
-      // generate llms-full.txt
+      // generate llms-full.txt and individual .md files
       for (const file of files) {
         const content = await fs.readFile(file, 'utf8');
         const { data, content: rawContent } = matter(content);
@@ -46,11 +82,17 @@ module.exports = function pluginLLMs(context, options) {
 
         sections[sectionName].push({ title, url, description });
 
-        const mdContent = await convertMdxToMd(rawContent);
+        let mdContent;
+        try {
+          mdContent = await convertMdxToMd(rawContent);
+        } catch (err) {
+          console.warn(`[docusaurus-plugin-llms] Failed to convert ${relativePath}: ${err.message}`);
+          mdContent = rawContent;
+        }
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
-        const outputDir = path.join(staticDir, 'docs', path.dirname(relativePath));
+        const outputDir = path.join(staticDir, 'llms-docs', path.dirname(relativePath));
         await fs.ensureDir(outputDir);
         await fs.writeFile(
           path.join(outputDir, path.basename(relativePath) + '.md'),
@@ -58,9 +100,9 @@ module.exports = function pluginLLMs(context, options) {
         );
       }
 
+
       // generate llms.txt
       for (const [name, docs] of Object.entries(sections)) {
-        console.log(`Processing section: ${name} with ${docs.length} docs`);
         llmsTxt += `## ${name}\n\n`;
         docs.forEach((doc) => {
           llmsTxt += `- [${doc.title}](${doc.url})${
@@ -76,10 +118,10 @@ module.exports = function pluginLLMs(context, options) {
       console.log('✅ LLM files generated');
     },
   };
-};
+}
 
 async function convertMdxToMd(content) {
-  const preprocessed = convertAdmonitions(content);
+  const preprocessed = stripHtmlComments(convertAdmonitions(content));
 
   const file = await unified()
     .use(remarkParse)
@@ -89,6 +131,10 @@ async function convertMdxToMd(content) {
     .process(preprocessed);
 
   return String(file);
+}
+
+function stripHtmlComments(content) {
+  return content.replace(/<!--[\s\S]*?-->/g, '');
 }
 
 function convertAdmonitions(content) {
@@ -128,6 +174,10 @@ function stripMdxNodes(node) {
 
     // JS expressions ({...})
     if (child.type === 'mdxFlowExpression' || child.type === 'mdxTextExpression') {
+      return [];
+    }
+
+    if (child.type === 'html') {
       return [];
     }
 

@@ -3,7 +3,7 @@ import React, {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import Details from '../Details';
+import DetailsStyling from './DetailsStyling';
 
 export function MDXDetails(props: any): ReactNode {
   const items = React.Children.toArray(props.children);
@@ -16,8 +16,8 @@ export function MDXDetails(props: any): ReactNode {
   const children = <>{items.filter((item) => item !== summary)}</>;
 
   return (
-    <Details {...props} summary={summary}>
+    <DetailsStyling {...props} summary={summary}>
       {children}
-    </Details>
+    </DetailsStyling>
   );
 }
