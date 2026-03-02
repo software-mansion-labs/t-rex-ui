@@ -16,7 +16,7 @@ function presetTRexUI(_context, options = {}) {
     const llmsOptions = typeof llms === 'object' ? llms : {};
     plugins.push(
       /** @type {import('@docusaurus/types').PluginConfig} */ ([
-        require.resolve('@swmansion/docusaurus-plugin-llms'),
+        require.resolve('./plugin/index.js'),
         llmsOptions,
       ])
     );

@@ -1,12 +1,12 @@
-const fs = require('fs-extra');
-const path = require('path');
-const matter = require('gray-matter');
-  import { unified } from 'unified';
-  import remarkParse from 'remark-parse';
-  import remarkMdx from 'remark-mdx';
-  import remarkStringify from 'remark-stringify';
+import fs from 'fs-extra';
+import path from 'path';
+import matter from 'gray-matter';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkMdx from 'remark-mdx';
+import remarkStringify from 'remark-stringify';
 
-module.exports = function pluginLLMs(context, options) {
+export default function pluginLLMs(context, options) {
   return {
     name: 'docusaurus-plugin-llms',
 
@@ -76,7 +76,7 @@ module.exports = function pluginLLMs(context, options) {
       console.log('✅ LLM files generated');
     },
   };
-};
+}
 
 async function convertMdxToMd(content) {
   const preprocessed = convertAdmonitions(content);

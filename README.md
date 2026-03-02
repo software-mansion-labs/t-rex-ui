@@ -237,7 +237,7 @@ The `DocItem/Layout` component (which embeds the LLM Button) is applied automati
 
 T-Rex UI provides a dedicated Docusaurus plugin:
 
-`@swmansion/docusaurus-plugin-llms`
+`docusaurus-plugin-llms`
 
 This plugin is required for the **LLM Button** to work properly.
 
@@ -259,14 +259,5 @@ If you want to disable it, pass `llms: false` to the preset options:
 [require.resolve('@swmansion/t-rex-ui/preset'), { llms: false }],
 ```
 
-If you are **not** using the preset, you can add it manually:
-
-```bash
-yarn add @swmansion/docusaurus-plugin-llms
-```
-
-```js
-plugins: [
-  require.resolve('@swmansion/docusaurus-plugin-llms'),
-],
+As of current moment, there is no possibility to use this plugin on it's own.
 ```
