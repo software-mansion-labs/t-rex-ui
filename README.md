@@ -260,4 +260,3 @@ If you want to disable it, pass `llms: false` to the preset options:
 ```
 
 As of current moment, there is no possibility to use this plugin on its own.
-```
