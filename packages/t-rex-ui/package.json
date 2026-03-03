@@ -26,6 +26,11 @@
     "release": "release-it",
     "watch": "yarn tsc-watch --onSuccess \"yarn build\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/software-mansion-labs/t-rex-ui.git",
+    "directory": "packages/t-rex-ui"
+  },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
     "@docusaurus/module-type-aliases": "3.9.2",
