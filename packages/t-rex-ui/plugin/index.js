@@ -6,10 +6,6 @@ import remarkParse from 'remark-parse';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
 
-// TODO:
-// For some reason creating 'md' files cause a brokenAnchor disaster in docusaurus docs,
-// Anchors can be silenced by setting `warn` to `onBrokenAnchors`
-// But in the future we might want to find a way for Docusaurus to ignore /static/docs files when checking for broken anchors
 export default function pluginLLMs(context, options) {
   return {
     name: 'docusaurus-plugin-llms',
