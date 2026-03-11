@@ -17,7 +17,7 @@ function LLMButtonContent({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-const mdUrl = permalink.replace('/docs/', '/raw/') + '.md';
+  const mdUrl = `${permalink}.md`;
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

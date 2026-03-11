@@ -10,9 +10,8 @@ export default function pluginLLMs(context, options) {
   return {
     name: 'docusaurus-plugin-llms',
 
-    async postBuild(props) {
+    async postBuild({ outDir }) {
       const siteDir = context.siteDir;
-      const staticDir = path.join(siteDir, 'static');
       const docsDir = path.join(siteDir, 'docs');
 
       const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${context.siteConfig.baseUrl.replace(/\/$/, '')}`;
@@ -56,12 +55,9 @@ export default function pluginLLMs(context, options) {
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
-        const outputDir = path.join(staticDir, 'raw', path.dirname(relativePath));
-        await fs.ensureDir(outputDir);
-        await fs.writeFile(
-          path.join(outputDir, path.basename(relativePath) + '.md'),
-          mdContent
-        );
+        const mdOutPath = sourcePathToMdOutPath(relativePath, outDir);
+        await fs.ensureDir(path.dirname(mdOutPath));
+        await fs.writeFile(mdOutPath, mdContent);
       }
 
 
@@ -76,12 +72,21 @@ export default function pluginLLMs(context, options) {
         llmsTxt += `\n`;
       }
 
-      await fs.writeFile(path.join(staticDir, 'llms.txt'), llmsTxt);
-      await fs.writeFile(path.join(staticDir, 'llms-full.txt'), llmsFull);
+      await fs.writeFile(path.join(outDir, 'llms.txt'), llmsTxt);
+      await fs.writeFile(path.join(outDir, 'llms-full.txt'), llmsFull);
 
       console.log('✅ LLM files generated');
     },
   };
+}
+
+/**
+ * Map a source-relative path (no extension) to its
+ * output .md path inside outDir.
+ */
+function sourcePathToMdOutPath(relativePath, outDir) {
+  const normalized = relativePath.replace(/\/index$/, '') || 'index';
+  return path.join(outDir, 'docs', normalized + '.md');
 }
 
 async function convertMdxToMd(content) {
