@@ -26,6 +26,21 @@ justify-content: flex-end;
   color: var(--swm-platform-badge-color);
 }
 
+.platformBadge[data-platform='android'] {
+  background-color: var(--swm-platform-badge-android-background, var(--swm-platform-badge-background));
+  color: var(--swm-platform-badge-android-color, var(--swm-platform-badge-color));
+}
+
+.platformBadge[data-platform='ios'] {
+  background-color: var(--swm-platform-badge-ios-background, var(--swm-platform-badge-background));
+  color: var(--swm-platform-badge-ios-color, var(--swm-platform-badge-color));
+}
+
+.platformBadge[data-platform='web'] {
+  background-color: var(--swm-platform-badge-web-background, var(--swm-platform-badge-background));
+  color: var(--swm-platform-badge-web-color, var(--swm-platform-badge-color));
+}
+
 .versionBadge {
   background-color: var(--swm-available-from-badge-background);
   color: var(--swm-available-from-badge-color);

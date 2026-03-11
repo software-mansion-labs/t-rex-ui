@@ -36,7 +36,7 @@ export function VersionBadge({ version }: VersionBadgeProps) {
 
 export function PlatformBadge({ platform }: PlatformBadgeProps) {
   return (
-    <div className={clsx(styles.badge, styles.platformBadge)}>
+    <div className={clsx(styles.badge, styles.platformBadge)} data-platform={platform}>
       {platformNameMap[platform]}
     </div>
   );
