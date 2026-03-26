@@ -21,6 +21,15 @@ function isActive(path: string, locationPathname: string) {
   return false;
 }
 
+function getVersionMainDocPath(version: {
+  path: string;
+  mainDocId?: string;
+  docs?: Array<{ id: string; path: string }>;
+}) {
+  const mainDoc = version.docs?.find((doc) => doc.id === version.mainDocId);
+  return mainDoc?.path ?? version.path;
+}
+
 function useNavbarItems() {
   return useThemeConfig().navbar.items;
 }
@@ -79,11 +88,7 @@ export default function NavbarMobileSidebarLayout({
               return (
                 <a
                   key={version.label}
-                  href={
-                    version.isLast
-                      ? `${version.path}/${version.mainDocId}`
-                      : version.path
-                  }
+                  href={getVersionMainDocPath(version)}
                   className={clsx(
                     styles.sidebarVersion,
                     activeVersion?.label === version.label && styles.active
