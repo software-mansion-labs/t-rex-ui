@@ -117,6 +117,80 @@ export default function TOCItemsWrapper(props) {
 }                                                                                        
 ```                                                              
 
+### TopbarBanner
+
+The T-Rex UI `TopbarBanner` renders a Adserver top bar above the navbar. It reserves its height **before hydration** (no content shift on reload) and serves content **server-side** — banners are swapped/rotated on the adserver with no redeploy. The component is shared; each site declares only its own zones (a small config object).
+
+**1. Declare your zones.** Create `src/components/topbarBanner.config.ts`. The zone/content ids, colors and `hiddenPaths` are per site (zone ids encode the lib name):
+
+```ts
+import type { BannerZone } from '@swmansion/t-rex-ui';
+
+export const TOPBAR_BANNER = {
+  rotateIntervalMs: 4000,
+  hiddenPaths: ['/your-lib/docs'] as string[],
+  zones: [
+    { zoneId: 'your-lib-topbar-1', contentId: 'YOUR_CONTENT_ID', fallbackBgColor: '#782aeb' },
+    { zoneId: 'your-lib-topbar-2', contentId: 'YOUR_CONTENT_ID', fallbackBgColor: '#782aeb' },
+  ] satisfies BannerZone[],
+};
+```
+
+**2. Reserve height before paint.** In `docusaurus.config.js`, emit the inline reservation script via `headTags` (it runs in the static `<head>` before the body paints):
+
+```js
+// Import from the `/topbar-banner` subpath (React-free) — NOT the package root.
+import { topbarBannerReservationScript } from '@swmansion/t-rex-ui/topbar-banner';
+// @ts-expect-error -- .ts extension is intentional; not type-checked by tsc here.
+import { TOPBAR_BANNER } from './src/components/topbarBanner.config.ts';
+
+const firstZone = TOPBAR_BANNER.zones[0];
+const bannerReservationHeadTags = firstZone
+  ? [
+      {
+        tagName: 'script',
+        attributes: { type: 'text/javascript' },
+        innerHTML: topbarBannerReservationScript(
+          firstZone.zoneId,
+          firstZone.contentId,
+          TOPBAR_BANNER.hiddenPaths
+        ),
+      },
+    ]
+  : [];
+
+// inside the config object:
+//   headTags: bannerReservationHeadTags,
+```
+
+**3. Render it above the navbar.** In the swizzled `src/theme/Navbar/index.jsx`, render `<TopbarBanner>` as a sibling above the navbar:
+
+```jsx
+import React from 'react';
+import { useLocation } from '@docusaurus/router';
+import { Navbar, TopbarBanner, isBannerHidden } from '@swmansion/t-rex-ui';
+import { TOPBAR_BANNER } from '@site/src/components/topbarBanner.config';
+
+export default function NavbarWrapper(props) {
+  const location = useLocation();
+  const bannerHidden = isBannerHidden(location.pathname, TOPBAR_BANNER.hiddenPaths);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', flexShrink: 0 }}>
+      {!bannerHidden && (
+        <TopbarBanner
+          zones={TOPBAR_BANNER.zones}
+          rotateIntervalMs={TOPBAR_BANNER.rotateIntervalMs}
+        />
+      )}
+      <Navbar {...props} />
+    </div>
+  );
+}
+```
+
+No active content on the ad server = the bar stays collapsed (height 0). Single zone never rotates; pass multiple zones to slide between them on `rotateIntervalMs`.
+
 ### Other components
 
 All other T-Rex UI components are applied automatically by the preset and require no additional setup. If you need to further customize any component, follow the standard [Docusaurus swizzling](https://docusaurus.io/docs/swizzling) approach - import the component from `@swmansion/t-rex-ui` and wrap or override it as needed.
@@ -167,6 +241,7 @@ T-Rex UI provides the following SWM-themed Docusaurus components:
 - `TOCCollapsible`
 - `TOCItems`
 - `TOCItemTree`
+- `TopbarBanner`
 
 
 ## Example docs and testing
