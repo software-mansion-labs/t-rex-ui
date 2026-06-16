@@ -28,3 +28,13 @@ export { MDXComponents };
 export { HireUsSection } from './components/HireUsSection';
 export { LLMButton } from './components/LLMButton';
 export { Badges } from './components/Badges';
+
+export {
+  BANNER_REVEAL_EASING,
+  BANNER_REVEAL_MS,
+  type BannerZone,
+  isBannerHidden,
+  TopbarBanner,
+  topbarBannerReservationScript,
+  varNames,
+} from './components/TopbarBanner';
