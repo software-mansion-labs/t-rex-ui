@@ -26,6 +26,11 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        // Must stay external so we share Docusaurus's single prism-react-renderer
+        // instance. Bundling a second copy gives our <Highlight> a private Prism
+        // that never receives the languages registered via `additionalLanguages`
+        // (e.g. `diff`), so those code blocks render unhighlighted.
+        'prism-react-renderer',
         /@docusaurus\/.*/,
         '@docusaurus/theme-common',
         '@docusaurus/theme-classic',
