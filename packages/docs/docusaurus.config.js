@@ -135,6 +135,7 @@ const config = {
           'All trademarks and copyrights belong to their respective owners.',
       },
       prism: {
+        additionalLanguages: ['diff'],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },

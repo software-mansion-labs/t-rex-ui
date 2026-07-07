@@ -4527,6 +4527,7 @@ __metadata:
     glob: "npm:^10.4.2"
     gray-matter: "npm:^4.0.3"
     prettier: "npm:^3.2.5"
+    prism-react-renderer: "npm:^2.0.0"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
     react-icons: "npm:^5.0.0"
@@ -4548,6 +4549,7 @@ __metadata:
     "@emotion/styled": "*"
     "@mui/material": ">=5.0.0"
     copy-text-to-clipboard: ^3.2.2
+    prism-react-renderer: ^2.0.0
     react: "*"
     react-dom: "*"
     react-icons: "*"
@@ -13528,7 +13530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prism-react-renderer@npm:^2.3.0":
+"prism-react-renderer@npm:^2.0.0, prism-react-renderer@npm:^2.3.0":
   version: 2.4.1
   resolution: "prism-react-renderer@npm:2.4.1"
   dependencies:
