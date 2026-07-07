@@ -17,6 +17,8 @@ export { DocItemMetadata } from './components/DocItem/Metadata';
 export { DocItemLayout } from './components/DocItem/Layout';
 export { DocVersionBanner } from './components/DocVersionBanner';
 
+export type { VersionCounterpartMap } from './utils/versionCounterpart';
+
 export { TOCCollapsible } from './components/TOCCollapsible';
 export { TOCItems } from './components/TOCItems';
 export { TOCItemTree } from './components/TOCItems/Tree';
