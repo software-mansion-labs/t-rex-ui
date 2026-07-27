@@ -29,6 +29,22 @@ const SCRIPT_SRC = 'https://swm-delivery.com/www/assets/js/lib.js';
 
 const FALLBACK_BG_COLOR = '#2a47ff';
 
+// SCRIPT_SRC's controller (window.contentAsync[contentId]) only auto-fills
+// <ins> zones once, on page load. Later remount needs a manual refresh.
+type ContentAsyncController = { refresh?: () => void };
+
+const triggerContentAsyncRefresh = (contentId: string) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  const registry = (
+    window as unknown as {
+      contentAsync?: Record<string, ContentAsyncController>;
+    }
+  ).contentAsync;
+  registry?.[contentId]?.refresh?.();
+};
+
 const useIsoLayoutEffect =
   typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
@@ -365,6 +381,8 @@ export const TopbarBanner = ({
         ? [{ zoneId, contentId, fallbackBgColor }]
         : [];
 
+  const contentIdsKey = normalizedZones.map((zone) => zone.contentId).join(',');
+
   const [zoneStates, setZoneStates] = useState<ZoneState[]>(() =>
     normalizedZones.map(() => ({ height: 0, hasBanner: false }))
   );
@@ -415,6 +433,10 @@ export const TopbarBanner = ({
       return;
     }
     if (document.querySelector(`script[src="${SCRIPT_SRC}"]`)) {
+      const uniqueContentIds = Array.from(
+        new Set(contentIdsKey.split(',').filter(Boolean))
+      );
+      uniqueContentIds.forEach(triggerContentAsyncRefresh);
       return;
     }
 
@@ -422,7 +444,7 @@ export const TopbarBanner = ({
     script.async = true;
     script.src = SCRIPT_SRC;
     document.body.appendChild(script);
-  }, []);
+  }, [contentIdsKey]);
 
   // Arm transition only after the first frame is painted (double rAF), so the
   // reserved bar appears instantly but later size changes still animate.
