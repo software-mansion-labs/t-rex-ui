@@ -6,7 +6,11 @@ const platformClasses = {
   '[W]': 'platform-indicator-web',
 };
 
-const MARKER_REGEX = /\s*(\[A\]|\[I\]|\[W\])/g;
+const MARKER_REGEX = /\[[AIW]\]/g;
+
+// A run of markers at the end of the heading, optionally followed by an
+// explicit Docusaurus anchor ({#custom-id}), which always sits last
+const TRAILING_MARKERS_REGEX = /(?:\s*\[[AIW]\])+(?=\s*(?:\{#[^}]+\})?\s*$)/;
 
 const processHeaderMarkers = () => {
   return (ast) => {
@@ -17,15 +21,20 @@ const processHeaderMarkers = () => {
         return;
       }
 
-      const markers = [...lastChild.value.matchAll(MARKER_REGEX)]
-        .map((match) => match[1])
-        .sort();
+      const trailingMarkers = lastChild.value.match(TRAILING_MARKERS_REGEX);
 
-      if (markers.length === 0) {
+      if (!trailingMarkers) {
         return;
       }
 
-      lastChild.value = lastChild.value.replace(MARKER_REGEX, '').trimEnd();
+      const markers = [
+        ...new Set(trailingMarkers[0].match(MARKER_REGEX)),
+      ].sort();
+
+      lastChild.value = (
+        lastChild.value.slice(0, trailingMarkers.index) +
+        lastChild.value.slice(trailingMarkers.index + trailingMarkers[0].length)
+      ).trimEnd();
 
       if (lastChild.value === '') {
         node.children.pop();
