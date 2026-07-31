@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate';
 import {
   useActivePlugin,
+  useActiveDocContext,
   useDocVersionSuggestions,
   useDocsPreferredVersion,
   useDocsVersion,
@@ -11,6 +12,10 @@ import {
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import type { PropVersionMetadata } from '@docusaurus/plugin-content-docs';
 import styles from '../Admonition/styles.module.css';
+import {
+  findVersionCounterpartDoc,
+  useVersionCounterpartMap,
+} from '../../utils/versionCounterpart';
 
 function UnreleasedVersionLabel({
   siteTitle,
@@ -115,12 +120,21 @@ function DocVersionBannerEnabled({
   const getVersionMainDoc = (version: any) =>
     version.docs.find((doc: any) => doc.id === version.mainDocId);
   const { savePreferredVersionName } = useDocsPreferredVersion(pluginId);
+  const { activeDoc } = useActiveDocContext(pluginId);
+  const counterpartMap = useVersionCounterpartMap();
   const { latestDocSuggestion, latestVersionSuggestion } =
     useDocVersionSuggestions(pluginId);
-  // Try to link to same doc in latest version (not always possible), falling
-  // back to main doc of latest version
+  // Try to link to same doc in latest version (not always possible). When the
+  // doc id changed between versions, consult the opt-in counterpart map before
+  // falling back to the main doc of the latest version.
   const latestVersionSuggestedDoc =
-    latestDocSuggestion ?? getVersionMainDoc(latestVersionSuggestion);
+    latestDocSuggestion ??
+    findVersionCounterpartDoc(
+      activeDoc,
+      latestVersionSuggestion,
+      counterpartMap,
+    ) ??
+    getVersionMainDoc(latestVersionSuggestion);
   return (
     <div
       className={clsx(

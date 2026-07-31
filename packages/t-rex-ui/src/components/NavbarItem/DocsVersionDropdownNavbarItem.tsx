@@ -11,6 +11,10 @@ import { useLocation } from '@docusaurus/router';
 import DefaultNavbarItem from './DefaultNavbarItem';
 import DropdownNavbarItem from './DropdownNavbarItem';
 import { NavbarNavLinkProps } from './NavbarNavLink';
+import {
+  findVersionCounterpartDoc,
+  useVersionCounterpartMap,
+} from '../../utils/versionCounterpart';
 
 const getVersionMainDoc = (version: GlobalVersion) =>
   version.docs.find((doc) => doc.id === version.mainDocId);
@@ -34,12 +38,19 @@ export default function DocsVersionDropdownNavbarItem({
   const { search, hash } = useLocation();
   const activeDocContext = useActiveDocContext(docsPluginId);
   const versions = useVersions(docsPluginId);
+  const counterpartMap = useVersionCounterpartMap();
   const { savePreferredVersionName } = useDocsPreferredVersion(docsPluginId);
   const versionLinks = versions.map((version) => {
-    // We try to link to the same doc, in another version
-    // When not possible, fallback to the "main doc" of the version
+    // We try to link to the same doc, in another version. When the doc id
+    // changed between versions, we consult the opt-in counterpart map. When
+    // neither is possible, fallback to the "main doc" of the version.
     const versionDoc =
       activeDocContext.alternateDocVersions[version.name] ??
+      findVersionCounterpartDoc(
+        activeDocContext.activeDoc,
+        version,
+        counterpartMap,
+      ) ??
       getVersionMainDoc(version);
     return {
       label: version.label,
