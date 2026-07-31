@@ -4538,6 +4538,7 @@ __metadata:
     tsc-watch: "npm:^6.2.0"
     typescript: "npm:5.8.3"
     unified: "npm:^11.0.5"
+    unist-util-visit: "npm:^5.1.0"
     vite: "npm:^5.2.0"
     vite-plugin-dts: "npm:^3.8.3"
     vite-plugin-lib-inject-css: "npm:^2.0.1"
@@ -15964,6 +15965,17 @@ __metadata:
     unist-util-is: "npm:^6.0.0"
     unist-util-visit-parents: "npm:^6.0.0"
   checksum: 10/f2bbde23641e9ade7640358c06ddeec0f38342322eb8e7819d9ee380b0f859d25d084dde22bf63db0280b3b2f36575f15aa1d6c23acf276c91c2493cf799e3b0
+  languageName: node
+  linkType: hard
+
+"unist-util-visit@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "unist-util-visit@npm:5.1.0"
+  dependencies:
+    "@types/unist": "npm:^3.0.0"
+    unist-util-is: "npm:^6.0.0"
+    unist-util-visit-parents: "npm:^6.0.0"
+  checksum: 10/340fc1929062d21156200284105caad79cc188bd98f285b60aba887492a70e6e6cadbc7e383a68909c7e0fdd83f855cb9f4184ad8e5aa153eb2d810445aea8e5
   languageName: node
   linkType: hard
 

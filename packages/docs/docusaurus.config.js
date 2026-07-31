@@ -6,6 +6,7 @@
 
 const lightCodeTheme = require('./src/theme/CodeBlock/highlighting-light.js');
 const darkCodeTheme = require('./src/theme/CodeBlock/highlighting-dark.js');
+const platformCircles = require('@swmansion/t-rex-ui/platform-circles');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -49,6 +50,8 @@ const config = {
               label: '3.x',
             },
           },
+          beforeDefaultRemarkPlugins: [platformCircles.processHeaderMarkers],
+          remarkPlugins: [platformCircles.removeHeaderJSX],
         },
         blog: {
           showReadingTime: false,

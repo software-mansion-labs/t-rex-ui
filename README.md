@@ -117,6 +117,44 @@ export default function TOCItemsWrapper(props) {
 }                                                                                        
 ```                                                              
 
+### Platform circles in the table of contents
+
+T-Rex UI can render small colored circles next to table of contents entries to indicate which platforms a given section (e.g. an API property) applies to. Add `[A]` (Android), `[I]` (iOS) and/or `[W]` (Web) markers at the end of a heading:
+
+```md
+### rippleColor [A]
+```
+
+The markers are stripped from the rendered heading — only the ToC entry gets the circles. To display platform badges next to the heading itself, wrap it in the `Badges` component.
+
+Markers must be placed at the end of the heading, after any inline formatting. Only `.mdx` documents are supported (the circles are injected as MDX JSX nodes), and they are shown in the desktop ToC only, not in the mobile "On this page" dropdown.
+
+Enable it by wiring the two remark plugins into the docs options in `docusaurus.config.js`:
+
+```js
+const platformCircles = require('@swmansion/t-rex-ui/platform-circles');
+
+// in the classic preset options:
+docs: {
+  beforeDefaultRemarkPlugins: [platformCircles.processHeaderMarkers],
+  remarkPlugins: [platformCircles.removeHeaderJSX],
+},
+```
+
+The circles are rendered in the gutter to the left of the ToC entry, so entries without circles keep the same text alignment.
+
+If the site defines the platform badge colors (`--swm-platform-badge-{android,ios,web}-background`), the circles use them automatically, so they stay consistent with the `Badges` component. The exception is the iOS circle in the dark theme, which defaults to `#ffffff` regardless of the badge color — a dark badge pill stays readable on a dark background, a dark circle does not. The colors can also be overridden independently of the badges with dedicated CSS variables:
+
+```css
+:root {
+  --swm-platform-indicator-android-background: #34a853;
+  --swm-platform-indicator-ios-background: #000000;
+  --swm-platform-indicator-web-background: #1067c4;
+}
+```
+
+The values above are also the built-in fallbacks used when neither the badge nor the indicator variables are defined.
+
 ### TopbarBanner
 
 The T-Rex UI `TopbarBanner` renders a Adserver top bar above the navbar. It reserves its height **before hydration** (no content shift on reload) and serves content **server-side** — banners are swapped/rotated on the adserver with no redeploy. The component is shared; each site declares only its own zones (a small config object).

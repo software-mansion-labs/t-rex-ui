@@ -44,3 +44,57 @@
   background-color: transparent;
   color: var(--swm-navy-light-40);
 }
+
+@media (min-width: 997px) {
+  :global(.table-of-contents li) {
+    position: relative;
+  }
+
+  :global(.table-of-contents .platform-indicator-android),
+  :global(.table-of-contents .platform-indicator-ios),
+  :global(.table-of-contents .platform-indicator-web) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+
+    /* Hang the circle in the gutter left of the entry, aligned with its first
+     line, so entries without circles keep the same text alignment */
+    position: absolute;
+    left: -14px;
+    top: 7px;
+  }
+
+  /* Stack additional circles further to the left */
+  :global(
+    .table-of-contents
+      [class*='platform-indicator-']
+      ~ [class*='platform-indicator-']
+  ) {
+    left: -24px;
+  }
+
+  :global(.table-of-contents .platform-indicator-android) {
+    background: var(
+      --swm-platform-indicator-android-background,
+      var(--swm-platform-badge-android-background, #34a853)
+    );
+  }
+
+  :global(.table-of-contents .platform-indicator-ios) {
+    background: var(
+      --swm-platform-indicator-ios-background,
+      var(--swm-platform-badge-ios-background, #000000)
+    );
+  }
+
+  :global([data-theme='dark'] .table-of-contents .platform-indicator-ios) {
+    background: var(--swm-platform-indicator-ios-background, #ffffff);
+  }
+
+  :global(.table-of-contents .platform-indicator-web) {
+    background: var(
+      --swm-platform-indicator-web-background,
+      var(--swm-platform-badge-web-background, #1067c4)
+    );
+  }
+}
