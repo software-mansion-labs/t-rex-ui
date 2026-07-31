@@ -1,10 +1,15 @@
 name: publish release to npm
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - .github/workflows/publish-release.yml
   workflow_dispatch:
     inputs:
       version:
-        description: Specific version
+        description: Specific version (defaults to next patch)
         type: string
         required: false
         default: ''
@@ -13,13 +18,18 @@ on:
         type: boolean
         default: true
 
+concurrency:
+  group: patch-release
+  cancel-in-progress: false
+
 jobs:
-  publish:
+  release:
+    if: github.event_name != 'pull_request' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     permissions:
       contents: write
-      id-token: write   
+      id-token: write
 
     steps:
       - name: Checkout
@@ -32,12 +42,76 @@ jobs:
           cache: yarn
           registry-url: https://registry.npmjs.org/
 
+      - name: Resolve release version
+        id: version
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            NEXT="${{ inputs.version }}"
+            echo "Using provided version: $NEXT"
+          else
+            LATEST=$(npm view @swmansion/t-rex-ui version)
+            NEXT=$(node -e "const [a, b, c] = '$LATEST'.split('.').map(Number); console.log([a, b, c + 1].join('.'))")
+            echo "Latest published: $LATEST, releasing: $NEXT"
+          fi
+          echo "version=$NEXT" >> "$GITHUB_OUTPUT"
+
       - name: Publish package
-        uses: software-mansion-labs/npm-package-publish@main
+        uses: software-mansion/npm-package-publish@bbfbcdf3f27e2dc288d7d56f5989a731efc79e6f
         with:
           package-name: '@swmansion/t-rex-ui'
           package-json-path: packages/t-rex-ui/package.json
           install-dependencies-command: yarn install --immutable
           release-type: stable
-          version: ${{ inputs.version }}
-          dry-run: ${{ inputs.dry-run }}
+          version: ${{ steps.version.outputs.version }}
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run || 'false' }}
+
+      - name: Commit version bump to main
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- packages/t-rex-ui/package.json; then
+            echo "No version change to commit"
+            exit 0
+          fi
+          git add packages/t-rex-ui/package.json
+          git commit -m "chore: release v${{ steps.version.outputs.version }}"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+
+  dry-run:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: yarn
+          registry-url: https://registry.npmjs.org/
+
+      - name: Resolve next patch version
+        id: version
+        run: |
+          LATEST=$(npm view @swmansion/t-rex-ui version)
+          NEXT=$(node -e "const [a, b, c] = '$LATEST'.split('.').map(Number); console.log([a, b, c + 1].join('.'))")
+          echo "Latest published: $LATEST, would release: $NEXT"
+          echo "version=$NEXT" >> "$GITHUB_OUTPUT"
+
+      - name: Publish package (dry run)
+        uses: software-mansion/npm-package-publish@bbfbcdf3f27e2dc288d7d56f5989a731efc79e6f
+        with:
+          package-name: '@swmansion/t-rex-ui'
+          package-json-path: packages/t-rex-ui/package.json
+          install-dependencies-command: yarn install --immutable
+          release-type: stable
+          version: ${{ steps.version.outputs.version }}
+          dry-run: 'true'
