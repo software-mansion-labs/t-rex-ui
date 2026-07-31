@@ -8,7 +8,8 @@
     ".": "./dist/main.js",
     "./topbar-banner": "./dist/components/TopbarBanner/shared.js",
     "./theme": "./theme.cjs",
-    "./preset": "./preset.cjs"
+    "./preset": "./preset.cjs",
+    "./platform-circles": "./plugin/platform-circles.js"
   },
   "files": [
     "dist",
@@ -43,7 +44,8 @@
     "remark-mdx": "^3.0.0",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@docsearch/core": "^4.4.0",
