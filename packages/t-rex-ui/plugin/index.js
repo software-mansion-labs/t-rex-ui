@@ -6,20 +6,43 @@ import remarkParse from 'remark-parse';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
 
+const ACRONYMS = { api: 'API', ui: 'UI', sdk: 'SDK' };
+
+function titleCase(segment) {
+  return segment
+    .split(/[-_]/)
+    .map((word) => ACRONYMS[word] ?? word.replace(/^./, (c) => c.toUpperCase()))
+    .join(' ');
+}
+
+function sectionLabel(dir) {
+  if (dir === '.') return 'General';
+  return dir.split('/').map(titleCase).join(' / ');
+}
+
 export default function pluginLLMs(context, options) {
   return {
     name: 'docusaurus-plugin-llms',
 
-    async postBuild({ outDir }) {
+    async postBuild({ outDir, routesPaths }) {
       const siteDir = context.siteDir;
       const docsDir = path.join(siteDir, 'docs');
 
-      const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${context.siteConfig.baseUrl.replace(/\/$/, '')}`;
+      const { title, tagline, baseUrl } = context.siteConfig;
+      const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${baseUrl.replace(/\/$/, '')}`;
+
+      // `routeBasePath: '/'` serves docs from the root, not under /docs
+      const docsPrefix = routesPaths.some((route) =>
+        route.startsWith(`${baseUrl}docs/`)
+      )
+        ? 'docs/'
+        : '';
 
       const files = await getFiles(docsDir);
 
-      let llmsTxt = `# Documentation\n\n`;
-      let llmsFull = `# Documentation (Full)\n\n`;
+      let llmsTxt = `# ${title}\n\n`;
+      if (tagline) llmsTxt += `> ${tagline}\n\n`;
+      let llmsFull = `# ${title}\n\n`;
 
       const sections = {};
 
@@ -32,11 +55,8 @@ export default function pluginLLMs(context, options) {
           .relative(docsDir, file)
           .replace(/\.mdx?$/, '');
 
-        const url = `${BASE_URL}/docs/${relativePath}`;
-        const sectionName =
-          path.dirname(relativePath) === '.'
-            ? 'General'
-            : path.dirname(relativePath);
+        const url = `${BASE_URL}/${docsPrefix}${relativePath}`;
+        const sectionName = sectionLabel(path.dirname(relativePath));
 
         if (!sections[sectionName]) sections[sectionName] = [];
 
@@ -55,7 +75,11 @@ export default function pluginLLMs(context, options) {
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
-        const mdOutPath = sourcePathToMdOutPath(relativePath, outDir);
+        const mdOutPath = sourcePathToMdOutPath(
+          relativePath,
+          outDir,
+          docsPrefix
+        );
         await fs.ensureDir(path.dirname(mdOutPath));
         await fs.writeFile(mdOutPath, mdContent);
       }
@@ -84,9 +108,9 @@ export default function pluginLLMs(context, options) {
  * Map a source-relative path (no extension) to its
  * output .md path inside outDir.
  */
-function sourcePathToMdOutPath(relativePath, outDir) {
+function sourcePathToMdOutPath(relativePath, outDir, docsPrefix) {
   const normalized = relativePath.replace(/\/index$/, '') || 'index';
-  return path.join(outDir, 'docs', normalized + '.md');
+  return path.join(outDir, docsPrefix, normalized + '.md');
 }
 
 async function convertMdxToMd(content) {
