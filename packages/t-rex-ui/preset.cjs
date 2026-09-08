@@ -3,11 +3,11 @@ const path = require('path');
 
 /**
  * @param {import('@docusaurus/types').LoadContext} _context
- * @param {{ llms?: boolean | object }} options
+ * @param {{ llms?: boolean | object, collapsibleSidebar?: boolean }} options
  * @returns {import('@docusaurus/types').Preset}
  */
 function presetTRexUI(_context, options = {}) {
-  const { llms = true } = options;
+  const { llms = true, collapsibleSidebar = false } = options;
 
   /** @type {import('@docusaurus/types').PluginConfig[]} */
   const plugins = [];
@@ -23,7 +23,7 @@ function presetTRexUI(_context, options = {}) {
   }
 
   return {
-    themes: [/** @type {import('@docusaurus/types').PluginConfig} */ ([path.join(__dirname, 'theme.cjs'), { showLLMButton: llms !== false }])],
+    themes: [/** @type {import('@docusaurus/types').PluginConfig} */ ([path.join(__dirname, 'theme.cjs'), { showLLMButton: llms !== false, collapsibleSidebar }])],
     plugins,
   };
 }

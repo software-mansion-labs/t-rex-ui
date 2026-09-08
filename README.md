@@ -39,6 +39,7 @@ require.resolve('@swmansion/t-rex-ui/preset'),
 | Option | Default | Description |
 |--------|---------|-------------|
 | `llms` | `true`  | Enables `@swmansion/docusaurus-plugin-llms`. Pass `false` to disable, or an object to forward options to the plugin. |
+| `collapsibleSidebar` | `false` | Lets doc sidebar categories collapse and expand. Pass `true` to opt in, then control the details with the standard Docusaurus sidebar options (see [Collapsible sidebar](#collapsible-sidebar)). |
 
 ## Customization
 
@@ -95,6 +96,59 @@ export default function DocSidebarWrapper(props) {
   );
 }
 ```
+
+### Collapsible sidebar
+
+By default T-Rex UI renders every doc sidebar category expanded and non-collapsible, and ignores the Docusaurus collapse options. Opt in with the `collapsibleSidebar` preset option:
+
+```js
+presets: [
+  [
+    'classic',
+    {
+      docs: {
+        sidebarCollapsible: true,
+        sidebarCollapsed: false,
+      },
+    },
+  ],
+  [require.resolve('@swmansion/t-rex-ui/preset'), { collapsibleSidebar: true }],
+],
+```
+
+Once it is on, the standard Docusaurus options decide the rest — T-Rex UI adds no config of its own:
+
+| What you want | Where to set it |
+|---------------|-----------------|
+| Turn collapsing on or off for the whole site | `sidebarCollapsible` in the `docs` options of the `classic` preset |
+| Choose whether categories start collapsed or expanded site-wide | `sidebarCollapsed` in the same place (`true` by default in Docusaurus) |
+| Choose whether one category starts collapsed | `collapsed` on that category |
+| Make one category non-collapsible | `collapsible: false` on that category |
+| Keep only one category open at a time | `themeConfig.docs.sidebar.autoCollapseCategories` |
+
+Set a single section's default in its `_category_.json`:
+
+```json
+{
+  "label": "Tutorial - Extras",
+  "collapsed": true
+}
+```
+
+or on the category in `sidebars.js`:
+
+```js
+{
+  type: 'category',
+  label: 'Tutorial - Extras',
+  collapsed: true,
+  items: ['tutorial-extras/lorem'],
+}
+```
+
+The category holding the page you are on always starts expanded, whatever its `collapsed` value says.
+
+Leaving `collapsibleSidebar` out keeps the current behaviour, so upgrading changes nothing until you opt in.
 
 ### TOCItems                                                                             
                                                                                          

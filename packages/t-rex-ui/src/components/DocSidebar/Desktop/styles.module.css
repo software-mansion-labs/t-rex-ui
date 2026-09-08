@@ -88,7 +88,7 @@
   overflow-wrap: anywhere;
 }
 
-[class*='menu__link']:not(.menu__link--sublist) {
+[class*='menu__link']:not([class*='menu__link--sublist']) {
   --ifm-menu-color: var(--swm-sidebar-menu-color);
   background-color: transparent;
 

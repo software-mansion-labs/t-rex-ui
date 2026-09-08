@@ -41,7 +41,8 @@ const config = {
         docs: {
           breadcrumbs: false,
           sidebarPath: './sidebars.js',
-          sidebarCollapsible: false,
+          sidebarCollapsible: true,
+          sidebarCollapsed: false,
           editUrl:
             'https://github.com/software-mansion-labs/t-rex-ui/tree/main/packages/docs/docs',
           lastVersion: 'current',
@@ -62,7 +63,7 @@ const config = {
         },
       }),
     ],
-    require.resolve('@swmansion/t-rex-ui/preset'),
+    [require.resolve('@swmansion/t-rex-ui/preset'), { collapsibleSidebar: true }],
   ],
 
   themeConfig:
