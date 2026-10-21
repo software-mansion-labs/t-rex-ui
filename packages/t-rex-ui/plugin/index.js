@@ -21,13 +21,21 @@ function sectionLabel(dir) {
 }
 
 export default function pluginLLMs(context, options) {
+  let docsDir = path.join(context.siteDir, 'docs');
+
   return {
     name: 'docusaurus-plugin-llms',
 
-    async postBuild({ outDir, routesPaths }) {
-      const siteDir = context.siteDir;
-      const docsDir = path.join(siteDir, 'docs');
+    async allContentLoaded({ allContent }) {
+      const lastVersion = allContent['docusaurus-plugin-content-docs']?.default?.loadedVersions.find(
+        (version) => version.isLast
+      );
+      if (lastVersion) {
+        docsDir = lastVersion.contentPath;
+      }
+    },
 
+    async postBuild({ outDir, routesPaths }) {
       const { title, tagline, baseUrl } = context.siteConfig;
       const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${baseUrl.replace(/\/$/, '')}`;
 
