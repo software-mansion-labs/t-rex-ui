@@ -5,6 +5,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkMdx from 'remark-mdx';
 import remarkStringify from 'remark-stringify';
+import { visit } from 'unist-util-visit';
 
 const ACRONYMS = { api: 'API', ui: 'UI', sdk: 'SDK' };
 
@@ -22,6 +23,7 @@ function sectionLabel(dir) {
 
 export default function pluginLLMs(context, options) {
   let docsDir = path.join(context.siteDir, 'docs');
+  let permalinks = new Map();
 
   return {
     name: 'docusaurus-plugin-llms',
@@ -32,12 +34,19 @@ export default function pluginLLMs(context, options) {
       );
       if (lastVersion) {
         docsDir = lastVersion.contentPath;
+        permalinks = new Map(
+          lastVersion.docs.map((doc) => [
+            path.resolve(context.siteDir, doc.source.replace(/^@site\//, '')),
+            doc.permalink,
+          ])
+        );
       }
     },
 
     async postBuild({ outDir, routesPaths }) {
       const { title, tagline, baseUrl } = context.siteConfig;
-      const BASE_URL = `${context.siteConfig.url.replace(/\/$/, '')}${baseUrl.replace(/\/$/, '')}`;
+      const SITE_URL = context.siteConfig.url.replace(/\/$/, '');
+      const BASE_URL = `${SITE_URL}${baseUrl.replace(/\/$/, '')}`;
 
       // `routeBasePath: '/'` serves docs from the root, not under /docs
       const docsPrefix = routesPaths.some((route) =>
@@ -63,7 +72,10 @@ export default function pluginLLMs(context, options) {
           .relative(docsDir, file)
           .replace(/\.mdx?$/, '');
 
-        const url = `${BASE_URL}/${docsPrefix}${relativePath}`;
+        const permalink = permalinks.get(file);
+        const url = permalink
+          ? `${SITE_URL}${permalink}`
+          : `${BASE_URL}/${docsPrefix}${relativePath}`;
         const sectionName = sectionLabel(path.dirname(relativePath));
 
         if (!sections[sectionName]) sections[sectionName] = [];
@@ -75,7 +87,9 @@ export default function pluginLLMs(context, options) {
 
         let mdContent;
         try {
-          mdContent = await convertMdxToMd(rawContent);
+          mdContent = await convertMdxToMd(rawContent, (link) =>
+            resolveFileLink(link, file, permalinks, SITE_URL)
+          );
         } catch (err) {
           console.warn(`[docusaurus-plugin-llms] Failed to convert ${relativePath}: ${err.message}`);
           mdContent = rawContent;
@@ -83,11 +97,9 @@ export default function pluginLLMs(context, options) {
 
         llmsFull += `\n---\n# URL: ${url}\n# Title: ${title}\n\n${mdContent}\n`;
 
-        const mdOutPath = sourcePathToMdOutPath(
-          relativePath,
-          outDir,
-          docsPrefix
-        );
+        const mdOutPath = permalink
+          ? permalinkToMdOutPath(permalink, outDir, baseUrl)
+          : sourcePathToMdOutPath(relativePath, outDir, docsPrefix);
         await fs.ensureDir(path.dirname(mdOutPath));
         await fs.writeFile(mdOutPath, mdContent);
       }
@@ -121,13 +133,28 @@ function sourcePathToMdOutPath(relativePath, outDir, docsPrefix) {
   return path.join(outDir, docsPrefix, normalized + '.md');
 }
 
-async function convertMdxToMd(content) {
+function permalinkToMdOutPath(permalink, outDir, baseUrl) {
+  const routePath = permalink.slice(baseUrl.length).replace(/\/$/, '');
+  return path.join(outDir, (routePath || 'index') + '.md');
+}
+
+function resolveFileLink(link, file, permalinks, siteUrl) {
+  if (/^([a-z][a-z0-9+.-]*:|\/|#)/i.test(link)) return undefined;
+
+  const [, linkPath, suffix] = link.match(/^([^?#]*)(.*)$/);
+  const target = path.resolve(path.dirname(file), decodeURIComponent(linkPath));
+  const permalink = permalinks.get(target);
+  return permalink ? `${siteUrl}${permalink}${suffix}` : undefined;
+}
+
+async function convertMdxToMd(content, resolveLink) {
   const preprocessed = stripHtmlComments(convertAdmonitions(content));
 
   const file = await unified()
     .use(remarkParse)
     .use(remarkMdx)
     .use(stripMdxPlugin)
+    .use(resolveLinksPlugin, resolveLink)
     .use(remarkStringify)
     .process(preprocessed);
 
@@ -156,6 +183,14 @@ function convertAdmonitions(content) {
       return label + lines;
     }
   );
+}
+
+function resolveLinksPlugin(resolveLink) {
+  return (tree) => {
+    visit(tree, ['link', 'definition'], (node) => {
+      node.url = resolveLink(node.url) ?? node.url;
+    });
+  };
 }
 
 function stripMdxPlugin() {
