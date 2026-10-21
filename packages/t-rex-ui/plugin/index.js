@@ -88,7 +88,7 @@ export default function pluginLLMs(context, options) {
         let mdContent;
         try {
           mdContent = await convertMdxToMd(rawContent, (link) =>
-            resolveFileLink(link, file, permalinks, SITE_URL)
+            resolveDocLink(link, file, permalinks, SITE_URL, baseUrl)
           );
         } catch (err) {
           console.warn(`[docusaurus-plugin-llms] Failed to convert ${relativePath}: ${err.message}`);
@@ -138,13 +138,21 @@ function permalinkToMdOutPath(permalink, outDir, baseUrl) {
   return path.join(outDir, (routePath || 'index') + '.md');
 }
 
-function resolveFileLink(link, file, permalinks, siteUrl) {
-  if (/^([a-z][a-z0-9+.-]*:|\/|#)/i.test(link)) return undefined;
+function resolveDocLink(link, file, permalinks, siteUrl, baseUrl) {
+  if (/^([a-z][a-z0-9+.-]*:|\/\/|#)/i.test(link)) return undefined;
+  if (link.startsWith('/')) return resolveSitePath(link, siteUrl, baseUrl);
 
   const [, linkPath, suffix] = link.match(/^([^?#]*)(.*)$/);
   const target = path.resolve(path.dirname(file), decodeURIComponent(linkPath));
   const permalink = permalinks.get(target);
   return permalink ? `${siteUrl}${permalink}${suffix}` : undefined;
+}
+
+function resolveSitePath(link, siteUrl, baseUrl) {
+  const pathWithBaseUrl = link.startsWith(baseUrl)
+    ? link
+    : `${baseUrl.replace(/\/$/, '')}${link}`;
+  return `${siteUrl}${pathWithBaseUrl}`;
 }
 
 async function convertMdxToMd(content, resolveLink) {
@@ -187,7 +195,7 @@ function convertAdmonitions(content) {
 
 function resolveLinksPlugin(resolveLink) {
   return (tree) => {
-    visit(tree, ['link', 'definition'], (node) => {
+    visit(tree, ['link', 'image', 'definition'], (node) => {
       node.url = resolveLink(node.url) ?? node.url;
     });
   };
